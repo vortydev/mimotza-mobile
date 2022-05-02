@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mimotza">
         <activity
+            android:name=".Inscription"
+            android:exported="false" />
+        <activity
             android:name=".LogInSignIn"
             android:exported="false" />
         <activity
