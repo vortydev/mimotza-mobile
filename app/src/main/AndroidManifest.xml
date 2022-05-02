@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Mimotza">
         <activity
             android:name=".Jeu"
+            android:label="@string/jeu_label"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
