@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Mimotza</string>
+    <string name="app_name">Mi-Mot-Za</string>
+    <string name="dev_name">Mimotza</string>
+    <string name="jeu_label">Mi-Mot-Za/Jeu</string>
+    <string name="jouer">Jouer</string>
+    <string name="retour">Retour</string>
 </resources>
