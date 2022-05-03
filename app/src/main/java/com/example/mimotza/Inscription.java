@@ -47,10 +47,15 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 EditText fieldUsername = (EditText) findViewById(R.id.username);
                 EditText fieldEmail = (EditText) findViewById(R.id.email);
                 EditText fieldMdp = (EditText) findViewById(R.id.password);
+                EditText fieldValidateMdp = (EditText) findViewById(R.id.password2);
 
-                if (!checkUp()){
+                if (!(validateField(fieldPrenom,"Veuillez compléter le champ \"Prénom\"")
+                        && validateField(fieldNom,"Veuillez compléter le champ \"Nom\"")
+                        && validateField(fieldUsername,"Veuillez compléter le champ \"Nom d\'utilisateur\"")
+                        && validateField(fieldEmail,"Veuillez compléter le champ \"Adresse courriel\"", "[a-zA-Z0-9.!#$%&'*+-/=?^_`{}|]+@[a-zA-Z0-9.-]+.[a-zA-Z]+")
+                        && validateField(fieldMdp,"Votre mot de passe doit contenir au moins une majuscule et un chiffre et avoir une longueur de 8 caractères","(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}")
+                        && validateField(fieldMdp,"Vous devez valider votre mot de passe", fieldValidateMdp)))
                     break;
-                }
 
                 Bundle b = new Bundle();
 
@@ -72,41 +77,33 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 break;
         }
     }
-
-    public boolean checkUp(){
-        EditText fieldNom = (EditText) findViewById(R.id.nom);
-        EditText fieldPrenom = (EditText) findViewById(R.id.prenom);
-        EditText fieldUsername = (EditText) findViewById(R.id.username);
-        EditText fieldEmail = (EditText) findViewById(R.id.email);
-        EditText fieldMdp = (EditText) findViewById(R.id.password);
-        EditText fieldValidateMdp = (EditText) findViewById(R.id.password2);
-
-        if (TextUtils.isEmpty(fieldPrenom.getText().toString())){
-            Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Prénom\"",Toast.LENGTH_LONG).show();
-            return false;
-        }else if(TextUtils.isEmpty(fieldNom.getText().toString())){
-            Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Nom\"",Toast.LENGTH_LONG).show();
-            return false;
-        } else if (TextUtils.isEmpty(fieldUsername.getText().toString())){
-            Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Nom d\'utilisateur\"",Toast.LENGTH_LONG).show();
-            return false;
-        }else if (TextUtils.isEmpty(fieldEmail.getText().toString())){
-            Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Adresse courriel\"",Toast.LENGTH_LONG).show();
-            return false;
-        }else if (TextUtils.isEmpty(fieldMdp.getText().toString())){
-            Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Mot de passe\"",Toast.LENGTH_LONG).show();
-            return false;
-        }else if (!Pattern.matches("[a-zA-Z0-9.!#$%&'*+-/=?^_`{}|]+@[a-zA-Z0-9.-]+.[a-zA-Z]+", fieldEmail.getText().toString())){
-            Toast.makeText(Inscription.this, "Veuillez entrer une adresse courriel valide",Toast.LENGTH_LONG).show();
-            return false;
-        }else if(!Pattern.matches("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}", fieldMdp.getText().toString())){
-            Toast.makeText(Inscription.this, "Votre mot de passe doit contenir au moins une majuscule et un chiffre et avoir une longueur de 8 caractères",Toast.LENGTH_LONG).show();
-            return false;
-        }else if(!fieldMdp.getText().toString().equals(fieldValidateMdp.getText().toString())){
-            Toast.makeText(Inscription.this, "Vous devez valider votre mot de passe",Toast.LENGTH_LONG).show();
+    private boolean validateField(EditText field, String toast) {
+        if (TextUtils.isEmpty(field.getText().toString())) {
+            Toast.makeText(Inscription.this, toast,Toast.LENGTH_LONG).show();
             return false;
         }
-        return true;
+        else {
+            return true;
+        }
+    }
+
+    private boolean validateField(EditText field, String toast, String regex) {
+        if (Pattern.matches(regex, field.getText().toString())) {
+            return true;
+        }
+        else {
+            Toast.makeText(Inscription.this, toast,Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    private boolean validateField(EditText field, String toast, EditText field2) {
+        if (field.getText().toString().equals(field2.getText().toString())){
+            return true;
+        }else{
+            Toast.makeText(Inscription.this, toast,Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
 }
