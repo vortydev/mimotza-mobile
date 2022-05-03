@@ -12,11 +12,15 @@ import java.util.ArrayList;
 
 public class Jeu extends AppCompatActivity {
     private GameGrid grid;
+    private DBWrapper bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
+
+        // connect to database
+        bd = new DBWrapper(this, "mimotza");
 
         // creates grid object
         grid = new GameGrid(fetchCells());
@@ -24,14 +28,84 @@ public class Jeu extends AppCompatActivity {
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        // TODO make it a bit smoother switching characters
-
         switch (keyCode) {
             case KeyEvent.KEYCODE_A:
                 grid.setLetterAtPos(R.string.lettre_a);
                 return true;
             case KeyEvent.KEYCODE_B:
                 grid.setLetterAtPos(R.string.lettre_b);
+                return true;
+            case KeyEvent.KEYCODE_C:
+                grid.setLetterAtPos(R.string.lettre_c);
+                return true;
+            case KeyEvent.KEYCODE_D:
+                grid.setLetterAtPos(R.string.lettre_d);
+                return true;
+            case KeyEvent.KEYCODE_E:
+                grid.setLetterAtPos(R.string.lettre_e);
+                return true;
+            case KeyEvent.KEYCODE_F:
+                grid.setLetterAtPos(R.string.lettre_f);
+                return true;
+            case KeyEvent.KEYCODE_G:
+                grid.setLetterAtPos(R.string.lettre_g);
+                return true;
+            case KeyEvent.KEYCODE_H:
+                grid.setLetterAtPos(R.string.lettre_h);
+                return true;
+            case KeyEvent.KEYCODE_I:
+                grid.setLetterAtPos(R.string.lettre_i);
+                return true;
+            case KeyEvent.KEYCODE_J:
+                grid.setLetterAtPos(R.string.lettre_j);
+                return true;
+            case KeyEvent.KEYCODE_K:
+                grid.setLetterAtPos(R.string.lettre_k);
+                return true;
+            case KeyEvent.KEYCODE_L:
+                grid.setLetterAtPos(R.string.lettre_l);
+                return true;
+            case KeyEvent.KEYCODE_M:
+                grid.setLetterAtPos(R.string.lettre_m);
+                return true;
+            case KeyEvent.KEYCODE_N:
+                grid.setLetterAtPos(R.string.lettre_n);
+                return true;
+            case KeyEvent.KEYCODE_O:
+                grid.setLetterAtPos(R.string.lettre_o);
+                return true;
+            case KeyEvent.KEYCODE_P:
+                grid.setLetterAtPos(R.string.lettre_p);
+                return true;
+            case KeyEvent.KEYCODE_Q:
+                grid.setLetterAtPos(R.string.lettre_q);
+                return true;
+            case KeyEvent.KEYCODE_R:
+                grid.setLetterAtPos(R.string.lettre_r);
+                return true;
+            case KeyEvent.KEYCODE_S:
+                grid.setLetterAtPos(R.string.lettre_s);
+                return true;
+            case KeyEvent.KEYCODE_T:
+                grid.setLetterAtPos(R.string.lettre_t);
+                return true;
+            case KeyEvent.KEYCODE_U:
+                grid.setLetterAtPos(R.string.lettre_u);
+                return true;
+            case KeyEvent.KEYCODE_V:
+                grid.setLetterAtPos(R.string.lettre_v);
+                return true;
+            case KeyEvent.KEYCODE_W:
+                grid.setLetterAtPos(R.string.lettre_w);
+                return true;
+            case KeyEvent.KEYCODE_X:
+                grid.setLetterAtPos(R.string.lettre_x);
+                return true;
+            case KeyEvent.KEYCODE_Y:
+                grid.setLetterAtPos(R.string.lettre_y);
+                return true;
+            case KeyEvent.KEYCODE_Z:
+                grid.setLetterAtPos(R.string.lettre_z);
                 return true;
             case KeyEvent.KEYCODE_DEL:
                 grid.eraseLetterAtPos();
