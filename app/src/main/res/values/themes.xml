@@ -13,17 +13,43 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/charcoal</item>
+        <item name="android:fontFamily">@font/trebuchet</item>
+        <item name="android:textColor">@color/white</item>
     </style>
-    <style name="Button.Bleu" parent="@android:style/Widget.Button">
+    <style name="MMZ.Button" parent="@android:style/Widget.Button">
         <item name="android:background">@empty</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/trebuchet</item>
+    </style>
+    <style name="MMZ.Button.Bleu" parent="@style/MMZ.Button">
         <item name="android:backgroundTint">@color/bleu</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/trebuchet</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">50dp</item>
     </style>
-    <style name="Button.Gris" parent="@android:style/Widget.Button">
-        <item name="android:background">@empty</item>
+    <style name="MMZ.Button.Gris" parent="@style/MMZ.Button">
         <item name="android:backgroundTint">@color/gris</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+    <style name="MMZ.Game.Cell" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/trebuchet</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:layout_margin">3dp</item>
     </style>
+
+    <style name="Theme.Mimotza.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Mimotza.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Mimotza.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

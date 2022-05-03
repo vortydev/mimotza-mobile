@@ -6,25 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonJouer"
-        style="@style/Button.Bleu"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <Button
+        android:id="@+id/btnJouer"
+        style="@style/MMZ.Button.Bleu"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:text="@string/jouer"
-        app:layout_constraintBottom_toTopOf="@id/goToForum"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/goToForum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forum"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btnInsc"
+        style="@style/MMZ.Button.Bleu"
+        android:text="@string/insc"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonJouer"/>
+        app:layout_constraintTop_toBottomOf="@id/btnJouer" />
+
+    <Button
+        android:id="@+id/btnForum"
+        style="@style/MMZ.Button.Bleu"
+        android:text="@string/forum_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInsc" />
+
+    <Button
+        android:id="@+id/btnBD"
+        style="@style/MMZ.Button.Gris"
+        android:text="InitBD"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnForum" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

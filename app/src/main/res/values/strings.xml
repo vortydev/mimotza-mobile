@@ -1,8 +1,56 @@
 <resources>
     <string name="app_name">Mi-Mot-Za</string>
-    <string name="dev_name">Mimotza</string>
     <string name="jeu_label">Mi-Mot-Za/Jeu</string>
-    <string name="forum_label">Mi-Mot-Za/Forum</string>
     <string name="jouer">Jouer</string>
+    <string name="forum_label">Forum</string>
     <string name="retour">Retour</string>
+
+    <!-- Inscription -->
+    <string name="insc">S\'inscrire</string>
+    <string name="conn">Se connecter</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom</string>
+    <string name="email">Adresse courriel</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="password2">Confirmez le mot de passe</string>
+
+    <!--  Lettres  -->
+    <string name="lettre_a">A</string>
+    <string name="lettre_b">B</string>
+    <string name="lettre_c">C</string>
+    <string name="lettre_d">D</string>
+    <string name="lettre_e">E</string>
+    <string name="lettre_f">F</string>
+    <string name="lettre_g">G</string>
+    <string name="lettre_h">H</string>
+    <string name="lettre_i">I</string>
+    <string name="lettre_j">J</string>
+    <string name="lettre_k">K</string>
+    <string name="lettre_l">L</string>
+    <string name="lettre_m">M</string>
+    <string name="lettre_n">N</string>
+    <string name="lettre_o">O</string>
+    <string name="lettre_p">P</string>
+    <string name="lettre_q">Q</string>
+    <string name="lettre_r">R</string>
+    <string name="lettre_s">S</string>
+    <string name="lettre_t">T</string>
+    <string name="lettre_u">U</string>
+    <string name="lettre_v">V</string>
+    <string name="lettre_w">W</string>
+    <string name="lettre_x">X</string>
+    <string name="lettre_y">Y</string>
+    <string name="lettre_z">Z</string>
+
+    <!-- Base de données -->
+    <string name="title_activity_test_bd">TestBd</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
