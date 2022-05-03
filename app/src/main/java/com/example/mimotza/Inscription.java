@@ -83,7 +83,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 b.putString("email", fieldEmail.getText().toString());
                 b.putString("mdp", fieldMdp.getText().toString());
 
-                // chargement pendant l'envoi à la base de données puis redirige à l'écran de connexion si validé pour se connecter
+                // chargement pendant l'envoi fichier JSON à la base de données puis redirige à l'écran de connexion si validé pour se connecter
 
                 break;
 
