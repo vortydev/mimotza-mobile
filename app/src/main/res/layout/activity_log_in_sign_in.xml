@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+/****************************************
+ Fichier : activity_log_in_sign_in.xml
+ Auteur : Isabelle Rioux
+ Fonctionnalité : MMZ-M-002 Créer utilisateur et MMZ-M-003 Se connecter (Affichage Menu)
+ Date : 02/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le choix de l'utilisateur
+ =========================================================
+ ****************************************/
+ -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

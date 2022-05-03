@@ -1,3 +1,15 @@
+/****************************************
+ Fichier : LogInSignIn.java
+ Auteur : Isabelle Rioux
+ Fonctionnalité : MMZ-M-002 Créer utilisateur et MMZ-M-003 Se connecter (Menu)
+ Date : 02/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le choix de l'utilisateur
+ =========================================================
+ ****************************************/
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;

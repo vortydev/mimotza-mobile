@@ -1,3 +1,16 @@
+/****************************************
+ Fichier : Inscription.java
+ Auteur : Isabelle Rioux
+ Fonctionnalité : MMZ-M-002 Créer utilisateur
+ Date : 02/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le formulaire
+ Date: 03/05/2022 Nom: Isabelle Rioux Description: Gestion du formulaire et des boutons
+ =========================================================
+ ****************************************/
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
