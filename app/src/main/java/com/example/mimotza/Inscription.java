@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 public class Inscription extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -33,13 +35,13 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 EditText fieldEmail = (EditText) findViewById(R.id.email);
                 EditText fieldMdp = (EditText) findViewById(R.id.password);
 
-                if(TextUtils.isEmpty(fieldNom.getText().toString())){
-                    Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Nom\"",Toast.LENGTH_LONG).show();
-                    break;
-                } else if (TextUtils.isEmpty(fieldPrenom.getText().toString())){
+                if (TextUtils.isEmpty(fieldPrenom.getText().toString())){
                     Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Prénom\"",Toast.LENGTH_LONG).show();
                     break;
-                }else if (TextUtils.isEmpty(fieldUsername.getText().toString())){
+                }else if(TextUtils.isEmpty(fieldNom.getText().toString())){
+                    Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Nom\"",Toast.LENGTH_LONG).show();
+                    break;
+                } else if (TextUtils.isEmpty(fieldUsername.getText().toString())){
                     Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Nom d\'utilisateur\"",Toast.LENGTH_LONG).show();
                     break;
                 }else if (TextUtils.isEmpty(fieldEmail.getText().toString())){
@@ -47,6 +49,9 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                     break;
                 }else if (TextUtils.isEmpty(fieldMdp.getText().toString())){
                     Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Mot de passe\"",Toast.LENGTH_LONG).show();
+                    break;
+                }else if (!Pattern.matches("[a-zA-Z0-9.!#$%&'*+-/=?^_`{}|]+@[a-zA-Z0-9.-]+.[a-zA-Z]+", fieldEmail.getText().toString())){
+                    Toast.makeText(Inscription.this, "Veuillez entrer une adresse courriel valide",Toast.LENGTH_LONG).show();
                     break;
                 }
 
