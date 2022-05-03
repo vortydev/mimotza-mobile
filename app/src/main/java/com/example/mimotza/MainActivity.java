@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class); // redirection vers l'écran de connexion
         //startActivity(intentInsc);
 
-        Button isa = (Button) findViewById(R.id.isa);
+        Button isa = (Button) findViewById(R.id.btnInsc);
         isa.setOnClickListener(this);
     }
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentJouer);
                 break;
-            case R.id.isa:
+            case R.id.btnInsc:
                 Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class);
                 startActivity(intentInsc);
                 break;
