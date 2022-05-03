@@ -18,6 +18,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // bouton Jouer
         btnJouer = (Button) findViewById(R.id.btnJouer);
         btnJouer.setOnClickListener(this);
+
+        //Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class); // redirection vers l'écran de connexion
+        //startActivity(intentInsc);
+
+        Button isa = (Button) findViewById(R.id.isa);
+        isa.setOnClickListener(this);
     }
 
     @Override
@@ -27,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentJouer = new Intent(MainActivity.this, Jeu.class);
                 intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentJouer);
+                break;
+            case R.id.isa:
+                Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class);
+                startActivity(intentInsc);
                 break;
             default:
                 // rien :)

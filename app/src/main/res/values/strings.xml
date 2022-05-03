@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">Mi-Mot-Za</string>
-    <string name="dev_name">Mimotza</string>
     <string name="jeu_label">Mi-Mot-Za/Jeu</string>
     <string name="jouer">Jouer</string>
     <string name="retour">Retour</string>
+
+    <!-- Inscription -->
+    <string name="insc">S\'inscrire</string>
+    <string name="conn">Se connecter</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom</string>
+    <string name="email">Adresse courriel</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="password2">Confirmez le mot de passe</string>
 
     <!--  Lettres  -->
     <string name="lettre_a">A</string>
