@@ -4,12 +4,12 @@ import android.widget.TextView;
 
 public class GameCell {
     private TextView cell;
-    private String lettre;
+    private int lettre;
     private CellState state;
 
     public GameCell(TextView c) {
         cell = c;
-        lettre = null;
+        lettre = 0;
         state = CellState.DEFAULT;
 
         updateCell();
@@ -23,13 +23,24 @@ public class GameCell {
         cell = c;
     }
 
-    public String getLettre() {
+    public int getLettre() {
         return lettre;
     }
 
-    public void setLettre(String l) {
-        assert(l.length() == 1);
+    public void setLettre(int l) {
         lettre = l;
+    }
+
+    public void setKeyPress(int l) {
+        lettre = l;
+        setState(CellState.OCCUPIED);
+        updateCell();
+    }
+
+    public void clearCell() {
+        lettre = 0;
+        setState(CellState.DEFAULT);
+        updateCell();
     }
 
     public CellState getState() {
@@ -41,7 +52,7 @@ public class GameCell {
     }
 
     public void updateCell() {
-        if (lettre == null) {
+        if (lettre == 0) {
             cell.setText("");
         }
         else {
