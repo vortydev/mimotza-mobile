@@ -2,8 +2,209 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewport"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Jeu">
+
+    <TableLayout
+        android:id="@+id/grille"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TableRow
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/r1l1"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default"
+                android:text="@string/lettre_a" />
+
+            <TextView
+                android:id="@+id/r1l2"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_occupied"
+                android:text="@string/lettre_b" />
+
+            <TextView
+                android:id="@+id/r1l3"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_bad"
+                android:text="@string/lettre_c" />
+
+            <TextView
+                android:id="@+id/r1l4"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_good"
+                android:text="@string/lettre_d" />
+
+            <TextView
+                android:id="@+id/r1l5"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_valid"
+                android:text="@string/lettre_e" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/r2l1"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r2l2"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r2l3"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r2l4"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r2l5"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/r3l1"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r3l2"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r3l3"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r3l4"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r3l5"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/r4l1"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r4l2"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r4l3"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r4l4"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r4l5"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/r5l1"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r5l2"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r5l3"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r5l4"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r5l5"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/r6l1"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r6l2"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r6l3"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r6l4"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+
+            <TextView
+                android:id="@+id/r6l5"
+                style="@style/MMZ.Game.Cell"
+                android:background="@drawable/cell_default" />
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

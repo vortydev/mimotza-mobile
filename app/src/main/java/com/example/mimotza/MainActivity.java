@@ -16,14 +16,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         // bouton Jouer
-        btnJouer = (Button) findViewById(R.id.buttonJouer);
+        btnJouer = (Button) findViewById(R.id.btnJouer);
         btnJouer.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonJouer:
+            case R.id.btnJouer:
                 Intent intentJouer = new Intent(MainActivity.this, Jeu.class);
                 intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentJouer);
