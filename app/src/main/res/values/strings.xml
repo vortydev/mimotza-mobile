@@ -4,4 +4,32 @@
     <string name="jeu_label">Mi-Mot-Za/Jeu</string>
     <string name="jouer">Jouer</string>
     <string name="retour">Retour</string>
+
+    <!--  Lettres  -->
+    <string name="lettre_a">A</string>
+    <string name="lettre_b">B</string>
+    <string name="lettre_c">C</string>
+    <string name="lettre_d">D</string>
+    <string name="lettre_e">E</string>
+    <string name="lettre_f">F</string>
+    <string name="lettre_g">G</string>
+    <string name="lettre_h">H</string>
+    <string name="lettre_i">I</string>
+    <string name="lettre_j">J</string>
+    <string name="lettre_k">K</string>
+    <string name="lettre_l">L</string>
+    <string name="lettre_m">M</string>
+    <string name="lettre_n">N</string>
+    <string name="lettre_o">O</string>
+    <string name="lettre_p">P</string>
+    <string name="lettre_q">Q</string>
+    <string name="lettre_r">R</string>
+    <string name="lettre_s">S</string>
+    <string name="lettre_t">T</string>
+    <string name="lettre_u">U</string>
+    <string name="lettre_v">V</string>
+    <string name="lettre_w">W</string>
+    <string name="lettre_x">X</string>
+    <string name="lettre_y">Y</string>
+    <string name="lettre_z">Z</string>
 </resources>

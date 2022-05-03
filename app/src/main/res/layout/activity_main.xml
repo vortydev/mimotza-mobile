@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonJouer"
-        style="@style/Button.Bleu"
+        android:id="@+id/btnJouer"
+        style="@style/MMZ.Button.Bleu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/jouer"
