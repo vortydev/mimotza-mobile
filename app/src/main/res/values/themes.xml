@@ -41,4 +41,13 @@
         <item name="android:paddingTop">1dp</item>
         <item name="android:layout_margin">3dp</item>
     </style>
+
+    <style name="Theme.Mimotza.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Mimotza.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Mimotza.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

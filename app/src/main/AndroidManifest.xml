@@ -14,6 +14,11 @@
             android:label="@string/jeu_label"
             android:exported="false" />
         <activity
+            android:name=".TestBd"
+            android:exported="false"
+            android:label="@string/title_activity_test_bd"
+            android:theme="@style/Theme.Mimotza.NoActionBar" />
+        <activity
             android:name=".Inscription"
             android:exported="false" />
         <activity

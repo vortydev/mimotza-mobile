@@ -40,10 +40,19 @@
         app:layout_constraintTop_toBottomOf="@id/btnJouer" />
 
     <Button
-    android:id="@+id/btnForum"
-    style="@style/MMZ.Button.Bleu"
-    android:text="@string/forum"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/btnInsc"/>
+        android:id="@+id/btnForum"
+        style="@style/MMZ.Button.Bleu"
+        android:text="@string/forum"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInsc"/>
+
+    <Button
+        android:id="@+id/btnBD"
+        style="@style/MMZ.Button.Gris"
+        android:text="InitBD"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInsc"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

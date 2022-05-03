@@ -40,12 +40,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnInsc:
                 Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class);
+                intentInsc.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentInsc);
                 break;
-            case R.id.goToForum:
-                Intent intent = new Intent(MainActivity.this, ForumActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            case R.id.btnForum:
+                Intent intentForum = new Intent(MainActivity.this, ForumActivity.class);
+                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                break;
+            case R.id.btnBD:
+                Intent intentBD = new Intent(MainActivity.this, TestBd.class);
+                intentBD.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intentBD);
                 break;
             default:
                 // rien :)
