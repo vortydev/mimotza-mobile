@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnJouer;
     private Button btnForum;
     private Button btnInsc;
+    private Button btnBD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnInsc.setOnClickListener(this);
 
         // forum
-        btnForum = (Button) findViewById(R.id.goToForum);
+        btnForum = (Button) findViewById(R.id.btnForum);
         btnForum.setOnClickListener(this);
+
+        // BD
+        btnBD = (Button) findViewById(R.id.btnBD);
+        btnBD.setOnClickListener(this);
     }
 
     @Override
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnForum:
                 Intent intentForum = new Intent(MainActivity.this, ForumActivity.class);
                 intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                startActivity(intentForum);
                 break;
             case R.id.btnBD:
                 Intent intentBD = new Intent(MainActivity.this, TestBd.class);
