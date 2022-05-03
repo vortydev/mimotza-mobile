@@ -7,19 +7,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+//import com.android.volley.Request;
+//import com.android.volley.RequestQueue;
+//import com.android.volley.Response;
+//import com.android.volley.VolleyError;
+//import com.android.volley.toolbox.StringRequest;
+//import com.android.volley.toolbox.Volley;
 
 public class ForumActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_forum);
 
         Context currentContext = ForumActivity.this;
 
@@ -27,7 +27,7 @@ public class ForumActivity extends AppCompatActivity {
         TextView textTitre = findViewById(R.id.titre);
         TextView nbCommentaires = findViewById(R.id.nbComments);
 
-        RequestQueue queue = Volley.newRequestQueue(this);
+        /*RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://127.0.0.1:8000/getAllMedia";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -41,7 +41,7 @@ public class ForumActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(ForumActivity.this, "That didn't work!\n" + error, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         textAuteur.setText("HEY");
     }
