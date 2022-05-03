@@ -66,6 +66,9 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 }else if (!Pattern.matches("[a-zA-Z0-9.!#$%&'*+-/=?^_`{}|]+@[a-zA-Z0-9.-]+.[a-zA-Z]+", fieldEmail.getText().toString())){
                     Toast.makeText(Inscription.this, "Veuillez entrer une adresse courriel valide",Toast.LENGTH_LONG).show();
                     break;
+                }else if(!Pattern.matches("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}", fieldMdp.getText().toString())){
+                    Toast.makeText(Inscription.this, "Votre mot de passe doit contenir au moins une majuscule et un chiffre et avoir une longueur de 8 caractères",Toast.LENGTH_LONG).show();
+                    break;
                 }
 
                 Bundle b = new Bundle();
