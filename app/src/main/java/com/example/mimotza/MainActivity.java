@@ -9,21 +9,25 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnJouer;
+    private Button btnForum;
+    private Button btnInsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // bouton Jouer
+        // jeu
         btnJouer = (Button) findViewById(R.id.btnJouer);
         btnJouer.setOnClickListener(this);
 
-        //Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class); // redirection vers l'écran de connexion
-        //startActivity(intentInsc);
+        // inscription
+        btnInsc = (Button) findViewById(R.id.btnInsc);
+        btnInsc.setOnClickListener(this);
 
-        Button isa = (Button) findViewById(R.id.btnInsc);
-        isa.setOnClickListener(this);
+        // forum
+        btnForum = (Button) findViewById(R.id.goToForum);
+        btnForum.setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnInsc:
                 Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class);
                 startActivity(intentInsc);
+                break;
+            case R.id.goToForum:
+                Intent intent = new Intent(MainActivity.this, ForumActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
                 break;
             default:
                 // rien :)
