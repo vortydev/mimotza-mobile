@@ -10,19 +10,49 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mimotza"
+        android:text="@string/app_name"
+        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
 
     <Button
-        android:id="@+id/isa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Isa"
+        android:id="@+id/btnJouer"
+        style="@style/MMZ.Button.Bleu"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/jouer"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btnInsc"
+        style="@style/MMZ.Button.Bleu"
+        android:text="@string/insc"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"/>
+        app:layout_constraintTop_toBottomOf="@id/btnJouer" />
+
+    <Button
+        android:id="@+id/btnForum"
+        style="@style/MMZ.Button.Bleu"
+        android:text="@string/forum_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInsc" />
+
+    <Button
+        android:id="@+id/btnBD"
+        style="@style/MMZ.Button.Gris"
+        android:text="InitBD"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnForum" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

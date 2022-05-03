@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mimotza">
         <activity
+            android:name=".Jeu"
+            android:label="@string/jeu_label"
+            android:exported="false" />
+        <activity
+            android:name=".TestBd"
+            android:exported="false"
+            android:label="@string/title_activity_test_bd"
+            android:theme="@style/Theme.Mimotza.NoActionBar" />
+        <activity
             android:name=".Inscription"
             android:exported="false" />
         <activity
@@ -24,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ForumActivity"
+            android:label="@string/forum_label"
+            android:exported="false"/>
     </application>
 
 </manifest>

@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--  Mi-Mot-Za  -->
+    <color name="charcoal">#292929</color>
+    <color name="gris">#333333</color>
+    <color name="gris_accent">#393939</color>
+    <color name="bleu">#54a4f4</color>
+    <color name="bleu_accent">#328eeb</color>
+    <color name="rouge">#800000</color>
+    <color name="rouge_accent">#700000</color>
+    <color name="lavande">#ffbb86fc</color>
 </resources>
