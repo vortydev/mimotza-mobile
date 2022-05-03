@@ -47,6 +47,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 EditText fieldUsername = (EditText) findViewById(R.id.username);
                 EditText fieldEmail = (EditText) findViewById(R.id.email);
                 EditText fieldMdp = (EditText) findViewById(R.id.password);
+                EditText fieldValidateMdp = (EditText) findViewById(R.id.password2);
 
                 if (TextUtils.isEmpty(fieldPrenom.getText().toString())){
                     Toast.makeText(Inscription.this, "Veuillez compléter le champ \"Prénom\"",Toast.LENGTH_LONG).show();
@@ -69,6 +70,9 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 }else if(!Pattern.matches("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}", fieldMdp.getText().toString())){
                     Toast.makeText(Inscription.this, "Votre mot de passe doit contenir au moins une majuscule et un chiffre et avoir une longueur de 8 caractères",Toast.LENGTH_LONG).show();
                     break;
+                }else if(!fieldMdp.getText().toString().equals(fieldValidateMdp.getText().toString())){
+                    Toast.makeText(Inscription.this, "Vous devez valider votre mot de passe",Toast.LENGTH_LONG).show();
+                    break;
                 }
 
                 Bundle b = new Bundle();
@@ -78,6 +82,8 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 b.putString("username", fieldUsername.getText().toString());
                 b.putString("email", fieldEmail.getText().toString());
                 b.putString("mdp", fieldMdp.getText().toString());
+
+                // chargement pendant l'envoi à la base de données puis redirige à l'écran de connexion si validé pour se connecter
 
                 break;
 
