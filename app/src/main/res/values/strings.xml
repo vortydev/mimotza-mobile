@@ -8,4 +8,5 @@
     <string name="email">Adresse courriel</string>
     <string name="username">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
+    <string name="retour">Retourner</string>
 </resources>
