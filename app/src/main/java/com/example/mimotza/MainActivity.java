@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class);
                 startActivity(intentInsc);
                 break;
+            case R.id.bdButton:
+                Intent intentBD = new Intent(MainActivity.this, TestBd.class);
+                startActivity(intentBD);
+                break;
 
             default:
                 break;
