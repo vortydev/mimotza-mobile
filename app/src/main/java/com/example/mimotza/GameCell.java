@@ -87,6 +87,11 @@ public class GameCell {
         }
     }
 
+    /**
+     * Met à jour le state de la cellule.
+     * @author Étiene Ménard
+     * @param state État de la cellule.
+     */
     public void updateState(CellState state) {
         this.state = state;
         switch (state) {
@@ -108,6 +113,11 @@ public class GameCell {
         }
     }
 
+    /**
+     * Retourne la lettre de la cellule.
+     * @author Étienne Ménard
+     * @return ID du string statique de la lettre dans l'application.
+     */
     public int getLettre() {
         return lettre;
     }

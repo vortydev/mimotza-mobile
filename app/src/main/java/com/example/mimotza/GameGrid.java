@@ -1,16 +1,10 @@
 package com.example.mimotza;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 /**
  * Grille et controleur des cellules du jeu Mi-Mot-Za.
@@ -20,7 +14,7 @@ public class GameGrid {
     private Context context;
     private GameCell[][] grid;
     private int yPos, xPos;     // pointeurs sur la grille
-    private String mdj;
+    private String mdj;         // mot du jour
 
     /**
      * Constructeur de l'objet GameGrid.
@@ -75,12 +69,12 @@ public class GameGrid {
      * Soumets la ligne à la vérification.
      * @author Étienne Ménard
      */
-    public void enterRow() {
+    public boolean enterRow() {
         // prévient d'entrer une ligne incomplète
-        if (xPos < 5) return;
+        if (xPos < 5) return false;
 
         // prévient d'envoyer plus de 6 lignes
-        if (yPos > 6) return;
+        if (yPos > 6) return false;
 
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < grid[yPos].length; i++) {
@@ -90,15 +84,29 @@ public class GameGrid {
         // TODO fetch mot du jour
         mdj = "VAGUE";
         
-        CellState[] res = solvingAlgorythm(str.toString(), mdj);
+        CellState[] res = solvingAlgorithm(str.toString(), mdj);
 
         updateCells(res);
 
         xPos = 0;   // reset X
         yPos++;     // incrémente Y
+
+        for (int i = 0; i < res.length; i++) {
+            if (res[i] != CellState.VALID) return false;
+        }
+
+        Toast.makeText(context, "Vous avez gagné!", Toast.LENGTH_LONG).show();
+        return true;
     }
 
-    private CellState[] solvingAlgorythm(String mot, String mdj) {
+    /**
+     * Compares et retourne le résultat.
+     * @author Étienne Ménard
+     * @param mot Mot de l'utilisateur.
+     * @param mdj Mot du jour auquel on compare le mot.
+     * @return Liste des états des cellules de la ligne.
+     */
+    private CellState[] solvingAlgorithm(String mot, String mdj) {
         CellState[] states = new CellState[5];
         boolean[] found = new boolean[5];
 
@@ -125,6 +133,11 @@ public class GameGrid {
         return states;
     }
 
+    /**
+     * Met à jour les cellules de la ligne entrée.
+     * @author Étienne Ménard
+     * @param states
+     */
     private void updateCells(CellState[] states) {
         for (int i = 0; i < grid[yPos].length; i++) {
             grid[yPos][i].updateState(states[i]);

@@ -14,9 +14,12 @@ import java.util.ArrayList;
  */
 public class Jeu extends AppCompatActivity {
     private GameGrid grid;
-    private DBWrapper bdMimotza;
     private boolean allowedInput;
+    private boolean win;
+
+    private DBWrapper bdMimotza;
     private String mdj;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +28,12 @@ public class Jeu extends AppCompatActivity {
 
         // connect to database
         bdMimotza = new DBWrapper(this, "mimotza");
+        // TODO fetch mot du jour
 
         // creates grid object
         grid = new GameGrid(this, fetchCells());
         allowedInput = true;
+        win = false;
     }
 
     @Override
@@ -119,7 +124,14 @@ public class Jeu extends AppCompatActivity {
                 grid.eraseLetterAtPos();
                 return true;
             case KeyEvent.KEYCODE_ENTER:
-                grid.enterRow();
+                if (grid.enterRow()) {
+                    // si on gagne
+                    win = true;
+                    allowedInput = false;
+
+                    // TODO send results to server
+
+                }
                 return true;
             default:
                 return super.onKeyUp(keyCode, event);
@@ -168,6 +180,12 @@ public class Jeu extends AppCompatActivity {
         return cells;
     }
 
+    /**
+     * Active et désactive l'input du joueur.
+     * @author Étienne Ménard
+     * @param state Est-ce qu'on écoute les inputs du joueur?
+     * @return L'état de l'input listener.
+     */
     private boolean setInputState(boolean state) {
         return allowedInput = state;
     }
