@@ -46,6 +46,15 @@ public class GameCell {
     }
 
     /**
+     * Met à jour la cellule.
+     * @author Étienne Ménard
+     */
+    private void updateCell() {
+        updateState();
+        updateLettre();
+    }
+
+    /**
      * Set l'état de la cellule, définit par l'enum CellState.
      * @author Étienne Ménard
      * @param s State de la cellule (DEFAULT, OCCUPIED, BAD, GOOD, VALID)
@@ -78,6 +87,31 @@ public class GameCell {
         }
     }
 
+    public void updateState(CellState state) {
+        this.state = state;
+        switch (state) {
+            case OCCUPIED:
+                cell.setBackgroundResource(R.drawable.cell_occupied);
+                break;
+            case BAD:
+                cell.setBackgroundResource(R.drawable.cell_bad);
+                break;
+            case GOOD:
+                cell.setBackgroundResource(R.drawable.cell_good);
+                break;
+            case VALID:
+                cell.setBackgroundResource(R.drawable.cell_valid);
+                break;
+            default:
+                cell.setBackgroundResource(R.drawable.cell_default);
+                break;
+        }
+    }
+
+    public int getLettre() {
+        return lettre;
+    }
+
     /**
      * Met à jour la lettre de la cellule.
      * @author Étienne Ménard
@@ -89,14 +123,5 @@ public class GameCell {
         else {
             cell.setText(lettre);
         }
-    }
-
-    /**
-     * Met à jour la cellule.
-     * @author Étienne Ménard
-     */
-    private void updateCell() {
-        updateState();
-        updateLettre();
     }
 }

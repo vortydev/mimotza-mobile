@@ -9,10 +9,12 @@
 
     <TableLayout
         android:id="@+id/grille"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:id="@+id/row1"
@@ -22,32 +24,32 @@
             <TextView
                 android:id="@+id/r1l1"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_default"
+                android:background="@drawable/cell_good"
                 android:text="@string/lettre_a" />
 
             <TextView
                 android:id="@+id/r1l2"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_occupied"
-                android:text="@string/lettre_b" />
+                android:background="@drawable/cell_good"
+                android:text="@string/lettre_v" />
 
             <TextView
                 android:id="@+id/r1l3"
                 style="@style/MMZ.Game.Cell"
                 android:background="@drawable/cell_bad"
-                android:text="@string/lettre_c" />
+                android:text="@string/lettre_i" />
 
             <TextView
                 android:id="@+id/r1l4"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_good"
-                android:text="@string/lettre_d" />
+                android:background="@drawable/cell_bad"
+                android:text="@string/lettre_o" />
 
             <TextView
                 android:id="@+id/r1l5"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_valid"
-                android:text="@string/lettre_e" />
+                android:background="@drawable/cell_bad"
+                android:text="@string/lettre_n" />
         </TableRow>
 
         <TableRow
@@ -58,33 +60,38 @@
             <TextView
                 android:id="@+id/r2l1"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_default" />
+                android:background="@drawable/cell_valid"
+                android:text="@string/lettre_v" />
 
             <TextView
                 android:id="@+id/r2l2"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_default" />
+                android:background="@drawable/cell_valid"
+                android:text="@string/lettre_a" />
 
             <TextView
                 android:id="@+id/r2l3"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_default" />
+                android:background="@drawable/cell_valid"
+                android:text="@string/lettre_g" />
 
             <TextView
                 android:id="@+id/r2l4"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_default" />
+                android:background="@drawable/cell_valid"
+                android:text="@string/lettre_u" />
 
             <TextView
                 android:id="@+id/r2l5"
                 style="@style/MMZ.Game.Cell"
-                android:background="@drawable/cell_default" />
+                android:background="@drawable/cell_valid"
+                android:text="@string/lettre_e" />
         </TableRow>
 
         <TableRow
             android:id="@+id/row3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/r3l1"
@@ -146,7 +153,7 @@
         <TableRow
             android:id="@+id/row5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/r5l1"
@@ -177,7 +184,7 @@
         <TableRow
             android:id="@+id/row6"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/r6l1"
