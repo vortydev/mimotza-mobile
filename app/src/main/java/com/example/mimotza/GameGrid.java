@@ -1,5 +1,6 @@
 package com.example.mimotza;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,15 +17,18 @@ import java.util.regex.Pattern;
  * @author Étienne Ménard
  */
 public class GameGrid {
+    private Context context;
     private GameCell[][] grid;
     private int yPos, xPos;     // pointeurs sur la grille
+    private String mdj;
 
     /**
      * Constructeur de l'objet GameGrid.
      * @author Étienne Ménard
      * @param cells Liste des cellules de la grille.
      */
-    public GameGrid(ArrayList<TextView> cells) {
+    public GameGrid(Context context, ArrayList<TextView> cells) {
+        this.context = context;
         grid = new GameCell[6][5];
         yPos = xPos = 0;
 
@@ -78,15 +82,52 @@ public class GameGrid {
         // prévient d'envoyer plus de 6 lignes
         if (yPos > 6) return;
 
-        xPos = 0;   // reset X
-        yPos++;     // incrémente Y
-
-        // TODO get user input
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < grid[yPos].length; i++) {
+            str.append(context.getString(grid[yPos][i].getLettre()));
+        }
 
         // TODO fetch mot du jour
+        mdj = "VAGUE";
+        
+        CellState[] res = solvingAlgorythm(str.toString(), mdj);
 
-        // TODO compare input and mdj
+        updateCells(res);
 
-        // TODO update row colors
+        xPos = 0;   // reset X
+        yPos++;     // incrémente Y
+    }
+
+    private CellState[] solvingAlgorythm(String mot, String mdj) {
+        CellState[] states = new CellState[5];
+        boolean[] found = new boolean[5];
+
+        for (int i = 0; i < mot.length(); i++) {
+            for (int j = 0; j < mdj.length(); j++) {
+
+                if (mot.charAt(i) == mdj.charAt(j)) {
+                    if (i == j) {
+                        states[i] = CellState.VALID;
+                    }
+                    else {
+                        states[i] = CellState.GOOD;
+                    }
+                    found[j] = true;
+                    j = mot.length();
+                }
+            }
+
+            if (states[i] != CellState.VALID && states[i] != CellState.GOOD) {
+                states[i] = CellState.BAD;
+            }
+        }
+
+        return states;
+    }
+
+    private void updateCells(CellState[] states) {
+        for (int i = 0; i < grid[yPos].length; i++) {
+            grid[yPos][i].updateState(states[i]);
+        }
     }
 }

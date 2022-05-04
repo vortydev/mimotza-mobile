@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class Jeu extends AppCompatActivity {
     private GameGrid grid;
     private DBWrapper bdMimotza;
+    private boolean allowedInput;
+    private String mdj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,14 @@ public class Jeu extends AppCompatActivity {
         bdMimotza = new DBWrapper(this, "mimotza");
 
         // creates grid object
-        grid = new GameGrid(fetchCells());
+        grid = new GameGrid(this, fetchCells());
+        allowedInput = true;
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (!allowedInput) return false;
+
         // my god that's tedious
         switch (keyCode) {
             case KeyEvent.KEYCODE_A:
@@ -161,5 +166,9 @@ public class Jeu extends AppCompatActivity {
         cells.add(findViewById(R.id.r6l5));
 
         return cells;
+    }
+
+    private boolean setInputState(boolean state) {
+        return allowedInput = state;
     }
 }
