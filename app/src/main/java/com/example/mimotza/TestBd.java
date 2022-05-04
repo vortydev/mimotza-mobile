@@ -20,26 +20,47 @@ public class TestBd extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityTestBdBinding binding;
 
+    private DBWrapper bd;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test_bd);
+        bd = new DBWrapper(this,"mimotza");
+        DBTable temp = new DBTable("statut");
+        temp.addColumn("statut",DBType.TEXT);
+        bd.addTable(temp);
+        temp = new DBTable("role");
+        temp.addColumn("role",DBType.TEXT);
+        bd.addTable(temp);
+        temp = new DBTable("utilisateur");
+        temp.addColumn("idOrigin",DBType.INTEGER);
+        temp.addColumn("idRole",DBType.INTEGER);
+        temp.addColumn("idStatut",DBType.INTEGER);
+        temp.addColumn("username",DBType.TEXT);
+        temp.addColumn("email",DBType.TEXT);
+        temp.addColumn("mdp",DBType.TEXT);
+        temp.addColumn("nom",DBType.TEXT);
+        temp.addColumn("prenom",DBType.TEXT);
+        temp.addColumn("avatar",DBType.TEXT);
+        temp.addColumn("dateCreation",DBType.TEXT);
+        bd.addTable(temp);
+        temp = new DBTable("partie");
+        temp.addColumn("idOrigin",DBType.INTEGER);
+        temp.addColumn("idUser",DBType.INTEGER);
+        temp.addColumn("win",DBType.INTEGER);
+        temp.addColumn("score",DBType.INTEGER);
 
-        binding = ActivityTestBdBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        temp.addColumn("temps",DBType.TEXT);
+        temp.addColumn("dateEmission",DBType.TEXT);
+        temp.addColumn("idMot",DBType.INTEGER);
+        bd.addTable(temp);
+        bd.buildContent();
 
-        setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_test_bd);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
     }
 
     @Override
