@@ -14,9 +14,15 @@
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config">
         <activity
-            android:name=".Jeu"
-            android:label="@string/jeu_label"
+            android:name=".ProfilJoueur"
             android:exported="false" />
+        <activity
+            android:name=".DBHandler"
+            android:exported="false" />
+        <activity
+            android:name=".Jeu"
+            android:exported="false"
+            android:label="@string/jeu_label" />
         <activity
             android:name=".TestBd"
             android:exported="false"
@@ -39,8 +45,8 @@
         </activity>
         <activity
             android:name=".ForumActivity"
-            android:label="@string/forum_label"
-            android:exported="false"/>
+            android:exported="false"
+            android:label="@string/forum_label" />
     </application>
 
 </manifest>

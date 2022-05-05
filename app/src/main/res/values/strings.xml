@@ -42,6 +42,8 @@
     <string name="lettre_x">X</string>
     <string name="lettre_y">Y</string>
     <string name="lettre_z">Z</string>
+    <string name="enter">Enter</string>
+    <string name="backspace">⌫</string>
 
     <!-- Base de données -->
     <string name="title_activity_test_bd">TestBd</string>

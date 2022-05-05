@@ -91,4 +91,13 @@ public class DBWrapper {
 
         db.execSQL(sql.toString());
     }
+
+    /**
+     * BuildContent createTables and rows
+     */
+    public void buildContent(){
+        for (int i = 0 ; i < tables.size(); i++) {
+            createTable(tables.get(i));
+        }
+    }
 }
