@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mimotza">
         <activity
-            android:name=".Jeu"
-            android:label="@string/jeu_label"
+            android:name=".DBHandler"
             android:exported="false" />
+        <activity
+            android:name=".Jeu"
+            android:exported="false"
+            android:label="@string/jeu_label" />
         <activity
             android:name=".TestBd"
             android:exported="false"
@@ -35,8 +38,8 @@
         </activity>
         <activity
             android:name=".ForumActivity"
-            android:label="@string/forum_label"
-            android:exported="false"/>
+            android:exported="false"
+            android:label="@string/forum_label" />
     </application>
 
 </manifest>

@@ -31,12 +31,10 @@ public class TestBd extends AppCompatActivity {
         DBTable temp = new DBTable("statut");
         temp.addColumn("statut",DBType.TEXT);
         bd.addTable(temp);
-        temp = new DBTable("role");
-        temp.addColumn("role",DBType.TEXT);
-        bd.addTable(temp);
+
         temp = new DBTable("utilisateur");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-        temp.addColumn("idRole",DBType.INTEGER);
+        temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
+
         temp.addColumn("idStatut",DBType.INTEGER);
         temp.addColumn("username",DBType.TEXT);
         temp.addColumn("email",DBType.TEXT);
@@ -47,18 +45,14 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("dateCreation",DBType.TEXT);
         bd.addTable(temp);
         temp = new DBTable("partie");
-        temp.addColumn("idOrigin",DBType.INTEGER);
         temp.addColumn("idUser",DBType.INTEGER);
         temp.addColumn("win",DBType.INTEGER);
         temp.addColumn("score",DBType.INTEGER);
-
         temp.addColumn("temps",DBType.TEXT);
         temp.addColumn("dateEmission",DBType.TEXT);
         temp.addColumn("idMot",DBType.INTEGER);
         bd.addTable(temp);
         bd.buildContent();
-
-
 
 
     }
