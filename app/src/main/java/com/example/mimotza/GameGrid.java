@@ -15,16 +15,19 @@ public class GameGrid {
     private GameCell[][] grid;
     private int yPos, xPos;     // pointeurs sur la grille
     private String mdj;         // mot du jour
+    private DBWrapper bdMimotza;
 
     /**
      * Constructeur de l'objet GameGrid.
      * @author Étienne Ménard
      * @param cells Liste des cellules de la grille.
      */
-    public GameGrid(Context context, ArrayList<TextView> cells) {
+    public GameGrid(Context context, ArrayList<TextView> cells, String motDuJour, DBWrapper bd) {
         this.context = context;
         grid = new GameCell[6][5];
         yPos = xPos = 0;
+        mdj = motDuJour;
+        bdMimotza = bd;
 
         // okay, je dois expliquer un peu ce qui se passe ici.
         // on vient de passer une liste des cellules (TextView) de la grille,
@@ -68,45 +71,43 @@ public class GameGrid {
     /**
      * Soumets la ligne à la vérification.
      * @author Étienne Ménard
+     * @return 0: mot pas valide, 1-6: score, 7: out of tries
      */
-    public boolean enterRow() {
-        // prévient d'entrer une ligne incomplète
-        if (xPos < 5) return false;
-
-        // prévient d'envoyer plus de 6 lignes
-        if (yPos > 6) return false;
+    public int enterRow() {
+        if (xPos < 5) return 0;     // prévient d'entrer une ligne incomplète
+        if (yPos > 6) return 0;     // prévient d'envoyer plus de 6 lignes
 
         StringBuilder str = new StringBuilder();
-        for (int i = 0; i < grid[yPos].length; i++) {
-            str.append(context.getString(grid[yPos][i].getLettre()));
+        for (int x = 0; x < grid[yPos].length; x++) {
+            str.append(context.getString(grid[yPos][x].getLettre()));
         }
 
-        // TODO fetch mot du jour
-        mdj = "VAGUE";
-        
-        CellState[] res = solvingAlgorithm(str.toString(), mdj);
+        // retourne un tableau des states des cellules de la ligne
+        CellState[] res = solvingAlgorithm(str.toString());
 
-        updateCells(res);
+        updateCells(res);   // update les-dites cellules
 
         xPos = 0;   // reset X
         yPos++;     // incrémente Y
 
         for (int i = 0; i < res.length; i++) {
-            if (res[i] != CellState.VALID) return false;
+            if (res[i] != CellState.VALID && yPos >= 6) return 7;   // hors d'essais
+            else if (res[i] != CellState.VALID) return 0;           // le mot n'est pas valide
         }
 
-        Toast.makeText(context, "Vous avez gagné!", Toast.LENGTH_LONG).show();
-        return true;
+        // TODO save row to bd
+
+        return yPos;    // mot valide!
     }
 
     /**
      * Compares et retourne le résultat.
      * @author Étienne Ménard
      * @param mot Mot de l'utilisateur.
-     * @param mdj Mot du jour auquel on compare le mot.
      * @return Liste des états des cellules de la ligne.
      */
-    private CellState[] solvingAlgorithm(String mot, String mdj) {
+    // TODO handle double letters
+    private CellState[] solvingAlgorithm(String mot) {
         CellState[] states = new CellState[5];
         boolean[] found = new boolean[5];
 
