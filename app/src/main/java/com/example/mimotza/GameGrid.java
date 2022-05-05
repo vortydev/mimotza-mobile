@@ -1,32 +1,33 @@
 package com.example.mimotza;
 
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
+import android.content.Context;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 /**
  * Grille et controleur des cellules du jeu Mi-Mot-Za.
  * @author Étienne Ménard
  */
 public class GameGrid {
+    private Context context;
     private GameCell[][] grid;
     private int yPos, xPos;     // pointeurs sur la grille
+    private String mdj;         // mot du jour
+    private DBWrapper bdMimotza;
 
     /**
      * Constructeur de l'objet GameGrid.
      * @author Étienne Ménard
      * @param cells Liste des cellules de la grille.
      */
-    public GameGrid(ArrayList<TextView> cells) {
+    public GameGrid(Context context, ArrayList<TextView> cells, String motDuJour, DBWrapper bd) {
+        this.context = context;
         grid = new GameCell[6][5];
         yPos = xPos = 0;
+        mdj = motDuJour;
+        bdMimotza = bd;
 
         // okay, je dois expliquer un peu ce qui se passe ici.
         // on vient de passer une liste des cellules (TextView) de la grille,
@@ -70,23 +71,77 @@ public class GameGrid {
     /**
      * Soumets la ligne à la vérification.
      * @author Étienne Ménard
+     * @return 0: mot pas valide, 1-6: score, 7: out of tries
      */
-    public void enterRow() {
-        // prévient d'entrer une ligne incomplète
-        if (xPos < 5) return;
+    public int enterRow() {
+        if (xPos < 5) return 0;     // prévient d'entrer une ligne incomplète
+        if (yPos > 6) return 0;     // prévient d'envoyer plus de 6 lignes
 
-        // prévient d'envoyer plus de 6 lignes
-        if (yPos > 6) return;
+        StringBuilder str = new StringBuilder();
+        for (int x = 0; x < grid[yPos].length; x++) {
+            str.append(context.getString(grid[yPos][x].getLettre()));
+        }
+
+        // retourne un tableau des states des cellules de la ligne
+        CellState[] res = solvingAlgorithm(str.toString());
+
+        updateCells(res);   // update les-dites cellules
 
         xPos = 0;   // reset X
         yPos++;     // incrémente Y
 
-        // TODO get user input
+        for (int i = 0; i < res.length; i++) {
+            if (res[i] != CellState.VALID && yPos >= 6) return 7;   // hors d'essais
+            else if (res[i] != CellState.VALID) return 0;           // le mot n'est pas valide
+        }
 
-        // TODO fetch mot du jour
+        // TODO save row to bd
 
-        // TODO compare input and mdj
+        return yPos;    // mot valide!
+    }
 
-        // TODO update row colors
+    /**
+     * Compares et retourne le résultat.
+     * @author Étienne Ménard
+     * @param mot Mot de l'utilisateur.
+     * @return Liste des états des cellules de la ligne.
+     */
+    // TODO handle double letters
+    private CellState[] solvingAlgorithm(String mot) {
+        CellState[] states = new CellState[5];
+        boolean[] found = new boolean[5];
+
+        for (int i = 0; i < mot.length(); i++) {
+            for (int j = 0; j < mdj.length(); j++) {
+
+                if (mot.charAt(i) == mdj.charAt(j)) {
+                    if (i == j) {
+                        states[i] = CellState.VALID;
+                    }
+                    else {
+                        states[i] = CellState.GOOD;
+                    }
+                    found[j] = true;
+                    j = mot.length();
+                }
+            }
+
+            if (states[i] != CellState.VALID && states[i] != CellState.GOOD) {
+                states[i] = CellState.BAD;
+            }
+        }
+
+        return states;
+    }
+
+    /**
+     * Met à jour les cellules de la ligne entrée.
+     * @author Étienne Ménard
+     * @param states
+     */
+    private void updateCells(CellState[] states) {
+        for (int i = 0; i < grid[yPos].length; i++) {
+            grid[yPos][i].updateState(states[i]);
+        }
     }
 }
