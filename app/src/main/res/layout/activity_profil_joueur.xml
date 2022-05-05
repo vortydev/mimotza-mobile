@@ -7,7 +7,20 @@
     tools:context=".ProfilJoueur">
 
     <TextView
-        android:id="@+id/stat1Profil"
+        android:id="@+id/statistiques"
+        android:layout_width="311dp"
+        android:layout_height="27dp"
+        android:text="Statistiques : "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467" />
+
+    <TextView
+        android:id="@+id/stat1"
         android:layout_width="311dp"
         android:layout_height="27dp"
         android:text="Nombre de partie joués : x"
@@ -20,7 +33,7 @@
         app:layout_constraintVertical_bias="0.524" />
 
     <TextView
-        android:id="@+id/stat1Profil2"
+        android:id="@+id/stat2"
         android:layout_width="311dp"
         android:layout_height="27dp"
         android:text="Nombre de partie gagnés : x"
@@ -33,7 +46,7 @@
         app:layout_constraintVertical_bias="0.586" />
 
     <TextView
-        android:id="@+id/stat1Profil3"
+        android:id="@+id/stat3"
         android:layout_width="311dp"
         android:layout_height="27dp"
         android:text="Temps de jeu : xh"
@@ -46,7 +59,7 @@
         app:layout_constraintVertical_bias="0.65" />
 
     <TextView
-        android:id="@+id/stat1Profil4"
+        android:id="@+id/stat4"
         android:layout_width="311dp"
         android:layout_height="27dp"
         android:text="Date de création du compte : xxx-xx-xx"
@@ -81,19 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameProfil"
         app:layout_constraintVertical_bias="0.063"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/statistiquesProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Statistiques : "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
+        tools:src="@drawable/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

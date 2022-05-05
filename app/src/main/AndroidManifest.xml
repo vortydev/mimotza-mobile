@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mimotza">
         <activity
+            android:name=".ProfilJoueur"
+            android:exported="false" />
+        <activity
             android:name=".DBHandler"
             android:exported="false" />
         <activity

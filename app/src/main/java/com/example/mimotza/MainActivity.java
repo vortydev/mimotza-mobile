@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBD.setOnClickListener(this);
 
         profilJoueur = (Button) findViewById(R.id.btnProfiljoueur);
-        btnBD.setOnClickListener(this);
+        profilJoueur.setOnClickListener(this);
     }
 
     @Override
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(IntentP);
                 break;
+
             default:
                 // rien :)
                 break;
