@@ -1,5 +1,9 @@
 package com.example.mimotza;
 
+/**
+ * Enum des états d'une cellule.
+ * @author Étienne Ménard
+ */
 public enum CellState {
     DEFAULT,    // rien
     OCCUPIED,   // lettre

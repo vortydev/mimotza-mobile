@@ -7,9 +7,9 @@ import android.widget.TextView;
  * @author Étienne Ménard
  */
 public class GameCell {
-    private TextView cell;
-    private int lettre;
-    private CellState state;
+    private TextView cell;      // élément graphique de la cellule
+    private int lettre;         // lettre affichée
+    private CellState state;    // état de la cellule, qui affecte son apparence
 
     /**
      * Constructeur de l'objet Cellule.
@@ -20,7 +20,6 @@ public class GameCell {
         cell = v;
         lettre = 0;
         state = CellState.DEFAULT;
-
         updateCell();
     }
 
@@ -55,7 +54,7 @@ public class GameCell {
     }
 
     /**
-     * Set l'état de la cellule, définit par l'enum CellState.
+     * Set l'état de la cellule, défini par l'enum CellState.
      * @author Étienne Ménard
      * @param s State de la cellule (DEFAULT, OCCUPIED, BAD, GOOD, VALID)
      */
@@ -87,6 +86,11 @@ public class GameCell {
         }
     }
 
+    /**
+     * Met à jour le state de la cellule.
+     * @author Étiene Ménard
+     * @param state État de la cellule.
+     */
     public void updateState(CellState state) {
         this.state = state;
         switch (state) {
@@ -108,6 +112,11 @@ public class GameCell {
         }
     }
 
+    /**
+     * Retourne la lettre de la cellule.
+     * @author Étienne Ménard
+     * @return ID du string statique de la lettre dans l'application.
+     */
     public int getLettre() {
         return lettre;
     }
