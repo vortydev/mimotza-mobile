@@ -91,7 +91,7 @@ public class GameGrid {
         yPos++;     // incrémente Y
 
         for (int i = 0; i < res.length; i++) {
-            if (res[i] != CellState.VALID && yPos >= 6) return 7;   // hors d'essais
+            if (res[i] != CellState.VALID && yPos >= 6) return 7;   // hors essays
             else if (res[i] != CellState.VALID) return 0;           // le mot n'est pas valide
         }
 
@@ -113,16 +113,22 @@ public class GameGrid {
 
         for (int i = 0; i < mot.length(); i++) {
             for (int j = 0; j < mdj.length(); j++) {
-
                 if (mot.charAt(i) == mdj.charAt(j)) {
                     if (i == j) {
                         states[i] = CellState.VALID;
+                        found[j] = true;
+                        j = mot.length();
                     }
-                    else {
+                }
+            }
+
+            for (int h = 0; h < mdj.length(); h++) {
+                if (mot.charAt(i) == mdj.charAt(h)) {
+                    if (!found[h] && states[i] != CellState.VALID) {
                         states[i] = CellState.GOOD;
+                        found[h] = true;
+                        h = mot.length();
                     }
-                    found[j] = true;
-                    j = mot.length();
                 }
             }
 

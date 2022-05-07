@@ -205,15 +205,9 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     }
 
     /**
-     * Active et désactive l'input du joueur.
+     * Initialise le clavier virtuel.
      * @author Étienne Ménard
-     * @param state Est-ce qu'on écoute les inputs du joueur?
-     * @return L'état de l'input listener.
      */
-    private boolean setInputState(boolean state) {
-        return allowedInput = state;
-    }
-
     private void loadVirtualKeyboard() {
         virtualKeyboard = findViewById(R.id.vKeyboard);
         virtualKeyboard.setVisibility(View.VISIBLE);
@@ -266,6 +260,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * Retourne la resource string de la lettre.
+     * @author Étienne Ménard
+     * @param l Lettre affichée sur la cellule.
+     * @return String resource.
+     */
     private int getLettreResource(String l) {
         switch (l) {
             case "A": return R.string.lettre_a;
