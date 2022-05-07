@@ -3,6 +3,7 @@
     <string name="jeu_label">Mi-Mot-Za/Jeu</string>
     <string name="jouer">Jouer</string>
     <string name="forum_label">Forum</string>
+    <string name="thread_label">Thread</string>
     <string name="retour">Retour</string>
 
     <!-- Inscription -->
@@ -14,6 +15,11 @@
     <string name="username">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
     <string name="password2">Confirmez le mot de passe</string>
+
+    <!-- Forum -->
+    <string name="auteur">Envoyé par %1$s</string>
+    <string name="titre">Titre: %1$s</string>
+    <string name="message">Message: %1$s</string>
 
     <!--  Lettres  -->
     <string name="lettre_a">A</string>

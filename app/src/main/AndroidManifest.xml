@@ -47,6 +47,10 @@
             android:name=".ForumActivity"
             android:exported="false"
             android:label="@string/forum_label" />
+        <activity
+            android:name=".ThreadActivity"
+            android:exported="false"
+            android:label="@string/thread_label" />
     </application>
 
 </manifest>
