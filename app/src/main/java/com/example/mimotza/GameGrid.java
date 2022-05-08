@@ -111,27 +111,31 @@ public class GameGrid {
         CellState[] states = new CellState[5];
         boolean[] found = new boolean[5];
 
+        // VALID pass
         for (int i = 0; i < mot.length(); i++) {
             for (int j = 0; j < mdj.length(); j++) {
-                if (mot.charAt(i) == mdj.charAt(j)) {
-                    if (i == j) {
-                        states[i] = CellState.VALID;
-                        found[j] = true;
-                        j = mot.length();
-                    }
+
+                if (mot.charAt(i) == mdj.charAt(j) && i == j) {
+                    states[i] = CellState.VALID;
+                    found[j] = true;
+                    j = mot.length();
                 }
             }
+        }
 
-            for (int h = 0; h < mdj.length(); h++) {
-                if (mot.charAt(i) == mdj.charAt(h)) {
-                    if (!found[h] && states[i] != CellState.VALID) {
-                        states[i] = CellState.GOOD;
-                        found[h] = true;
-                        h = mot.length();
-                    }
+        // GOOD pass
+        for (int i = 0; i < mot.length(); i++) {
+            for (int j = 0; j < mdj.length(); j++) {
+                if (mot.charAt(i) == mdj.charAt(j) && !found[j] && states[i] != CellState.VALID) {
+                    states[i] = CellState.GOOD;
+                    found[j] = true;
+                    j = mot.length();
                 }
             }
+        }
 
+        // BAD pass
+        for (int i = 0; i < mot.length(); i++) {
             if (states[i] != CellState.VALID && states[i] != CellState.GOOD) {
                 states[i] = CellState.BAD;
             }

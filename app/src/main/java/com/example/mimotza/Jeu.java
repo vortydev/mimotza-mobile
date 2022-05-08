@@ -39,7 +39,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
 
         // TODO fetch mot du jour
-        mdj = "VAGUE"; // temp
+        mdj = "FERME"; // temp
 
         grid = new GameGrid(this, fetchCells(), mdj, bdMimotza);   // creates grid object
         allowedInput = true;                                   // activate inputs
