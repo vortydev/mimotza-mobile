@@ -3,13 +3,17 @@ package com.example.mimotza;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Layout;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Console;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * Activité du jeu Mi-Mot-Za.
@@ -23,11 +27,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     private int score;
     private ArrayList<TextView> vKeyb;
     private View virtualKeyboard;
+    private long rowTimeStart;
+    private long gameTime;
 
     // bd
     private DBWrapper bdMimotza;
     private String mdj;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +44,21 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
 
         // TODO fetch mot du jour
-        mdj = "FERME"; // temp
+        mdj = "VAGUE"; // temp
 
-        grid = new GameGrid(this, fetchCells(), mdj, bdMimotza);   // creates grid object
+        grid = new GameGrid(this, fetchCells(), mdj);   // creates grid object
         allowedInput = true;                                   // activate inputs
         win = false;                                           // obviously hasn't won yet
         score = 0;                                             // just initializing it
+        gameTime = 0;
+        rowTimeStart = 0;
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (!allowedInput) return false;
+
+        initRowTime();
 
         // my god that's tedious
         switch (keyCode) {
@@ -144,7 +153,14 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
 
     private void enterEvent() {
         int code = grid.enterRow();
-        if (code > 0) {
+        if (code >= 0) {
+            gameTime += getRowTime();
+            Log.d("TIME", "Row time: " + gameTime);
+            // TODO save row to bd
+
+            if (code == 0) return;
+
+            // end of game
             if (code > 6) {
                 // out of tries
                 score = 6;
@@ -256,6 +272,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             enterEvent();
         }
         else {
+            initRowTime();
             grid.setLettreCellule(getLettreResource(((TextView) findViewById(v.getId())).getText().toString()));
         }
     }
@@ -296,5 +313,21 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             case "Z": return R.string.lettre_z;
             default: return 0;
         }
+    }
+
+    private void initRowTime() {
+        if (rowTimeStart == 0) {
+            rowTimeStart = Calendar.getInstance().getTimeInMillis();
+        }
+    }
+
+    private long getRowTime() {
+        long res = Calendar.getInstance().getTimeInMillis() - rowTimeStart;
+        rowTimeStart = 0;
+        return res;
+    }
+
+    private void sendResultsToServer() {
+        // win, score, gameTime
     }
 }
