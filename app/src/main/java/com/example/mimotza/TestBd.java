@@ -48,19 +48,17 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("idUser",DBType.INTEGER);
         temp.addColumn("win",DBType.INTEGER);
         temp.addColumn("score",DBType.INTEGER);
-        temp.addColumn("temps",DBType.TEXT);
-        temp.addColumn("dateEmission",DBType.TEXT);
-        temp.addColumn("idMot",DBType.INTEGER);
+
+
+        temp = new DBTable("motJoueur");
+        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("joue",DBType.INTEGER);
+        temp.addColumn("win",DBType.INTEGER);
         bd.addTable(temp);
         bd.buildContent();
 
 
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_test_bd);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+
 }
