@@ -33,9 +33,9 @@ public class ProfilJoueur extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         ImageView img;
-        getInfo();
+       // syncMotJeu();
     }
-    private void getInfo(){
+    private void syncMotJeu(){
         Intent info = getIntent();
         Toast.makeText(ProfilJoueur.this, info.getStringExtra("user"),Toast.LENGTH_LONG).show();
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -57,17 +57,7 @@ public class ProfilJoueur extends AppCompatActivity {
                         JSONObject infoJson = null;
                         try {
                             infoJson = new JSONObject(response);
-                            nbParties.setText("Nombre de parties terminés : " + (infoJson.getJSONObject(info.getStringExtra("user")).getString("parties")));
-                            partiesGagnes.setText("Nombre de parties gagnées : " + (infoJson.getJSONObject(info.getStringExtra("user")).getString("partiesWin")));
-                            temps.setText("Temps joué : " + (infoJson.getJSONObject(info.getStringExtra("user")).getString("tempsJoue")));
-                            date.setText("Date de création : " + (infoJson.getJSONObject(info.getStringExtra("user")).getString("date")));
-                            titleProfile.setText(info.getStringExtra("user"));
-                            RequestOptions options = new RequestOptions();
-                            options.centerCrop();
-                            Glide.with(ProfilJoueur.this)
-                                    .load(infoJson.getJSONObject(info.getStringExtra("user")).getString("img"))
-                                    .override(400,400)
-                                    .into(img);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

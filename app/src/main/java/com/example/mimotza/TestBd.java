@@ -56,23 +56,18 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("score",DBType.INTEGER);
         temp.addColumn("idMot",DBType.INTEGER);
         temp.addColumn("temps",DBType.TEXT);
-
+        temp.addColumn("date",DBType.TEXT);
         bd.addTable(temp);
-        temp = new DBTable("motJoueur");
-        temp.addColumn("mot",DBType.INTEGER);
-        temp.addColumn("joue",DBType.INTEGER);
-        temp.addColumn("win",DBType.INTEGER);
-        bd.addTable(temp);
-
         temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("mot",DBType.TEXT);
+        temp.addColumn("date",DBType.TEXT);
         bd.addTable(temp);
         bd.buildContent();
 
         //bdh.insertUser(1000,"test","st1","test2");
-        bdh.insertPartie(1,0,1,"5h",100);
+        //bdh.insertPartie(1,0,1,"5h",100);
+
 
     }
 
