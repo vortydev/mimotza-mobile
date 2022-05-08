@@ -1,3 +1,17 @@
+/****************************************
+ Fichier : GameGrid.java
+ Auteur : Étienne Ménard
+ Fonctionnalité : MMZ-M-001 Jouer
+ Date : 03/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation des cellules et de la grille de jeu.
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation de l'algorithme de validation des mots.
+ Date: 08/05/2022 Nom: Étienne Ménard Description: Modification de l'algorithme pour valider des lettres récurentes.
+ =========================================================
+ ****************************************/
 package com.example.mimotza;
 
 import android.content.Context;

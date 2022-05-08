@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : Jeu.java
+ Auteur : Étienne Ménard
+ Fonctionnalité : MMZ-M-001 Jouer
+ Date : 01/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 01/05/2022 Nom: Étienne Ménard Description: Création de l'activité pour le jeu.
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation des cellules et de la grille de jeu.
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation des touches de clavier.
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation de l'algorithme de validation des mots.
+ Date: 05/05/2022 Nom: Étienne Ménard Description: Implémentation du clavier virtuel.
+ Date: 08/05/2022 Nom: Étienne Ménard Description: Modification de l'algorithme pour valider des lettres récurrentes.
+ =========================================================
+ ****************************************/
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
