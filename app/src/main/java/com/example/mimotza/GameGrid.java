@@ -91,7 +91,7 @@ public class GameGrid {
         yPos++;     // incrémente Y
 
         for (int i = 0; i < res.length; i++) {
-            if (res[i] != CellState.VALID && yPos >= 6) return 7;   // hors d'essais
+            if (res[i] != CellState.VALID && yPos >= 6) return 7;   // hors essays
             else if (res[i] != CellState.VALID) return 0;           // le mot n'est pas valide
         }
 
@@ -111,21 +111,31 @@ public class GameGrid {
         CellState[] states = new CellState[5];
         boolean[] found = new boolean[5];
 
+        // VALID pass
         for (int i = 0; i < mot.length(); i++) {
             for (int j = 0; j < mdj.length(); j++) {
 
-                if (mot.charAt(i) == mdj.charAt(j)) {
-                    if (i == j) {
-                        states[i] = CellState.VALID;
-                    }
-                    else {
-                        states[i] = CellState.GOOD;
-                    }
+                if (mot.charAt(i) == mdj.charAt(j) && i == j) {
+                    states[i] = CellState.VALID;
                     found[j] = true;
                     j = mot.length();
                 }
             }
+        }
 
+        // GOOD pass
+        for (int i = 0; i < mot.length(); i++) {
+            for (int j = 0; j < mdj.length(); j++) {
+                if (mot.charAt(i) == mdj.charAt(j) && !found[j] && states[i] != CellState.VALID) {
+                    states[i] = CellState.GOOD;
+                    found[j] = true;
+                    j = mot.length();
+                }
+            }
+        }
+
+        // BAD pass
+        for (int i = 0; i < mot.length(); i++) {
             if (states[i] != CellState.VALID && states[i] != CellState.GOOD) {
                 states[i] = CellState.BAD;
             }

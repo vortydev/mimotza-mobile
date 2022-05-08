@@ -12,6 +12,7 @@
     <color name="charcoal">#292929</color>
     <color name="gris">#333333</color>
     <color name="gris_accent">#393939</color>
+    <color name="gris_vKeyboard">#494949</color>
     <color name="bleu">#54a4f4</color>
     <color name="bleu_accent">#328eeb</color>
     <color name="rouge">#800000</color>

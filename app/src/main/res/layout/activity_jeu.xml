@@ -234,70 +234,70 @@
             <TextView
                 android:id="@+id/vKeyQ"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_q"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyW"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_w"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyE"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_e"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyR"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_r"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyT"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_t"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyY"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_y"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyU"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_u"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyI"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_i"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyO"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_o"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyP"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_p"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
         </TableRow>
@@ -312,63 +312,63 @@
             <TextView
                 android:id="@+id/vKeyA"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_a"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyS"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_s"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyD"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_d"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyF"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_f"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyG"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_g"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyH"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_h"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyJ"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_j"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyK"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_k"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyL"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_l"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
         </TableRow>
@@ -382,7 +382,7 @@
             <TextView
                 android:id="@+id/vKeyEnter"
                 style="@style/MMZ.Game.VKeyboard.Large"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/enter"
                 android:textSize="21sp"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
@@ -390,56 +390,56 @@
             <TextView
                 android:id="@+id/vKeyZ"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_z"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyX"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_x"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyC"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_c"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyV"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_v"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyB"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_b"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyN"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_n"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyM"
                 style="@style/MMZ.Game.VKeyboard.Key"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/lettre_m"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/vKeyBack"
                 style="@style/MMZ.Game.VKeyboard.Large"
-                android:background="@drawable/cell_bad"
+                android:background="@drawable/vkeyb_key_default"
                 android:text="@string/backspace"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
         </TableRow>
