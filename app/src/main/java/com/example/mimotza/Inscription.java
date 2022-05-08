@@ -121,7 +121,8 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         final TextView view = (TextView) findViewById(R.id.resultRequest);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://10.0.2.2:8000/adduserAPI";
+        //String url = "http://127.0.0.1:8000/adduserAPI";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
+        String url = "http://10.0.2.2:8000/adduserAPI";     //emulateur
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
