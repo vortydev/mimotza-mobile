@@ -15,6 +15,7 @@ package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -128,7 +129,8 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //redirige vers connexion
+                        Intent intentConn = new Intent(Inscription.this, Connexion.class);
+                        startActivity(intentConn);
                     }
                 }, new Response.ErrorListener() {
             @Override

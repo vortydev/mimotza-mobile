@@ -27,7 +27,9 @@ public class LogInSignIn extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_log_in_sign_in);
 
         Button insc = (Button) findViewById(R.id.insc);
+        Button conn = (Button) findViewById(R.id.conn);
         insc.setOnClickListener(this);
+        conn.setOnClickListener(this);
     }
 
     @Override
@@ -39,7 +41,8 @@ public class LogInSignIn extends AppCompatActivity implements View.OnClickListen
                 break;
 
             case R.id.conn:
-                //connexion
+                Intent intentConn = new Intent(LogInSignIn.this, Connexion.class);
+                startActivity(intentConn);
                 break;
 
             default:
