@@ -100,4 +100,13 @@ public class DBWrapper {
             createTable(tables.get(i));
         }
     }
+
+    public void insertPartie(Integer idUser,Integer win,Integer score,String temps,String dateEmission,Integer idMot){
+        db.execSQL("INSERT INTO partie(idUser,win,score,temps,dateEmission,idMot) " +
+                " values("+idUser.toString()+","+win.toString()+","+score.toString()+","+temps+","+dateEmission+","+idMot.toString()+")");
+    }
+    public void insertUtilisateur(Integer idOrigin,Integer idStatut,String username,String email,String nom,String prenom,String avatar){
+        db.execSQL("INSERT INTO utilisateur(idUser,win,score,temps,dateEmission,idMot) " +
+                " values("+idOrigin.toString()+","+idStatut.toString()+","+username+","+email+","+nom+","+prenom+")");
+    }
 }
