@@ -57,7 +57,10 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("idUser",DBType.INTEGER);
         temp.addColumn("win",DBType.INTEGER);
         temp.addColumn("score",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("temps",DBType.TEXT);
 
+        bd.addTable(temp);
         temp = new DBTable("motJoueur");
         temp.addColumn("mot",DBType.INTEGER);
         temp.addColumn("joue",DBType.INTEGER);
@@ -71,7 +74,8 @@ public class TestBd extends AppCompatActivity {
         bd.addTable(temp);
         bd.buildContent();
 
-        bdh.insertUtilisateur(1000,"lokue","alkue","olvi");
+        //bdh.insertUser(1000,"test","st1","test2");
+        bdh.insertPartie(1,0,1,"5h",100);
 
     }
 

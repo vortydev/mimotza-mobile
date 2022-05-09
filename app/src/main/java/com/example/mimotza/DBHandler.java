@@ -32,14 +32,26 @@ public class DBHandler {
 
     }
 
-    public void insertPartie(Integer idUser,Integer win,Integer score,String temps,String dateEmission,Integer idMot){
-        db.execSQL("INSERT INTO partie(idUser,win,score,temps,dateEmission,idMot) " +
-        " values("+idUser.toString()+","+win.toString()+","+score.toString()+","+temps+","+dateEmission+","+idMot.toString()+")");
+
+    //permet lajout d'une partie
+    public void insertPartie(Integer idUser,Integer win,Integer score,String temps,Integer idMot){
+        db.execSQL("INSERT INTO partie(idUser,win,score,temps,idMot) " +
+        " values("+idUser.toString()+","+win.toString()+","+score.toString()+",'"+temps+"',"+idMot.toString()+")");
     }
-    public void insertUtilisateur(Integer pidOrigin,String pusername,String pnom,String pprenom){
-        db.execSQL("INSERT INTO utilisateur(idOrigin,username,nom,prenom) " +
-                "values("+pidOrigin.toString()+","+pusername+","+pnom+","+pprenom+")");
+
+    //permet l'ajout d'un joueur
+    public void insertUser(Integer pidOrigin,String pusername,String pnom,String pprenom){
+        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username) VALUES ("+pidOrigin.toString()+",'"+pprenom+"','"+pnom+"','"+pusername+"')");
+
     }
+
+    public void insertmotJoue(Integer pidOrigin,Integer idMot){
+        db.execSQL("INSERT INTO utilisateur (idOrigin,mot) VALUES ("+pidOrigin.toString()+","+idMot.toString()+")";
+
+    }
+
+
+
 
 
 }
