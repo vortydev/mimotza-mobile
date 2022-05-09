@@ -22,13 +22,13 @@ public class DBHandler {
     /**
      * Class constructor.
      * @param c Activity's context.
-     * @param dbn Database's name.
+     *
      */
-    public DBHandler(Context c, String dbn) {
+    public DBHandler(Context c) {
         context = c;
-        dbName = dbn;
+        dbName = "mimotza";
 
-        db = c.openOrCreateDatabase(dbName, Context.MODE_PRIVATE, null);
+        db = c.openOrCreateDatabase(dbName, c.MODE_PRIVATE, null);
 
     }
 
@@ -36,9 +36,9 @@ public class DBHandler {
         db.execSQL("INSERT INTO partie(idUser,win,score,temps,dateEmission,idMot) " +
         " values("+idUser.toString()+","+win.toString()+","+score.toString()+","+temps+","+dateEmission+","+idMot.toString()+")");
     }
-    public void insertUtilisateur(Integer idOrigin,Integer idStatut,String username,String email,String nom,String prenom,String avatar){
-        db.execSQL("INSERT INTO utilisateur(idUser,win,score,temps,dateEmission,idMot) " +
-                " values("+idOrigin.toString()+","+idStatut.toString()+","+username+","+email+","+nom+","+prenom+")");
+    public void insertUtilisateur(Integer pidOrigin,String pusername,String pnom,String pprenom){
+        db.execSQL("INSERT INTO utilisateur(idOrigin,username,nom,prenom) " +
+                "values("+pidOrigin.toString()+","+pusername+","+pnom+","+pprenom+")");
     }
 
 

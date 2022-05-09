@@ -32,6 +32,7 @@ public class TestBd extends AppCompatActivity {
 
 
     private DBWrapper bd;
+    private DBHandler bdh;
 
 
     @Override
@@ -39,12 +40,11 @@ public class TestBd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bd);
         bd = new DBWrapper(this,"mimotza");
-
+        bdh = new DBHandler(this);
 
         DBTable temp = new DBTable("utilisateur");
         temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
 
-        temp.addColumn("idStatut",DBType.INTEGER);
         temp.addColumn("username",DBType.TEXT);
         temp.addColumn("email",DBType.TEXT);
         temp.addColumn("mdp",DBType.TEXT);
@@ -58,7 +58,6 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("win",DBType.INTEGER);
         temp.addColumn("score",DBType.INTEGER);
 
-
         temp = new DBTable("motJoueur");
         temp.addColumn("mot",DBType.INTEGER);
         temp.addColumn("joue",DBType.INTEGER);
@@ -71,40 +70,11 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("mot",DBType.INTEGER);
         bd.addTable(temp);
         bd.buildContent();
-        sendToDataBase();
+
+        bdh.insertUtilisateur(1000,"lokue","alkue","olvi");
 
     }
-    private void sendToDataBase( ){
-        RequestQueue queue = Volley.newRequestQueue(this);
 
-        String url = "http://127.0.0.1:8000/ajoutSuggestion";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
-        //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Toast.makeText(TestBd.this, response,Toast.LENGTH_LONG).show();
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //view.setText(error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("idUser", "1");
-                params.put("langue", "Français");
-                params.put("mot", "PORTE");
-                return params;
-            }
-        };
-        queue.add(stringRequest);
-    }
 
 
 }

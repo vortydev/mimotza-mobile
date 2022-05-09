@@ -9,8 +9,8 @@
     <Button
         android:id="@+id/btnProfiljoueur"
         style="@style/MMZ.Button.Gris"
-        android:layout_width="191dp"
-        android:layout_height="49dp"
+        android:layout_width="203dp"
+        android:layout_height="50dp"
         android:layout_marginTop="48dp"
         android:text="profilJoueur"
         app:layout_constraintLeft_toLeftOf="parent"

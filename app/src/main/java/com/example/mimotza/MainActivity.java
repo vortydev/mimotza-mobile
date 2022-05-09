@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBD);
                 break;
             case R.id.btnProfiljoueur:
+
                 Intent IntentP = new Intent(MainActivity.this, ProfilJoueur.class);
+                IntentP.putExtra("user", "isa");
                 IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(IntentP);
                 break;
