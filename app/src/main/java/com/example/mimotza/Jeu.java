@@ -13,23 +13,33 @@
  Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation de l'algorithme de validation des mots.
  Date: 05/05/2022 Nom: Étienne Ménard Description: Implémentation du clavier virtuel.
  Date: 08/05/2022 Nom: Étienne Ménard Description: Modification de l'algorithme pour valider des lettres récurrentes.
+ Date: 09/05/2022 Nom: Étienne Ménard Description: Implémentation de la fonction pour reset la grille.
  =========================================================
  ****************************************/
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Console;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -45,18 +55,32 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     private ArrayList<TextView> vKeyb;
     private View virtualKeyboard;
     private long rowTimeStart;
-    private long gameTime;
 
     // bd
     private DBWrapper bdMimotza;
     private String mdj;
+
+    // boutons
+    private Button btnSuggestion;
+    private Button btnRetour;
+    private Button btnNextMot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
 
+        btnSuggestion = (Button) findViewById(R.id.btnSuggestion);
+        btnRetour = (Button) findViewById(R.id.btnRetourJeu);
+        btnNextMot = (Button) findViewById(R.id.btnNextMot);
+        btnSuggestion.setOnClickListener(this);
+        btnRetour.setOnClickListener(this);
+        btnNextMot.setOnClickListener(this);
         loadVirtualKeyboard();
+
+        showVirtualKeyboard(true);
+        showPostGameNav(false);
+        // TODO disable the game if the user already won
 
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
 
@@ -67,8 +91,89 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         allowedInput = true;                                   // activate inputs
         win = false;                                           // obviously hasn't won yet
         score = 0;                                             // just initializing it
-        gameTime = 0;
-        rowTimeStart = 0;
+    }
+
+    /**
+     * Retourne une liste de toutes les cellules de la grille.
+     * @author Étienne Ménard
+     * @return ArrayList de TextViews
+     */
+    private ArrayList<TextView> fetchCells() {
+        ArrayList<TextView> cells = new ArrayList<>();
+        cells.add(findViewById(R.id.r1l1));
+        cells.add(findViewById(R.id.r1l2));
+        cells.add(findViewById(R.id.r1l3));
+        cells.add(findViewById(R.id.r1l4));
+        cells.add(findViewById(R.id.r1l5));
+        cells.add(findViewById(R.id.r2l1));
+        cells.add(findViewById(R.id.r2l2));
+        cells.add(findViewById(R.id.r2l3));
+        cells.add(findViewById(R.id.r2l4));
+        cells.add(findViewById(R.id.r2l5));
+        cells.add(findViewById(R.id.r3l1));
+        cells.add(findViewById(R.id.r3l2));
+        cells.add(findViewById(R.id.r3l3));
+        cells.add(findViewById(R.id.r3l4));
+        cells.add(findViewById(R.id.r3l5));
+        cells.add(findViewById(R.id.r4l1));
+        cells.add(findViewById(R.id.r4l2));
+        cells.add(findViewById(R.id.r4l3));
+        cells.add(findViewById(R.id.r4l4));
+        cells.add(findViewById(R.id.r4l5));
+        cells.add(findViewById(R.id.r5l1));
+        cells.add(findViewById(R.id.r5l2));
+        cells.add(findViewById(R.id.r5l3));
+        cells.add(findViewById(R.id.r5l4));
+        cells.add(findViewById(R.id.r5l5));
+        cells.add(findViewById(R.id.r6l1));
+        cells.add(findViewById(R.id.r6l2));
+        cells.add(findViewById(R.id.r6l3));
+        cells.add(findViewById(R.id.r6l4));
+        cells.add(findViewById(R.id.r6l5));
+        return cells;
+    }
+
+    /**
+     * Initialise le clavier virtuel.
+     * @author Étienne Ménard
+     */
+    private void loadVirtualKeyboard() {
+        virtualKeyboard = findViewById(R.id.vKeyboard);
+        virtualKeyboard.setVisibility(View.VISIBLE);
+
+        vKeyb = new ArrayList<>();
+        vKeyb.add(findViewById(R.id.vKeyA));
+        vKeyb.add(findViewById(R.id.vKeyB));
+        vKeyb.add(findViewById(R.id.vKeyC));
+        vKeyb.add(findViewById(R.id.vKeyD));
+        vKeyb.add(findViewById(R.id.vKeyE));
+        vKeyb.add(findViewById(R.id.vKeyF));
+        vKeyb.add(findViewById(R.id.vKeyG));
+        vKeyb.add(findViewById(R.id.vKeyH));
+        vKeyb.add(findViewById(R.id.vKeyI));
+        vKeyb.add(findViewById(R.id.vKeyJ));
+        vKeyb.add(findViewById(R.id.vKeyK));
+        vKeyb.add(findViewById(R.id.vKeyL));
+        vKeyb.add(findViewById(R.id.vKeyM));
+        vKeyb.add(findViewById(R.id.vKeyN));
+        vKeyb.add(findViewById(R.id.vKeyO));
+        vKeyb.add(findViewById(R.id.vKeyP));
+        vKeyb.add(findViewById(R.id.vKeyQ));
+        vKeyb.add(findViewById(R.id.vKeyR));
+        vKeyb.add(findViewById(R.id.vKeyS));
+        vKeyb.add(findViewById(R.id.vKeyT));
+        vKeyb.add(findViewById(R.id.vKeyU));
+        vKeyb.add(findViewById(R.id.vKeyV));
+        vKeyb.add(findViewById(R.id.vKeyW));
+        vKeyb.add(findViewById(R.id.vKeyX));
+        vKeyb.add(findViewById(R.id.vKeyY));
+        vKeyb.add(findViewById(R.id.vKeyZ));
+        vKeyb.add(findViewById(R.id.vKeyEnter));
+        vKeyb.add(findViewById(R.id.vKeyBack));
+
+        for (TextView v: vKeyb) {
+            v.setOnClickListener(this::onClick);
+        }
     }
 
     @Override
@@ -168,15 +273,48 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        // boutons réguliers
+        switch (v.getId()) {
+            case R.id.btnRetourJeu:
+                Intent intentRetourJeu = new Intent(Jeu.this, MainActivity.class);
+                intentRetourJeu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intentRetourJeu);
+                return;
+            case R.id.btnSuggestion:
+                // TODO start suggestion activity
+                return;
+            case R.id.btnNextMot:
+                grid.resetGrid();
+                showPostGameNav(false);
+                showVirtualKeyboard(true);
+                allowedInput = true;
+                // TODO fetch next word
+                return;
+            default: break;
+        }
+
+        // clavier virtuel
+        if (v.getId() == R.id.vKeyBack) {
+            grid.eraseLetterAtPos();
+        }
+        else if (v.getId() == R.id.vKeyEnter) {
+            enterEvent();
+        }
+        else {
+            initRowTime();
+            grid.setLettreCellule(getLettreResource(((TextView) findViewById(v.getId())).getText().toString()));
+        }
+    }
+
+    /**
+     * Appelé lorsque l'utilisateur clique Enter.
+     * @author Étienne Ménard
+     */
     private void enterEvent() {
         int code = grid.enterRow();
-        if (code >= 0) {
-            gameTime += getRowTime();
-            Log.d("TIME", "Row time: " + gameTime);
-            // TODO save row to bd
-
-            if (code == 0) return;
-
+        if (code > 0) {
             // end of game
             if (code > 6) {
                 // out of tries
@@ -190,107 +328,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(this, "Vous avez gagné!", Toast.LENGTH_LONG).show();
             }
             allowedInput = false;
-            virtualKeyboard.setVisibility(View.INVISIBLE);
 
             // TODO send results to server
+            //sendToDataBase();
 
-        }
-    }
-
-    /**
-     * Retourne une liste de toutes les cellules de la grille.
-     * @author Étienne Ménard
-     * @return ArrayList de TextViews
-     */
-    private ArrayList<TextView> fetchCells() {
-        ArrayList<TextView> cells = new ArrayList<>();
-        cells.add(findViewById(R.id.r1l1));
-        cells.add(findViewById(R.id.r1l2));
-        cells.add(findViewById(R.id.r1l3));
-        cells.add(findViewById(R.id.r1l4));
-        cells.add(findViewById(R.id.r1l5));
-        cells.add(findViewById(R.id.r2l1));
-        cells.add(findViewById(R.id.r2l2));
-        cells.add(findViewById(R.id.r2l3));
-        cells.add(findViewById(R.id.r2l4));
-        cells.add(findViewById(R.id.r2l5));
-        cells.add(findViewById(R.id.r3l1));
-        cells.add(findViewById(R.id.r3l2));
-        cells.add(findViewById(R.id.r3l3));
-        cells.add(findViewById(R.id.r3l4));
-        cells.add(findViewById(R.id.r3l5));
-        cells.add(findViewById(R.id.r4l1));
-        cells.add(findViewById(R.id.r4l2));
-        cells.add(findViewById(R.id.r4l3));
-        cells.add(findViewById(R.id.r4l4));
-        cells.add(findViewById(R.id.r4l5));
-        cells.add(findViewById(R.id.r5l1));
-        cells.add(findViewById(R.id.r5l2));
-        cells.add(findViewById(R.id.r5l3));
-        cells.add(findViewById(R.id.r5l4));
-        cells.add(findViewById(R.id.r5l5));
-        cells.add(findViewById(R.id.r6l1));
-        cells.add(findViewById(R.id.r6l2));
-        cells.add(findViewById(R.id.r6l3));
-        cells.add(findViewById(R.id.r6l4));
-        cells.add(findViewById(R.id.r6l5));
-        return cells;
-    }
-
-    /**
-     * Initialise le clavier virtuel.
-     * @author Étienne Ménard
-     */
-    private void loadVirtualKeyboard() {
-        virtualKeyboard = findViewById(R.id.vKeyboard);
-        virtualKeyboard.setVisibility(View.VISIBLE);
-
-        vKeyb = new ArrayList<>();
-        vKeyb.add(findViewById(R.id.vKeyA));
-        vKeyb.add(findViewById(R.id.vKeyB));
-        vKeyb.add(findViewById(R.id.vKeyC));
-        vKeyb.add(findViewById(R.id.vKeyD));
-        vKeyb.add(findViewById(R.id.vKeyE));
-        vKeyb.add(findViewById(R.id.vKeyF));
-        vKeyb.add(findViewById(R.id.vKeyG));
-        vKeyb.add(findViewById(R.id.vKeyH));
-        vKeyb.add(findViewById(R.id.vKeyI));
-        vKeyb.add(findViewById(R.id.vKeyJ));
-        vKeyb.add(findViewById(R.id.vKeyK));
-        vKeyb.add(findViewById(R.id.vKeyL));
-        vKeyb.add(findViewById(R.id.vKeyM));
-        vKeyb.add(findViewById(R.id.vKeyN));
-        vKeyb.add(findViewById(R.id.vKeyO));
-        vKeyb.add(findViewById(R.id.vKeyP));
-        vKeyb.add(findViewById(R.id.vKeyQ));
-        vKeyb.add(findViewById(R.id.vKeyR));
-        vKeyb.add(findViewById(R.id.vKeyS));
-        vKeyb.add(findViewById(R.id.vKeyT));
-        vKeyb.add(findViewById(R.id.vKeyU));
-        vKeyb.add(findViewById(R.id.vKeyV));
-        vKeyb.add(findViewById(R.id.vKeyW));
-        vKeyb.add(findViewById(R.id.vKeyX));
-        vKeyb.add(findViewById(R.id.vKeyY));
-        vKeyb.add(findViewById(R.id.vKeyZ));
-        vKeyb.add(findViewById(R.id.vKeyEnter));
-        vKeyb.add(findViewById(R.id.vKeyBack));
-
-        for (TextView v: vKeyb) {
-            v.setOnClickListener(this::onClick);
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.vKeyBack) {
-            grid.eraseLetterAtPos();
-        }
-        else if (v.getId() == R.id.vKeyEnter) {
-            enterEvent();
-        }
-        else {
-            initRowTime();
-            grid.setLettreCellule(getLettreResource(((TextView) findViewById(v.getId())).getText().toString()));
+            virtualKeyboard.setVisibility(View.INVISIBLE);
+            showPostGameNav(true);
         }
     }
 
@@ -332,19 +375,91 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * Initialise la timestamp du début de la partie.
+     * @author Étienne Ménard
+     */
     private void initRowTime() {
         if (rowTimeStart == 0) {
             rowTimeStart = Calendar.getInstance().getTimeInMillis();
         }
     }
 
+    /**
+     * Retourne le temps pris pour la partie.
+     * @author Étienne Ménard
+     * @return Temps de la partie en millisecondes.
+     */
     private long getRowTime() {
-        long res = Calendar.getInstance().getTimeInMillis() - rowTimeStart;
-        rowTimeStart = 0;
-        return res;
+        return Calendar.getInstance().getTimeInMillis() - rowTimeStart;
     }
 
-    private void sendResultsToServer() {
-        // win, score, gameTime
+    /**
+     * Set la visibilité des éléments de navigation post-game.
+     * @author Étienne Ménard
+     * @param state Visibilité des éléments.
+     */
+    public void showPostGameNav(boolean state) {
+        if (state) {
+            btnSuggestion.setVisibility(View.VISIBLE);
+            btnRetour.setVisibility(View.VISIBLE);
+            btnNextMot.setVisibility(View.VISIBLE);
+        }
+        else {
+            btnSuggestion.setVisibility(View.INVISIBLE);
+            btnRetour.setVisibility(View.INVISIBLE);
+            btnNextMot.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     * Set la visibilité du clavier virtuel.
+     * @author Étienne Ménard
+     * @param state Visibilité du clavier virtuel.
+     */
+    public void showVirtualKeyboard(boolean state) {
+        if (state) {
+            virtualKeyboard.setVisibility(View.VISIBLE);
+        }
+        else {
+            virtualKeyboard.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     * Envoies les données de la partie au serveur.
+     * @author Étienne Ménard
+     */
+    private void sendToDataBase(){
+//        final TextView view = (TextView) findViewById(R.id.resultRequest);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://10.0.2.2:8000/ajoutPartie";     //emulateur
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //redirige vers connexion
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                view.setText(error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+//                params.put("id_user_id", get user id);
+                params.put("win", Boolean.toString(win));
+                params.put("score", Integer.toString(score));
+                params.put("temps", new SimpleDateFormat("HH:mm:ss").format(getRowTime()));
+                params.put("date_emission", Calendar.getInstance().getTime().toString());
+//                params.put("mot_id", get mdj id);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
     }
 }

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btnJouer:
                 Intent intentJouer = new Intent(MainActivity.this, Jeu.class);
-                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intentJouer);
                 break;
             case R.id.btnInsc:
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnForum:
                 Intent intentForum = new Intent(MainActivity.this, ForumActivity.class);
-                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intentForum);
                 break;
             case R.id.btnBD:
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnProfiljoueur:
                 Intent IntentP = new Intent(MainActivity.this, ProfilJoueur.class);
-                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(IntentP);
                 break;
 

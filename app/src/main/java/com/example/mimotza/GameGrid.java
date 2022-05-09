@@ -163,4 +163,19 @@ public class GameGrid {
             grid[yPos][i].updateState(states[i]);
         }
     }
+
+    /**
+     * Vide la grille.
+     * @author Étienne Ménard
+     */
+    public void resetGrid() {
+        // clear cells
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[y].length; x++) {
+                grid[y][x].clearCell();
+            }
+        }
+
+        xPos = yPos = 0;
+    }
 }

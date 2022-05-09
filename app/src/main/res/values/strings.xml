@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Mi-Mot-Za</string>
-    <string name="jeu_label">Mi-Mot-Za/Jeu</string>
+    <string name="jeu_label">Jeu</string>
     <string name="jouer">Jouer</string>
     <string name="forum_label">Forum</string>
     <string name="thread_label">Thread</string>
     <string name="retour">Retour</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="suggerer">Suggérer un mot</string>
+    <string name="nextmot">Mot suivant</string>
 
     <!-- Inscription -->
     <string name="insc">S\'inscrire</string>
