@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -80,7 +81,9 @@ public class TestBd extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //redirige vers connexion
+
+                        Toast.makeText(TestBd.this, response,Toast.LENGTH_LONG).show();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
