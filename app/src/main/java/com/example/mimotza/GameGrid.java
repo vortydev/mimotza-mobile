@@ -1,3 +1,17 @@
+/****************************************
+ Fichier : GameGrid.java
+ Auteur : Étienne Ménard
+ Fonctionnalité : MMZ-M-001 Jouer
+ Date : 03/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation des cellules et de la grille de jeu.
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation de l'algorithme de validation des mots.
+ Date: 08/05/2022 Nom: Étienne Ménard Description: Modification de l'algorithme pour valider des lettres récurentes.
+ =========================================================
+ ****************************************/
 package com.example.mimotza;
 
 import android.content.Context;
@@ -15,19 +29,17 @@ public class GameGrid {
     private GameCell[][] grid;
     private int yPos, xPos;     // pointeurs sur la grille
     private String mdj;         // mot du jour
-    private DBWrapper bdMimotza;
 
     /**
      * Constructeur de l'objet GameGrid.
      * @author Étienne Ménard
      * @param cells Liste des cellules de la grille.
      */
-    public GameGrid(Context context, ArrayList<TextView> cells, String motDuJour, DBWrapper bd) {
+    public GameGrid(Context context, ArrayList<TextView> cells, String motDuJour) {
         this.context = context;
         grid = new GameCell[6][5];
         yPos = xPos = 0;
         mdj = motDuJour;
-        bdMimotza = bd;
 
         // okay, je dois expliquer un peu ce qui se passe ici.
         // on vient de passer une liste des cellules (TextView) de la grille,
@@ -74,8 +86,8 @@ public class GameGrid {
      * @return 0: mot pas valide, 1-6: score, 7: out of tries
      */
     public int enterRow() {
-        if (xPos < 5) return 0;     // prévient d'entrer une ligne incomplète
-        if (yPos > 6) return 0;     // prévient d'envoyer plus de 6 lignes
+        if (xPos < 5) return -1;     // prévient d'entrer une ligne incomplète
+        if (yPos > 6) return -1;     // prévient d'envoyer plus de 6 lignes
 
         StringBuilder str = new StringBuilder();
         for (int x = 0; x < grid[yPos].length; x++) {
@@ -95,8 +107,6 @@ public class GameGrid {
             else if (res[i] != CellState.VALID) return 0;           // le mot n'est pas valide
         }
 
-        // TODO save row to bd
-
         return yPos;    // mot valide!
     }
 
@@ -106,7 +116,6 @@ public class GameGrid {
      * @param mot Mot de l'utilisateur.
      * @return Liste des états des cellules de la ligne.
      */
-    // TODO handle double letters
     private CellState[] solvingAlgorithm(String mot) {
         CellState[] states = new CellState[5];
         boolean[] found = new boolean[5];
@@ -153,5 +162,20 @@ public class GameGrid {
         for (int i = 0; i < grid[yPos].length; i++) {
             grid[yPos][i].updateState(states[i]);
         }
+    }
+
+    /**
+     * Vide la grille.
+     * @author Étienne Ménard
+     */
+    public void resetGrid() {
+        // clear cells
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[y].length; x++) {
+                grid[y][x].clearCell();
+            }
+        }
+
+        xPos = yPos = 0;
     }
 }

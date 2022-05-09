@@ -1,3 +1,15 @@
+/****************************************
+ Fichier : CellState.java
+ Auteur : Étienne Ménard
+ Fonctionnalité : MMZ-M-001 Jouer
+ Date : 03/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation des cellules et de la grille de jeu.
+ =========================================================
+ ****************************************/
 package com.example.mimotza;
 
 /**
