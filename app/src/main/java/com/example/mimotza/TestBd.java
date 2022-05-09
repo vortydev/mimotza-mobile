@@ -2,11 +2,18 @@ package com.example.mimotza;
 
 import android.os.Bundle;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,10 +22,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.mimotza.databinding.ActivityTestBdBinding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TestBd extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private ActivityTestBdBinding binding;
+
 
     private DBWrapper bd;
 
@@ -28,11 +38,9 @@ public class TestBd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bd);
         bd = new DBWrapper(this,"mimotza");
-        DBTable temp = new DBTable("statut");
-        temp.addColumn("statut",DBType.TEXT);
-        bd.addTable(temp);
 
-        temp = new DBTable("utilisateur");
+
+        DBTable temp = new DBTable("utilisateur");
         temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
 
         temp.addColumn("idStatut",DBType.INTEGER);
@@ -52,9 +60,44 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("dateEmission",DBType.TEXT);
         temp.addColumn("idMot",DBType.INTEGER);
         bd.addTable(temp);
+
+        temp = new DBTable("motJouer");
+        temp.addColumn("idOrigin",DBType.INTEGER);
+
+        temp.addColumn("mot",DBType.INTEGER);
+        bd.addTable(temp);
         bd.buildContent();
+        sendToDataBase();
 
+    }
+    private void sendToDataBase( ){
+        RequestQueue queue = Volley.newRequestQueue(this);
 
+        String url = "http://127.0.0.1:8000/ajoutSuggestion";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
+        //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //redirige vers connexion
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //view.setText(error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("idUser", "1");
+                params.put("langue", "Français");
+                params.put("mot", "PORTE");
+                return params;
+            }
+        };
+        queue.add(stringRequest);
     }
 
     @Override
