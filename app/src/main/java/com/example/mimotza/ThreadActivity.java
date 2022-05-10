@@ -48,14 +48,6 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
         TextView titre = findViewById(R.id.titre);
         TextView message = findViewById(R.id.message);
 
-        reponseList = new ArrayList<JSONObject>();
-
-        recyclerView = findViewById(R.id.responseRecycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recycleResponseAdapter = new RecycleResponseAdapter(this, reponseList);
-        recyclerView.setAdapter(recycleResponseAdapter);
-        Context currentContext = ThreadActivity.this;
-
         String homeIp = "192.168.2.83";
         String cegepIp = "10.170.13.52";
         String globalIp = "10.0.2.2";
@@ -63,6 +55,14 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
 
         String threadId = intent.getStringExtra("ID");
+
+        reponseList = new ArrayList<JSONObject>();
+
+        recyclerView = findViewById(R.id.responseRecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recycleResponseAdapter = new RecycleResponseAdapter(this, reponseList, threadId);
+        recyclerView.setAdapter(recycleResponseAdapter);
+        Context currentContext = ThreadActivity.this;
 
         RequestQueue queue = Volley.newRequestQueue(ThreadActivity.this);
         //String url = "http://" + cegepIp + ":8000/getMedia/" + threadId;
@@ -81,6 +81,25 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
                             auteur.setText(getResources().getString(R.string.auteur, jsonObject.getString("Auteur")));
                             titre.setText(getResources().getString(R.string.titre, jsonObject.getString("Titre")));
                             message.setText(getResources().getString(R.string.message, jsonObject.getString("Message")));
+
+                            message.setOnClickListener(new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View view) {
+
+                                    try {
+                                        Intent intent = new Intent(ThreadActivity.this, MessReponseActivity.class);
+                                        intent.putExtra("IDThread", threadId);
+                                        intent.putExtra("IDMessage", jsonObject.getInt("IDMessage"));
+                                        intent.putExtra("Message", jsonObject.getString("Message"));
+                                        intent.putExtra("Auteur", jsonObject.getString("Auteur"));
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                    } catch (Exception e) {
+                                        System.out.println(e);
+                                    }
+                                }
+                            });
 
                             if (jsonObject.get("Reponses").getClass().getSimpleName().contentEquals("JSONObject")) {
                                 JSONObject reponses = jsonObject.getJSONObject("Reponses");

@@ -1,9 +1,11 @@
 package com.example.mimotza;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ public class RecycleResponseAdapter extends RecyclerView.Adapter<RecycleResponse
     private ArrayList<JSONObject> responseList;
     private RecycleResponseAdapter recycleResponseAdapter;
     private Context context;
+    private String threadId;
 
     @NonNull
     @Override
@@ -32,10 +35,11 @@ public class RecycleResponseAdapter extends RecyclerView.Adapter<RecycleResponse
         return new ResponseHolder(view);
     }
 
-    public RecycleResponseAdapter(Context context, ArrayList<JSONObject> json) {
+    public RecycleResponseAdapter(Context context, ArrayList<JSONObject> json, String threadId) {
 
         this.context = context;
         this.responseList = json;
+        this.threadId = threadId;
     }
 
     @Override
@@ -54,11 +58,30 @@ public class RecycleResponseAdapter extends RecyclerView.Adapter<RecycleResponse
                 }
             }
 
-            recycleResponseAdapter = new RecycleResponseAdapter(context, reponses);
+            recycleResponseAdapter = new RecycleResponseAdapter(context, reponses, this.threadId);
 
 
             holder.auteurReponse.setText(this.context.getResources().getString(R.string.auteur, this.responseList.get(position).getString("Auteur")));
             holder.messReponse.setText(this.responseList.get(position).getString("Message"));
+            holder.messReponse.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    try {
+                        Intent intent = new Intent(context, MessReponseActivity.class);
+                        intent.putExtra("IDThread", threadId);
+                        intent.putExtra("IDMessage", responseList.get(position).getInt("ID"));
+                        intent.putExtra("Message", responseList.get(position).getString("Message"));
+                        intent.putExtra("Auteur", responseList.get(position).getString("Auteur"));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    }
+                    catch(Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            });
 
             holder.inceptionReponse.setLayoutManager(new LinearLayoutManager(context));
             holder.inceptionReponse.setAdapter(recycleResponseAdapter);
