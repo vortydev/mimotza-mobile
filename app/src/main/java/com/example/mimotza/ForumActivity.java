@@ -1,3 +1,18 @@
+/****************************************
+ Fichier : ForumActivity.java
+ Auteur : François-Nicolas Gitzhofer
+ Fonctionnalité : MMZ-M-005
+ Date : 07/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 07/05/2022 Nom: François-Nicolas Gitzhofer Description: Création de l'activité
+ Date: 08/05/2022 Nom: François-Nicolas Gitzhofer Description: Ajout du système de requête afin de récupérer les threads
+ Date: 08/05/2022 Nom: François-Nicolas Gitzhofer Description: Finalisation de l'affichage des threads dans le forum
+ =========================================================
+ ****************************************/
+
 package com.example.mimotza;
 
 import android.content.Context;

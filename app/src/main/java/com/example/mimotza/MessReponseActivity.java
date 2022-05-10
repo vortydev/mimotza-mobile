@@ -1,7 +1,7 @@
 /****************************************
  Fichier : MessReponseActivity.java
  Auteur : François-Nicolas Gitzhofer
- Fonctionnalité : MMZ-M-002             (à changer)
+ Fonctionnalité : MMZ-M-005
  Date : 10/05/2022
  Vérification :
  Date Nom Approuvé

@@ -1,3 +1,18 @@
+/****************************************
+ Fichier : ThreadActivity.java
+ Fonctionnalité : MMZ-M-005
+ Auteur : François-Nicolas Gitzhofer
+ Date : 10/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 07/05/2022 Nom: François-Nicolas Gitzhofer Description: Création de l'activité
+ Date: 09/05/2022 Nom: François-Nicolas Gitzhofer Description: Finalisation de l'affichage des réponses d'un thread
+ Date: 10/05/2022 Nom: François-Nicolas Gitzhofer Description: Ajout ID Thread dans intent vers MessReponseActivity
+ =========================================================
+ ****************************************/
+
 package com.example.mimotza;
 
 import android.content.Context;
