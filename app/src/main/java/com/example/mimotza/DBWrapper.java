@@ -1,6 +1,7 @@
 package com.example.mimotza;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -115,7 +116,20 @@ public class DBWrapper {
     }
 
     public void insertUser(Integer pidOrigin,String pusername,String pnom,String pprenom){
-        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username) " +
-                "VALUES ("+pidOrigin.toString()+",'"+pprenom+"','"+pnom+"','"+pusername+"')");
+        try{
+            Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE idOrigin = "+pidOrigin.toString(),null);
+            if(c.getCount() <= 0){
+                c.close();
+                db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username,statut) " +
+                        "VALUES ("+pidOrigin.toString()+",'"+pprenom+"','"+pnom+"','"+pusername+"',2)");
+            }else{
+                c.close();
+                //modifier statut pour actif
+                db.execSQL("UPDATE utilisateur SET statut = 2 WHERE idOrigin ="+pidOrigin.toString());
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
