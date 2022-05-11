@@ -136,9 +136,12 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onErrorResponse(VolleyError error) {
                 if(error.networkResponse.statusCode == 416){
-                    view.setText("Cet utilisateur existe déjà");
-                }else {
-                    view.setText("Une erreur est survenue");
+//                    view.setText("Cet utilisateur existe déjà");
+                    Toast.makeText(Inscription.this, "Cet utilisateur existe déjà.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(Inscription.this, "Une erreur est survenue.", Toast.LENGTH_LONG).show();
+//                    view.setText("Une erreur est survenue");
                 }
             }
         }) {

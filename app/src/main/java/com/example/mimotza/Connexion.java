@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -100,13 +101,17 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onErrorResponse(VolleyError error) {
                 if(error.networkResponse.statusCode == 416){
-                    view.setText("Cet utilisateur n'existe pas.");
+//                    view.setText("Cet utilisateur n'existe pas.");
+                    Toast.makeText(Connexion.this, "Cet utilisateur n'existe pas.", Toast.LENGTH_LONG).show();
                 }else if (error.networkResponse.statusCode == 403) {
-                    view.setText("Cet utilisateur est banni.");
+//                    view.setText("Cet utilisateur est banni.");
+                    Toast.makeText(Connexion.this, "Cet utilisateur est banni.", Toast.LENGTH_LONG).show();
                 }else if (error.networkResponse.statusCode == 401) {
-                    view.setText("Le mot de passe est érroné.");
+//                    view.setText("Le mot de passe est érroné.");
+                    Toast.makeText(Connexion.this, "Le mot de passe est érroné.", Toast.LENGTH_LONG).show();
                 }else {
-                    view.setText("Une erreur est survenue.");
+//                    view.setText("Une erreur est survenue.");
+                    Toast.makeText(Connexion.this, "Une erreur est survenue.", Toast.LENGTH_LONG).show();
                 }
             }
         }) {
