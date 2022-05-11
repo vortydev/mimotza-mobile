@@ -65,7 +65,6 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     private String mdj;
 
     // boutons
-    private Button btnSuggestion;
     private Button btnRetour;
     private Button btnNextMot;
 
@@ -74,10 +73,8 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
 
-        btnSuggestion = (Button) findViewById(R.id.btnSuggestion);
         btnRetour = (Button) findViewById(R.id.btnRetourJeu);
         btnNextMot = (Button) findViewById(R.id.btnNextMot);
-        btnSuggestion.setOnClickListener(this);
         btnRetour.setOnClickListener(this);
         btnNextMot.setOnClickListener(this);
         loadVirtualKeyboard();
@@ -285,9 +282,6 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 intentRetourJeu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentRetourJeu);
                 return;
-            case R.id.btnSuggestion:
-                // TODO start suggestion activity
-                return;
             case R.id.btnNextMot:
                 grid.resetGrid();
                 showPostGameNav(false);
@@ -403,12 +397,10 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
      */
     public void showPostGameNav(boolean state) {
         if (state) {
-            btnSuggestion.setVisibility(View.VISIBLE);
             btnRetour.setVisibility(View.VISIBLE);
             btnNextMot.setVisibility(View.VISIBLE);
         }
         else {
-            btnSuggestion.setVisibility(View.INVISIBLE);
             btnRetour.setVisibility(View.INVISIBLE);
             btnNextMot.setVisibility(View.INVISIBLE);
         }
@@ -440,8 +432,8 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_options,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_options, menu);
         return true;
     }
 
@@ -450,7 +442,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         switch (item.getItemId()){
             case R.id.menuJouer:
                 Intent intentJouer = new Intent(Jeu.this, Jeu.class);
-                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentJouer);
                 return true;
             case R.id.menuSugg:
@@ -458,12 +450,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 return true;
             case R.id.menuForum:
                 Intent intentForum = new Intent(Jeu.this, ForumActivity.class);
-                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentForum);
                 return true;
             case R.id.menuProfil:
                 Intent IntentP = new Intent(Jeu.this, ProfilJoueur.class);
-                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(IntentP);
                 return true;
             case R.id.menuDeco:
