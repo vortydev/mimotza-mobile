@@ -447,30 +447,14 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/postGameBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:orientation="vertical"
+    <Button
+        android:id="@+id/btnNextMot"
+        style="@style/MMZ.Button.Bleu"
+        android:layout_marginBottom="30dp"
+        android:text="@string/nextmot"
+        app:layout_constraintBottom_toTopOf="@id/btnRetourJeu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grille">
-
-        <Button
-            android:id="@+id/btnSuggestion"
-            style="@style/MMZ.Button.Bleu"
-            android:layout_width="225dp"
-            android:text="@string/suggerer" />
-
-        <Button
-            android:id="@+id/btnNextMot"
-            style="@style/MMZ.Button.Bleu"
-            android:text="@string/nextmot" />
-
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnRetourJeu"
