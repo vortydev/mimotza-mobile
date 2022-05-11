@@ -432,8 +432,8 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_options,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_options, menu);
         return true;
     }
 
@@ -442,7 +442,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         switch (item.getItemId()){
             case R.id.menuJouer:
                 Intent intentJouer = new Intent(Jeu.this, Jeu.class);
-                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentJouer);
                 return true;
             case R.id.menuSugg:
@@ -450,12 +450,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 return true;
             case R.id.menuForum:
                 Intent intentForum = new Intent(Jeu.this, ForumActivity.class);
-                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentForum);
                 return true;
             case R.id.menuProfil:
                 Intent IntentP = new Intent(Jeu.this, ProfilJoueur.class);
-                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(IntentP);
                 return true;
             case R.id.menuDeco:

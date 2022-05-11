@@ -110,7 +110,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
 //                    view.setText("Le mot de passe est érroné.");
                     Toast.makeText(Connexion.this, "Le mot de passe est érroné.", Toast.LENGTH_LONG).show();
                 }else {
-                    view.setText("Une erreur est survenue.");
+//                    view.setText("Une erreur est survenue.");
                     Toast.makeText(Connexion.this, "Une erreur est survenue.", Toast.LENGTH_LONG).show();
                 }
             }

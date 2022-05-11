@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menuJouer"
-        android:title="@string/jouer"/>
+        android:title="@string/jouer" />
     <item
         android:id="@+id/menuSugg"
         android:title="@string/suggestion"/>
@@ -15,5 +15,6 @@
     <item
         android:id="@+id/menuDeco"
         android:title="@string/deco"/>
+
 
 </menu>
