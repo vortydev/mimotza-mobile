@@ -26,14 +26,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,8 +42,8 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
-        Button conn = (Button) findViewById(R.id.sub);
-        Button back = (Button) findViewById(R.id.back);
+        Button conn = (Button) findViewById(R.id.btnConnConn);
+        Button back = (Button) findViewById(R.id.btnConnInsc);
 
         conn.setOnClickListener(this);
         back.setOnClickListener(this);
@@ -54,22 +52,20 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v){
         switch (v.getId()) {
-            case R.id.sub:
+            case R.id.btnConnConn:
                 //envoie la requete à la base de donnée
                 EditText fieldUsername = (EditText) findViewById(R.id.username);
                 EditText fieldMdp = (EditText) findViewById(R.id.password);
 
                 Bundle b = new Bundle();
-
                 b.putString("username", fieldUsername.getText().toString());
                 b.putString("mdp", fieldMdp.getText().toString());
 
                 checkInDataBase(b);
-
                 break;
 
-            case R.id.back:
-                finish();
+            case R.id.btnConnInsc:
+                startActivity(new Intent(Connexion.this, Inscription.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
 
             default:
@@ -98,20 +94,19 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                             e.printStackTrace();
                         }
 
-                        Intent intentMenu = new Intent(Connexion.this, MainActivity.class);
-                        startActivity(intentMenu);
+                        startActivity(new Intent(Connexion.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if(error.networkResponse.statusCode == 416){
-                    view.setText("Cet utilisateur n'existe pas");
+                    view.setText("Cet utilisateur n'existe pas.");
                 }else if (error.networkResponse.statusCode == 403) {
-                    view.setText("Cet utilisateur a été banni");
+                    view.setText("Cet utilisateur est banni.");
                 }else if (error.networkResponse.statusCode == 401) {
-                    view.setText("Le mot de passe est érroné");
+                    view.setText("Le mot de passe est érroné.");
                 }else {
-                    view.setText("Une erreur est survenue");
+                    view.setText("Une erreur est survenue.");
                 }
             }
         }) {

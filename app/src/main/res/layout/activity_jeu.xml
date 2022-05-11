@@ -451,7 +451,7 @@
         android:id="@+id/postGameBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -461,21 +461,24 @@
 
         <Button
             android:id="@+id/btnSuggestion"
-            style="@style/MMZ.Button.Gris"
-            android:layout_width="175dp"
-            android:layout_marginBottom="50dp"
-            android:text="@string/suggerer"
-            android:textSize="18sp" />
+            style="@style/MMZ.Button.Bleu"
+            android:layout_width="225dp"
+            android:text="@string/suggerer" />
 
         <Button
             android:id="@+id/btnNextMot"
             style="@style/MMZ.Button.Bleu"
             android:text="@string/nextmot" />
 
-        <Button
-            android:id="@+id/btnRetourJeu"
-            style="@style/MMZ.Button.Bleu"
-            android:text="@string/retour" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRetourJeu"
+        style="@style/MMZ.Button.Retour"
+        android:layout_marginBottom="20dp"
+        android:text="@string/retour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

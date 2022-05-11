@@ -21,11 +21,12 @@
     <style name="MMZ.Text.Small" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/trebuchet</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="MMZ.Text.EditText" parent="@android:style/Widget.EditText">
         <item name="android:textColor">@color/white</item>
         <item name="android:editTextColor">@color/white</item>
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/gris_vKeyboard</item>
         <item name="android:fontFamily">@font/trebuchet</item>
         <item name="android:textSize">20sp</item>
         <item name="android:backgroundTint">@color/white</item>
@@ -54,11 +55,15 @@
         <item name="android:layout_height">50dp</item>
     </style>
     <style name="MMZ.Button.Retour" parent="@style/MMZ.Button">
-        <item name="android:backgroundTint">@color/bleu</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:backgroundTint">@color/gris</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:layout_width">125dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:text">@string/retour</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_goneMarginBottom">20dp</item>
     </style>
     <style name="MMZ.Button.Gris" parent="@style/MMZ.Button">
         <item name="android:backgroundTint">@color/gris</item>
