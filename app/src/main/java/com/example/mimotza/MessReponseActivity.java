@@ -24,8 +24,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -35,9 +33,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +60,7 @@ public class MessReponseActivity extends AppCompatActivity {
         TextView viewMessage = findViewById(R.id.message);
         EditText viewReponse = findViewById(R.id.reponse);
         Button submitButton = findViewById(R.id.submit);
-        Button backButton = findViewById(R.id.back);
+        Button backButton = findViewById(R.id.btnConnInsc);
 
         viewAuteur.setText(auteur);
         viewMessage.setText(messStr);

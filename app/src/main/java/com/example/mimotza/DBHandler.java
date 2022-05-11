@@ -14,21 +14,17 @@ import java.util.ArrayList;
  */
 public class DBHandler {
     private Context context;
-    private String dbName;
 
     private static SQLiteDatabase db;
-
 
     /**
      * Class constructor.
      * @param c Activity's context.
-     * @param dbn Database's name.
      */
-    public DBHandler(Context c, String dbn) {
+    public DBHandler(Context c) {
         context = c;
-        dbName = dbn;
 
-        db = c.openOrCreateDatabase(dbName, Context.MODE_PRIVATE, null);
+        db = c.openOrCreateDatabase("mimotza", Context.MODE_PRIVATE, null);
 
     }
 
@@ -36,9 +32,9 @@ public class DBHandler {
         db.execSQL("INSERT INTO partie(idUser,win,score,temps,dateEmission,idMot) " +
         " values("+idUser.toString()+","+win.toString()+","+score.toString()+","+temps+","+dateEmission+","+idMot.toString()+")");
     }
-    public void insertUtilisateur(Integer idOrigin,Integer idStatut,String username,String email,String nom,String prenom,String avatar){
-        db.execSQL("INSERT INTO utilisateur(idUser,win,score,temps,dateEmission,idMot) " +
-                " values("+idOrigin.toString()+","+idStatut.toString()+","+username+","+email+","+nom+","+prenom+")");
+    public void insertUser(Integer pidOrigin,String pusername,String pnom,String pprenom){
+        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username) " +
+                "VALUES ("+pidOrigin.toString()+",'"+pprenom+"','"+pnom+"','"+pusername+"')");
     }
 
 
