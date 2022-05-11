@@ -54,6 +54,10 @@
             android:name=".ThreadActivity"
             android:exported="false"
             android:label="@string/thread_label" />
+        <activity
+            android:name=".MessReponseActivity"
+            android:exported="false"
+            android:label="@string/reponse_label" />
     </application>
 
 </manifest>
