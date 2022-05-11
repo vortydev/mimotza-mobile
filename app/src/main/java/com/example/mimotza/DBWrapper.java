@@ -132,4 +132,26 @@ public class DBWrapper {
             e.printStackTrace();
         }
     }
+
+    public int disconnectUser(){
+        int pidOrigin = -1;
+        try{
+            Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE statut = 2",null);
+            if(c.getCount() <= 0){
+                c.close();
+            }else {
+                if (c.moveToFirst()){
+                    int index = c.getColumnIndex("idOrigin");
+                    pidOrigin = c.getInt(index);
+                }
+                c.close();
+                db.execSQL("UPDATE utilisateur SET statut = 1 WHERE statut = 2");
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return pidOrigin;
+    }
+
 }

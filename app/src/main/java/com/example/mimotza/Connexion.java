@@ -43,6 +43,8 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
+        // if actif dans bd dois rediriger vers jeu
+
         Button conn = (Button) findViewById(R.id.btnConnConn);
         Button back = (Button) findViewById(R.id.btnConnInsc);
 
