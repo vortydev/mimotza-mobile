@@ -14,21 +14,17 @@ import java.util.ArrayList;
  */
 public class DBHandler {
     private Context context;
-    private String dbName;
 
     private static SQLiteDatabase db;
-
 
     /**
      * Class constructor.
      * @param c Activity's context.
-     * @param dbn Database's name.
      */
-    public DBHandler(Context c, String dbn) {
+    public DBHandler(Context c) {
         context = c;
-        dbName = dbn;
 
-        db = c.openOrCreateDatabase(dbName, Context.MODE_PRIVATE, null);
+        db = c.openOrCreateDatabase("mimotza", Context.MODE_PRIVATE, null);
 
     }
 

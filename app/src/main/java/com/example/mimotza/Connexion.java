@@ -84,7 +84,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         //String url = "http://127.0.0.1:8000/loginAPI";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
         String url = "http://10.0.2.2:8000/loginAPI";     //emulateur
 
-        DBHandler dbHandler = new DBHandler(Connexion.this,"mimotza");
+        DBHandler dbHandler = new DBHandler(Connexion.this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
