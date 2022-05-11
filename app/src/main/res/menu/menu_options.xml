@@ -4,6 +4,9 @@
         android:id="@+id/menuJouer"
         android:title="@string/jouer"/>
     <item
+        android:id="@+id/menuSugg"
+        android:title="@string/suggestion"/>
+    <item
         android:id="@+id/menuProfil"
         android:title="@string/profil"/>
     <item

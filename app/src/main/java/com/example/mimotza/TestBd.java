@@ -51,6 +51,7 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("prenom",DBType.TEXT);
         temp.addColumn("avatar",DBType.TEXT);
         temp.addColumn("dateCreation",DBType.TEXT);
+        temp.addColumn("statut",DBType.INTEGER);
         bd.addTable(temp);
         temp = new DBTable("partie");
         temp.addColumn("idUser",DBType.INTEGER);
