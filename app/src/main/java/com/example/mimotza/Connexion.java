@@ -90,11 +90,16 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        view.setText(response);
+                        try{
+                            JSONObject jsonUser = new JSONObject(response);
 
-                        //Intent intentMenu = new Intent(Connexion.this, MainActivity.class);
-                        //dbHandler.insertUser();
-                        //startActivity(intentMenu);
+                            dbHandler.insertUser(jsonUser.getInt("idOrigin"),jsonUser.getString("username"),jsonUser.getString("nom"),jsonUser.getString("prenom"));
+                        }catch(JSONException e){
+                            e.printStackTrace();
+                        }
+
+                        Intent intentMenu = new Intent(Connexion.this, MainActivity.class);
+                        startActivity(intentMenu);
                     }
                 }, new Response.ErrorListener() {
             @Override
