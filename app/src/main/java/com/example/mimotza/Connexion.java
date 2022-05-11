@@ -93,7 +93,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                         view.setText(response);
 
                         //Intent intentMenu = new Intent(Connexion.this, MainActivity.class);
-                        //dbHandler.insertUtilisateur(); // fonction a modifier
+                        //dbHandler.insertUser();
                         //startActivity(intentMenu);
                     }
                 }, new Response.ErrorListener() {
