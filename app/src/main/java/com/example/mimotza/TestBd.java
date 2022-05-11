@@ -29,11 +29,8 @@ import java.util.Map;
 public class TestBd extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-
-
     private DBWrapper bd;
     private DBHandler bdh;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

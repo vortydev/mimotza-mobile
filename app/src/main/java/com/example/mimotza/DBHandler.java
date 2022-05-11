@@ -27,9 +27,7 @@ public class DBHandler {
     public DBHandler(Context c) {
         context = c;
         dbName = "mimotza";
-
         db = c.openOrCreateDatabase(dbName, c.MODE_PRIVATE, null);
-
     }
 
 
@@ -46,7 +44,7 @@ public class DBHandler {
     }
 
     public void insertmotJoue(Integer pidOrigin,Integer idMot){
-        db.execSQL("INSERT INTO utilisateur (idOrigin,mot) VALUES ("+pidOrigin.toString()+","+idMot.toString()+")";
+        db.execSQL("INSERT INTO utilisateur (idOrigin,mot) VALUES ("+pidOrigin.toString()+","+idMot.toString()+")");
 
     }
 
