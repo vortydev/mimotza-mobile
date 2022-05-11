@@ -44,19 +44,20 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
     private void getInfo(){
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        String url = "http://127.0.0.1:8000/userProfile";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
-        //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
+//        String url = "http://127.0.0.1:8000/userProfile";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
+        String url = "http://10.0.2.2:8000/userProfile";     //emulateur
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(ProfilJoueur.this, response,Toast.LENGTH_LONG).show();
+//                        Toast.makeText(ProfilJoueur.this, response,Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //view.setText(error.toString());
+                Toast.makeText(ProfilJoueur.this, "Une erreur est survenue.\n" + error.toString(), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
