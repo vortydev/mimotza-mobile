@@ -1,19 +1,33 @@
 <resources>
     <string name="app_name">Mi-Mot-Za</string>
-    <string name="jeu_label">Mi-Mot-Za/Jeu</string>
+    <string name="jeu_label">Jeu</string>
     <string name="jouer">Jouer</string>
     <string name="forum_label">Forum</string>
+    <string name="thread_label">Thread</string>
+    <string name="reponse_label">Repondre</string>
     <string name="retour">Retour</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="suggerer">Suggérer un mot</string>
+    <string name="nextmot">Mot suivant</string>
+    <string name="profil">Profil</string>
+    <string name="credits">Mi-Mot-Za 2022 © Felix Alberto Albarracin Oviedo, François-Nicolas Gitzhofer, Étienne Ménard, Isabelle Rioux</string>
 
     <!-- Inscription -->
     <string name="insc">S\'inscrire</string>
     <string name="conn">Se connecter</string>
+    <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
     <string name="nom">Nom</string>
     <string name="prenom">Prénom</string>
     <string name="email">Adresse courriel</string>
     <string name="username">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
     <string name="password2">Confirmez le mot de passe</string>
+
+    <!-- Forum -->
+    <string name="auteur">Envoyé par %1$s</string>
+    <string name="titre">Titre: %1$s</string>
+    <string name="message">Message: %1$s</string>
 
     <!--  Lettres  -->
     <string name="lettre_a">A</string>

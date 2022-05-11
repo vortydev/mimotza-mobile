@@ -32,6 +32,7 @@ public class TestBd extends AppCompatActivity {
 
 
     private DBWrapper bd;
+    private DBHandler bdh;
 
 
     @Override
@@ -40,11 +41,9 @@ public class TestBd extends AppCompatActivity {
         setContentView(R.layout.activity_test_bd);
         bd = new DBWrapper(this,"mimotza");
 
-
         DBTable temp = new DBTable("utilisateur");
         temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
 
-        temp.addColumn("idStatut",DBType.INTEGER);
         temp.addColumn("username",DBType.TEXT);
         temp.addColumn("email",DBType.TEXT);
         temp.addColumn("mdp",DBType.TEXT);
@@ -57,9 +56,20 @@ public class TestBd extends AppCompatActivity {
         temp.addColumn("idUser",DBType.INTEGER);
         temp.addColumn("win",DBType.INTEGER);
         temp.addColumn("score",DBType.INTEGER);
-        temp.addColumn("temps",DBType.TEXT);
-        temp.addColumn("dateEmission",DBType.TEXT);
         temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("temps",DBType.TEXT);
+
+        bd.addTable(temp);
+        temp = new DBTable("motJoueur");
+        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("joue",DBType.INTEGER);
+        temp.addColumn("win",DBType.INTEGER);
+        bd.addTable(temp);
+
+        temp = new DBTable("motJouer");
+        temp.addColumn("idOrigin",DBType.INTEGER);
+
+        temp.addColumn("mot",DBType.INTEGER);
         bd.addTable(temp);
 
         temp = new DBTable("motJouer");
