@@ -15,12 +15,10 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Connexion"
+            android:label="@string/connexion"
             android:exported="false" />
         <activity
             android:name=".ProfilJoueur"
-            android:exported="false" />
-        <activity
-            android:name=".DBHandler"
             android:exported="false" />
         <activity
             android:name=".Jeu"
@@ -50,6 +48,14 @@
             android:name=".ForumActivity"
             android:exported="false"
             android:label="@string/forum_label" />
+        <activity
+            android:name=".ThreadActivity"
+            android:exported="false"
+            android:label="@string/thread_label" />
+        <activity
+            android:name=".MessReponseActivity"
+            android:exported="false"
+            android:label="@string/reponse_label" />
     </application>
 
 </manifest>
