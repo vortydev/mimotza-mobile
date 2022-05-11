@@ -5,7 +5,7 @@
         android:title="@string/jouer"/>
     <item
         android:id="@+id/profil"
-        android:title="Profil"/>
+        android:title="@string/profil"/>
     <item
         android:id="@+id/forum"
         android:title="@string/forum_label"/>

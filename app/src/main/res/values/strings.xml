@@ -10,6 +10,7 @@
     <string name="suggerer">Suggérer un mot</string>
     <string name="nextmot">Mot suivant</string>
     <string name="profil">Profil</string>
+    <string name="deco">Déconnection</string>
     <string name="credits">Mi-Mot-Za 2022 © Felix Alberto Albarracin Oviedo, François-Nicolas Gitzhofer, Étienne Ménard, Isabelle Rioux</string>
 
     <!-- Inscription -->
@@ -69,4 +70,5 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>

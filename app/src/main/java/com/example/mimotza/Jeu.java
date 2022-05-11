@@ -23,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -432,5 +434,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         // TODO get user id
         // TODO get MDJ id
         bdMimotza.insertPartie(1, (win ? 1 : 0), score, new SimpleDateFormat("HH:mm:ss").format(getRowTime()), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()), 16);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_options,menu);
+        return true;
     }
 }
