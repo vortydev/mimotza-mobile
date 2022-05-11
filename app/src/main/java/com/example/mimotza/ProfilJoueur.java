@@ -2,7 +2,10 @@ package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,16 +18,29 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfilJoueur extends AppCompatActivity {
+public class ProfilJoueur extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_joueur);
         getInfo();
-        Toast.makeText(ProfilJoueur.this, "test",Toast.LENGTH_LONG).show();
 
+        Button btnBack = (Button) findViewById(R.id.btnProfilReturn);
+        btnBack.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnProfilReturn:
+//                startActivity(new Intent(ProfilJoueur.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
+                break;
+        }
+    }
+
     private void getInfo(){
         RequestQueue queue = Volley.newRequestQueue(this);
 

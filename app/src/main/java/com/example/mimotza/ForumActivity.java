@@ -64,7 +64,7 @@ public class ForumActivity extends AppCompatActivity implements View.OnClickList
         String cegepIp = "10.170.13.52";
         String globalIp = "10.0.2.2";
 
-        Button backButton = findViewById(R.id.btnConnInsc);
+        Button backButton = findViewById(R.id.btnForumReturn);
         backButton.setOnClickListener(this);
 
         RequestQueue queue = Volley.newRequestQueue(ForumActivity.this);
@@ -120,10 +120,9 @@ public class ForumActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
 
         switch (v.getId()) {
-
-            case R.id.btnConnInsc:
+            case R.id.btnForumReturn:
                 Intent intent = new Intent(ForumActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
         }

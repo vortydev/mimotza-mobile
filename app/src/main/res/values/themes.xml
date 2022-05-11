@@ -18,9 +18,14 @@
     </style>
 
     <!--  TEXT  -->
-    <style name="MMZ.Text.Small" parent="@android:style/TextAppearance.Small">
+    <style name="MMZ.Text" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/trebuchet</item>
+    </style>
+    <style name="MMZ.Text.Small" parent="MMZ.Text">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MMZ.Text.Medium" parent="MMZ.Text">
         <item name="android:textSize">20sp</item>
     </style>
     <style name="MMZ.Text.EditText" parent="@android:style/Widget.EditText">
@@ -60,10 +65,6 @@
         <item name="android:layout_width">125dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:text">@string/retour</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_goneMarginBottom">20dp</item>
     </style>
     <style name="MMZ.Button.Gris" parent="@style/MMZ.Button">
         <item name="android:backgroundTint">@color/gris</item>
@@ -73,7 +74,9 @@
     </style>
 
     <!--  JEU  -->
-    <style name="MMZ.Game" parent="MMZ.Text.Small">
+    <style name="MMZ.Game" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/trebuchet</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="MMZ.Game.Cell" parent="MMZ.Game">
