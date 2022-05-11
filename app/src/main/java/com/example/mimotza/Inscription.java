@@ -9,12 +9,14 @@
  Historique de modifications :
  Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le formulaire
  Date: 03/05/2022 Nom: Isabelle Rioux Description: Gestion du formulaire et des boutons
+ Date: 05/05/2022 Nom: Isabelle Rioux Description: Envoi vers la base de données
  =========================================================
  ****************************************/
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -128,12 +130,17 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //redirige vers connexion
+                        Intent intentConn = new Intent(Inscription.this, Connexion.class);
+                        startActivity(intentConn);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                view.setText(error.toString());
+                if(error.networkResponse.statusCode == 416){
+                    view.setText("Cet utilisateur existe déjà");
+                }else {
+                    view.setText("Une erreur est survenue");
+                }
             }
         }) {
             @Override

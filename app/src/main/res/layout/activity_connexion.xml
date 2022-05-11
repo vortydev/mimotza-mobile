@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /****************************************
- Fichier : activity_inscription.xml
+ Fichier : activity_connexion.xml
  Auteur : Isabelle Rioux
- Fonctionnalité : MMZ-M-002 Créer utilisateur (Affichage)
- Date : 02/05/2022
+ Fonctionnalité : MMZ-M-003 Se connecter (Affichage)
+ Date : 09/05/2022
  Vérification :
  Date Nom Approuvé
  =========================================================
  Historique de modifications :
- Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le formulaire
- Date: 03/05/2022 Nom: Isabelle Rioux Description: Ajout des champs du formulaire
+ Date: 09/05/2022 Nom: Isabelle Rioux Description: Création de l'activité
+ Date: 10/05/2022 Nom: Isabelle Rioux Description: Ajout d'un TextView pour les erreurs
  =========================================================
  ****************************************/
  -->
@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inscription">
+    tools:context=".Connexion">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,21 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/insc"/>
-
-        <EditText
-            android:id="@+id/prenom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prenom"
-            android:inputType="text"/>
-
-        <EditText
-            android:id="@+id/nom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nom"
-            android:inputType="text"/>
+            android:text="@string/conn"/>
 
         <EditText
             android:id="@+id/username"
@@ -53,24 +39,10 @@
             android:inputType="text"/>
 
         <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"/>
-
-        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:inputType="textPassword"/>
-
-        <EditText
-            android:id="@+id/password2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password2"
             android:inputType="textPassword"/>
 
         <LinearLayout
@@ -80,9 +52,9 @@
 
             <Button
                 android:id="@+id/sub"
-                android:layout_width="125dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/insc"/>
+                android:text="@string/conn"/>
 
             <Button
                 android:id="@+id/back"
@@ -98,5 +70,7 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
