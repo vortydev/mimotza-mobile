@@ -15,12 +15,10 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Connexion"
+            android:label="@string/connexion"
             android:exported="false" />
         <activity
             android:name=".ProfilJoueur"
-            android:exported="false" />
-        <activity
-            android:name=".DBHandler"
             android:exported="false" />
         <activity
             android:name=".Jeu"

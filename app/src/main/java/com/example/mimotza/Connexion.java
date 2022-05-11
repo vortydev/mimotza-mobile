@@ -84,7 +84,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         //String url = "http://127.0.0.1:8000/loginAPI";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
         String url = "http://10.0.2.2:8000/loginAPI";     //emulateur
 
-        DBHandler dbHandler = new DBHandler(Connexion.this);
+        DBWrapper bd = new DBWrapper(this, "mimotza");
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -93,7 +93,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                         try{
                             JSONObject jsonUser = new JSONObject(response);
 
-                            dbHandler.insertUser(jsonUser.getInt("idOrigin"),jsonUser.getString("username"),jsonUser.getString("nom"),jsonUser.getString("prenom"));
+                            bd.insertUser(jsonUser.getInt("idOrigin"),jsonUser.getString("username"),jsonUser.getString("nom"),jsonUser.getString("prenom"));
                         }catch(JSONException e){
                             e.printStackTrace();
                         }

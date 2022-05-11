@@ -22,55 +22,53 @@
     tools:context=".Connexion">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/conn"/>
+        android:id="@+id/connexionBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/MMZ.Text.EditText"
+            android:layout_marginBottom="5dp"
             android:hint="@string/username"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/MMZ.Text.EditText"
+            android:layout_marginBottom="5dp"
             android:hint="@string/password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textAlignment="center" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/sub"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="@string/conn"/>
-
-            <Button
-                android:id="@+id/back"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:text="@string/retour"/>
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/sub"
+            style="@style/MMZ.Button.Bleu"
+            android:layout_marginTop="10dp"
+            android:text="@string/conn" />
 
         <TextView
             android:id="@+id/resultRequest"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/back"
+        style="@style/MMZ.Button.Bleu"
+        android:layout_marginBottom="20dp"
+        android:text="@string/insc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

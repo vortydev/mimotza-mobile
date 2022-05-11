@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 /**
- * Amped up SQLite database controller.
+ * Custom SQLite database wrapper.
  * @author Étienne Ménard
  */
 public class DBWrapper {
@@ -101,12 +101,21 @@ public class DBWrapper {
         }
     }
 
+    /**
+     * Executes raw SQL commands. USE AT YOUR OWN RISK
+     * @param sql SQL expression.
+     */
+    public void rawSQL(String sql) {
+        db.execSQL(sql);
+    }
+
     public void insertPartie(Integer idUser,Integer win,Integer score,String temps,String dateEmission,Integer idMot){
         db.execSQL("INSERT INTO partie(idUser,win,score,temps,dateEmission,idMot) " +
                 " values("+idUser.toString()+","+win.toString()+","+score.toString()+","+temps+","+dateEmission+","+idMot.toString()+")");
     }
-    public void insertUtilisateur(Integer idOrigin,Integer idStatut,String username,String email,String nom,String prenom,String avatar){
-        db.execSQL("INSERT INTO utilisateur(idUser,win,score,temps,dateEmission,idMot) " +
-                " values("+idOrigin.toString()+","+idStatut.toString()+","+username+","+email+","+nom+","+prenom+")");
+
+    public void insertUser(Integer pidOrigin,String pusername,String pnom,String pprenom){
+        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username) " +
+                "VALUES ("+pidOrigin.toString()+",'"+pprenom+"','"+pnom+"','"+pusername+"')");
     }
 }

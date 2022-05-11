@@ -13,6 +13,7 @@
     <!-- Inscription -->
     <string name="insc">S\'inscrire</string>
     <string name="conn">Se connecter</string>
+    <string name="connexion">Connexion</string>
     <string name="nom">Nom</string>
     <string name="prenom">Prénom</string>
     <string name="email">Adresse courriel</string>
