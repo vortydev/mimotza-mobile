@@ -78,14 +78,13 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         btnNextMot.setOnClickListener(this);
         loadVirtualKeyboard();
 
+        bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
+        // TODO fetch mot du jour
+        mdj = "AVION"; // temp
+
         showVirtualKeyboard(true);
         showPostGameNav(false);
         // TODO disable the game if the user already won
-
-        bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
-
-        // TODO fetch mot du jour
-        mdj = "VAGUE"; // temp
 
         grid = new GameGrid(this, fetchCells(), mdj);   // creates grid object
         allowedInput = true;                                   // activate inputs
@@ -329,8 +328,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             }
             allowedInput = false;
 
-            // TODO send results to server
-            //sendToDataBase();
+//            sendToDataBase();
 
             virtualKeyboard.setVisibility(View.INVISIBLE);
             showPostGameNav(true);
@@ -427,39 +425,12 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     }
 
     /**
-     * Envoies les données de la partie au serveur.
+     * Sauvegarde les données de la partie dans la BD locale.
      * @author Étienne Ménard
      */
-    private void sendToDataBase(){
-//        final TextView view = (TextView) findViewById(R.id.resultRequest);
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://10.0.2.2:8000/ajoutPartie";     //emulateur
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //redirige vers connexion
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-//                view.setText(error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-//                params.put("id_user_id", get user id);
-                params.put("win", Boolean.toString(win));
-                params.put("score", Integer.toString(score));
-                params.put("temps", new SimpleDateFormat("HH:mm:ss").format(getRowTime()));
-                params.put("date_emission", Calendar.getInstance().getTime().toString());
-//                params.put("mot_id", get mdj id);
-                return params;
-            }
-        };
-        queue.add(stringRequest);
+    private void sendToDataBase() {
+        // TODO get user id
+        // TODO get MDJ id
+        bdMimotza.insertPartie(1, (win ? 1 : 0), score, new SimpleDateFormat("HH:mm:ss").format(getRowTime()), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()), 16);
     }
 }

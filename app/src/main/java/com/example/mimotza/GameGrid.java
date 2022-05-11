@@ -10,6 +10,7 @@
  Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation des cellules et de la grille de jeu.
  Date: 03/05/2022 Nom: Étienne Ménard Description: Implémentation de l'algorithme de validation des mots.
  Date: 08/05/2022 Nom: Étienne Ménard Description: Modification de l'algorithme pour valider des lettres récurentes.
+ Date: 09/05/2022 Nom: Étienne Ménard Description: Implémentation de la fonction pour reset la grille.
  =========================================================
  ****************************************/
 package com.example.mimotza;
@@ -165,7 +166,7 @@ public class GameGrid {
     }
 
     /**
-     * Vide la grille.
+     * Reset la grille.
      * @author Étienne Ménard
      */
     public void resetGrid() {
@@ -175,7 +176,6 @@ public class GameGrid {
                 grid[y][x].clearCell();
             }
         }
-
         xPos = yPos = 0;
     }
 }

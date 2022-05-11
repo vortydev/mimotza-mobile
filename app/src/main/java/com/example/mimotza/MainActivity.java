@@ -10,7 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnJouer;
     private Button btnForum;
-    private Button btnInsc;
+    private Button btnCon;
     private Button btnBD;
     private Button profilJoueur;
 
@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnJouer.setOnClickListener(this);
 
         // inscription
-        btnInsc = (Button) findViewById(R.id.btnInsc);
-        btnInsc.setOnClickListener(this);
+        btnCon = (Button) findViewById(R.id.btnMainConn);
+        btnCon.setOnClickListener(this);
 
         // forum
         btnForum = (Button) findViewById(R.id.btnForum);
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBD = (Button) findViewById(R.id.btnBD);
         btnBD.setOnClickListener(this);
 
-        profilJoueur = (Button) findViewById(R.id.btnProfiljoueur);
+        profilJoueur = (Button) findViewById(R.id.btnProfil);
         profilJoueur.setOnClickListener(this);
     }
 
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intentJouer);
                 break;
-            case R.id.btnInsc:
-                Intent intentInsc = new Intent(MainActivity.this, LogInSignIn.class);
+            case R.id.btnMainConn:
+                Intent intentInsc = new Intent(MainActivity.this, Connexion.class);
                 intentInsc.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentInsc);
                 break;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBD.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentBD);
                 break;
-            case R.id.btnProfiljoueur:
+            case R.id.btnProfil:
                 Intent IntentP = new Intent(MainActivity.this, ProfilJoueur.class);
                 IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(IntentP);

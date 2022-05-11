@@ -16,17 +16,54 @@
         <item name="android:fontFamily">@font/trebuchet</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <!--  TEXT  -->
+    <style name="MMZ.Text.Small" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/trebuchet</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MMZ.Text.EditText" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/gris_vKeyboard</item>
+        <item name="android:fontFamily">@font/trebuchet</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!--  BUTTONS  -->
     <style name="MMZ.Button" parent="@android:style/Widget.Button">
         <item name="android:background">@empty</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/trebuchet</item>
         <item name="android:focusable">false</item>
+        <item name="android:gravity">center</item>
     </style>
     <style name="MMZ.Button.Bleu" parent="@style/MMZ.Button">
         <item name="android:backgroundTint">@color/bleu</item>
         <item name="android:textSize">24sp</item>
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">50dp</item>
+    </style>
+    <style name="MMZ.Button.SmallBleu" parent="@style/MMZ.Button">
+        <item name="android:backgroundTint">@color/bleu</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_width">175dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+    <style name="MMZ.Button.Retour" parent="@style/MMZ.Button">
+        <item name="android:backgroundTint">@color/gris</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">125dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:text">@string/retour</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_goneMarginBottom">20dp</item>
     </style>
     <style name="MMZ.Button.Gris" parent="@style/MMZ.Button">
         <item name="android:backgroundTint">@color/gris</item>
@@ -36,9 +73,7 @@
     </style>
 
     <!--  JEU  -->
-    <style name="MMZ.Game" parent="@android:style/TextAppearance.Small">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/trebuchet</item>
+    <style name="MMZ.Game" parent="MMZ.Text.Small">
         <item name="android:gravity">center</item>
     </style>
     <style name="MMZ.Game.Cell" parent="MMZ.Game">
@@ -62,7 +97,6 @@
     <style name="MMZ.Game.VKeyboard.Large" parent="MMZ.Game.VKeyboard">
         <item name="android:layout_width">65dp</item>
     </style>
-
 
 
     <style name="Theme.Mimotza.NoActionBar">

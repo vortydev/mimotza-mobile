@@ -9,12 +9,14 @@
  Historique de modifications :
  Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le formulaire
  Date: 03/05/2022 Nom: Isabelle Rioux Description: Gestion du formulaire et des boutons
+ Date: 05/05/2022 Nom: Isabelle Rioux Description: Envoi vers la base de données
  =========================================================
  ****************************************/
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -41,8 +43,8 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
-        Button insc = (Button) findViewById(R.id.sub);
-        Button back = (Button) findViewById(R.id.back);
+        Button insc = (Button) findViewById(R.id.btnInscInsc);
+        Button back = (Button) findViewById(R.id.btnInscReturn);
 
         insc.setOnClickListener(this);
         back.setOnClickListener(this);
@@ -51,7 +53,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v){
         switch (v.getId()) {
-            case R.id.sub:
+            case R.id.btnInscInsc:
                 EditText fieldNom = (EditText) findViewById(R.id.nom);
                 EditText fieldPrenom = (EditText) findViewById(R.id.prenom);
                 EditText fieldUsername = (EditText) findViewById(R.id.username);
@@ -79,7 +81,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
 
                 break;
 
-            case R.id.back:
+            case R.id.btnInscReturn:
                 finish();
                 break;
 
@@ -128,12 +130,16 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //redirige vers connexion
+                        startActivity(new Intent(Inscription.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                view.setText(error.toString());
+                if(error.networkResponse.statusCode == 416){
+                    view.setText("Cet utilisateur existe déjà");
+                }else {
+                    view.setText("Une erreur est survenue");
+                }
             }
         }) {
             @Override

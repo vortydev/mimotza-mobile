@@ -1,3 +1,18 @@
+/****************************************
+ Fichier : ForumActivity.java
+ Auteur : François-Nicolas Gitzhofer
+ Fonctionnalité : MMZ-M-005
+ Date : 07/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 07/05/2022 Nom: François-Nicolas Gitzhofer Description: Création de l'activité
+ Date: 08/05/2022 Nom: François-Nicolas Gitzhofer Description: Ajout du système de requête afin de récupérer les threads
+ Date: 08/05/2022 Nom: François-Nicolas Gitzhofer Description: Finalisation de l'affichage des threads dans le forum
+ =========================================================
+ ****************************************/
+
 package com.example.mimotza;
 
 import android.content.Context;
@@ -49,7 +64,7 @@ public class ForumActivity extends AppCompatActivity implements View.OnClickList
         String cegepIp = "10.170.13.52";
         String globalIp = "10.0.2.2";
 
-        Button backButton = findViewById(R.id.back);
+        Button backButton = findViewById(R.id.btnConnInsc);
         backButton.setOnClickListener(this);
 
         RequestQueue queue = Volley.newRequestQueue(ForumActivity.this);
@@ -106,7 +121,7 @@ public class ForumActivity extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()) {
 
-            case R.id.back:
+            case R.id.btnConnInsc:
                 Intent intent = new Intent(ForumActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
