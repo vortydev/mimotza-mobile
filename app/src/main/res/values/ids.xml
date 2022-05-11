@@ -4,4 +4,5 @@
     <item name="menuProfil" type="id" />
     <item name="menuForum" type="id" />
     <item name="menuDeco" type="id" />
+    <item name="menuSugg" type="id" />
 </resources>

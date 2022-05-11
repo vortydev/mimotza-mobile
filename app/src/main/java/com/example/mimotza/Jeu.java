@@ -453,6 +453,9 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intentJouer);
                 return true;
+            case R.id.menuSugg:
+                //start intent suggestion
+                return true;
             case R.id.menuForum:
                 Intent intentForum = new Intent(Jeu.this, ForumActivity.class);
                 intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
