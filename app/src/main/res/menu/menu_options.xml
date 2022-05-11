@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/jouer"
+        android:id="@+id/menuJouer"
         android:title="@string/jouer"/>
     <item
-        android:id="@+id/profil"
+        android:id="@+id/menuProfil"
         android:title="@string/profil"/>
     <item
-        android:id="@+id/forum"
+        android:id="@+id/menuForum"
         android:title="@string/forum_label"/>
     <item
-        android:id="@+id/deco"
+        android:id="@+id/menuDeco"
         android:title="@string/deco"/>
 
 </menu>

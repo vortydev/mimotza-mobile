@@ -18,6 +18,7 @@
  ****************************************/
 package com.example.mimotza;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,6 +26,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -442,4 +444,34 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         inflater.inflate(R.menu.menu_options,menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menuJouer:
+                Intent intentJouer = new Intent(Jeu.this, Jeu.class);
+                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentJouer);
+                return true;
+            case R.id.menuForum:
+                Intent intentForum = new Intent(Jeu.this, ForumActivity.class);
+                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentForum);
+                return true;
+            case R.id.menuProfil:
+                Intent IntentP = new Intent(Jeu.this, ProfilJoueur.class);
+                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(IntentP);
+                return true;
+            case R.id.menuDeco:
+                //deconnecter joueur avant de start intent
+                //Intent intentInsc = new Intent(Jeu.this, Connexion.class);
+                //intentInsc.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //startActivity(intentInsc);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
