@@ -429,9 +429,8 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
      * @author Étienne Ménard
      */
     private void sendToDataBase() {
-        // TODO get user id
         // TODO get MDJ id
-        bdMimotza.insertPartie(1, (win ? 1 : 0), score, new SimpleDateFormat("HH:mm:ss").format(getRowTime()), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()), 16);
+        bdMimotza.insertPartie(bdMimotza.fetchUserId(), (win ? 1 : 0), score, new SimpleDateFormat("HH:mm:ss").format(getRowTime()), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()), 16);
     }
 
     @Override
