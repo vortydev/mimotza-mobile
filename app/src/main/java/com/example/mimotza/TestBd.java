@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : testBd
+ Auteur : Alebrto Oviedo
+ Fonctionnalité : creer la bd
+ Date : 2022-05-11
+ Vérification :
+ Date Nom Approuvé
+ 2022-05-11 Alberto
+ =========================================================
+ Historique de modifications :
+ Date Nom Description
+ 2022-05-05 : creation de l'objet
+ 2022-05-11 : commentaire et enttetes
+ =========================================================
+ ****************************************/
+
+
 package com.example.mimotza;
 
 import android.os.Bundle;
@@ -25,7 +42,10 @@ import com.example.mimotza.databinding.ActivityTestBdBinding;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * TestBD.
+ * @author Alberto Oviedo
+ */
 public class TestBd extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;

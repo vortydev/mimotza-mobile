@@ -1,3 +1,19 @@
+/****************************************
+ Fichier : ProfilJoueur
+ Auteur : Alebrto Oviedo
+ Fonctionnalité : page qui fetch les données dèun joueur et les affiche a lecran
+ Date : 2022-05-11
+ Vérification :
+ Date Nom Approuvé
+ 2022-05-11 Alberto
+ =========================================================
+ Historique de modifications :
+ Date Nom Description
+ 2022-05-05 : creation de l'objet
+ 2022-05-11 : commentaire et enttetes
+ =========================================================
+ ****************************************/
+
 package com.example.mimotza;
 
 import androidx.annotation.NonNull;
@@ -24,7 +40,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import org.json.JSONException;
+import org.json.JSSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -56,6 +72,10 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * cherche les info avec un requete api et les insere dans les conainer
+     * @author Alberto oviedo
+     */
     private void getInfo(){
         Intent info = getIntent();
         Toast.makeText(ProfilJoueur.this, info.getStringExtra("user"),Toast.LENGTH_LONG).show();

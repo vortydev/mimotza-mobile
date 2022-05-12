@@ -1,3 +1,19 @@
+/****************************************
+ Fichier : ProfilJoueur
+ Auteur : Alebrto Oviedo
+ Fonctionnalité : petite activite qui sert a inserer un stirng pour trouver des information sur un certain user
+ Date : 2022-05-11
+ Vérification :
+ Date Nom Approuvé
+ 2022-05-11 Alberto
+ =========================================================
+ Historique de modifications :
+ Date Nom Description
+ 2022-05-05 : creation de l'objet
+ 2022-05-11 : commentaire et enttetes
+ =========================================================
+ ****************************************/
+
 package com.example.mimotza;
 
 import androidx.annotation.NonNull;
