@@ -28,9 +28,10 @@
     <string name="password2">Confirmez le mot de passe</string>
 
     <!-- Forum -->
-    <string name="auteur">Envoyé par %1$s</string>
+    <string name="auteur">Envoyé par: %1$s</string>
     <string name="titre">Titre: %1$s</string>
     <string name="message">Message: %1$s</string>
+    <string name="nbComments">Nb commentaires: %1$s</string>
 
     <!--  Lettres  -->
     <string name="lettre_a">A</string>
