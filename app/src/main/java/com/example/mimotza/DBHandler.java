@@ -46,15 +46,9 @@ public class DBHandler {
      */
     public DBHandler(Context c) {
         context = c;
-<<<<<<< HEAD
-
-        db = c.openOrCreateDatabase("mimotza", Context.MODE_PRIVATE, null);
-=======
-        dbName = "mimotza";
-        db = c.openOrCreateDatabase(dbName, c.MODE_PRIVATE, null);
+        db = c.openOrCreateDatabase("mimotza", c.MODE_PRIVATE, null);
     }
 
->>>>>>> origin/alberto2
 
     //permet lajout d'une partie
     public void insertPartie(Integer idUser, Integer win, Integer score, String temps, Integer idMot) {
@@ -87,11 +81,6 @@ public class DBHandler {
         return Date.getString(0);
 
     }
-<<<<<<< HEAD
-    public void insertUser(Integer pidOrigin,String pusername,String pnom,String pprenom){
-        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username) " +
-                "VALUES ("+pidOrigin.toString()+",'"+pprenom+"','"+pnom+"','"+pusername+"')");
-=======
 
     private void syncMotJeu(){
 
@@ -137,7 +126,6 @@ public class DBHandler {
 
 
 
->>>>>>> origin/alberto2
     }
 }
 
