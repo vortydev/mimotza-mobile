@@ -22,6 +22,7 @@ package com.example.mimotza;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -445,22 +446,16 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.menuJouer:
-                Intent intentJouer = new Intent(Jeu.this, Jeu.class);
-                intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intentJouer);
+                // rien lol
                 return true;
             case R.id.menuSugg:
                 //start intent suggestion
                 return true;
             case R.id.menuForum:
-                Intent intentForum = new Intent(Jeu.this, ForumActivity.class);
-                intentForum.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intentForum);
+                startActivity(new Intent(Jeu.this, ForumActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuProfil:
-                Intent IntentP = new Intent(Jeu.this, ProfilJoueur.class);
-                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(IntentP);
+                startActivity(new Intent(Jeu.this, ProfilJoueur.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuDeco:
                 //deconnecter joueur avant de start intent
@@ -504,7 +499,6 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                     return params;
                 }
             };
-
             queue.add(stringRequest);
         }
     }
