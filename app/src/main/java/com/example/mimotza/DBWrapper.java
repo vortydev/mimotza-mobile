@@ -154,4 +154,17 @@ public class DBWrapper {
         return pidOrigin;
     }
 
+    public boolean checkUserConnected(){
+        try{
+            Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE statut = 2",null);
+            if(c.getCount() <= 0){
+                c.close();
+                return false;
+            }}
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+
 }
