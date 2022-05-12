@@ -79,7 +79,7 @@ public class MessReponseActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Intent intent = new Intent(MessReponseActivity.this, ThreadActivity.class);
                         intent.putExtra("ID", threadId);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         Toast.makeText(MessReponseActivity.this, "Message ajouté avec succès", Toast.LENGTH_SHORT).show();
                     }
