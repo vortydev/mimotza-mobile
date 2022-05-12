@@ -326,6 +326,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             }
             allowedInput = false;
 
+            // TODO uncomment
 //            sendToDataBase();
 
             virtualKeyboard.setVisibility(View.INVISIBLE);

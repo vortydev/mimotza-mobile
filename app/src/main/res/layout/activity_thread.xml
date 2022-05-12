@@ -6,52 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".ThreadActivity">
 
-    <TextView
-        android:id="@+id/auteur"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/bigboiAuteur"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="@string/auteur"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/titre"/>
-    <TextView
-        android:id="@+id/titre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titre"
-        app:layout_constraintTop_toBottomOf="@id/auteur"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/message"/>
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/message"
-        android:background="@color/bleu"
-        app:layout_constraintTop_toBottomOf="@id/titre"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/responseRecycler" />
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/titre"
+            style="@style/MMZ.Text.Bigger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/titre" />
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/MMZ.Text.Clickable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/cell_valid"
+            android:gravity="center"
+            android:text="@string/message" />
+
+        <TextView
+            android:id="@+id/auteur"
+            style="@style/MMZ.Text.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/auteur" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/responseRecycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/message"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/backToForum"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/backToForum"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bigboiAuteur" />
 
     <Button
         android:id="@+id/backToForum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Revenir au forum"
-        app:layout_constraintTop_toBottomOf="@id/responseRecycler"
-        app:layout_constraintRight_toRightOf="parent"
+        style="@style/MMZ.Button.Retour"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

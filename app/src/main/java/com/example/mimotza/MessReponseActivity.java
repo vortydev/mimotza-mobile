@@ -60,7 +60,7 @@ public class MessReponseActivity extends AppCompatActivity {
         TextView viewMessage = findViewById(R.id.message);
         EditText viewReponse = findViewById(R.id.reponse);
         Button submitButton = findViewById(R.id.submit);
-        Button backButton = findViewById(R.id.btnConnInsc);
+        Button backButton = findViewById(R.id.btnRepReturn);
 
         viewAuteur.setText(auteur);
         viewMessage.setText(messStr);
@@ -93,6 +93,7 @@ public class MessReponseActivity extends AppCompatActivity {
 
                 Map<String, String> params = new HashMap<String, String>();
 
+                // TODO fetch user id
                 params.put("idUser", "16");             // 16 à remplacer par l'id de l'utilisateur actuel
                 params.put("contenu", viewReponse.getText().toString());
                 params.put("idMessageParent", Integer.toString(messId));

@@ -31,6 +31,18 @@
     <style name="MMZ.Text.Medium" parent="MMZ.Text">
         <item name="android:textSize">20sp</item>
     </style>
+    <style name="MMZ.Text.Big" parent="MMZ.Text">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="MMZ.Text.Bigger" parent="MMZ.Text">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="MMZ.Text.OhLawd" parent="MMZ.Text">
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="MMZ.Text.Clickable" parent="MMZ.Text.Medium">
+        <item name="android:padding">5dp</item>
+    </style>
     <style name="MMZ.Text.EditText" parent="@android:style/Widget.EditText">
         <item name="android:textColor">@color/white</item>
         <item name="android:editTextColor">@color/white</item>
