@@ -68,6 +68,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     // bd
     private DBWrapper bdMimotza;
     private String mdj;
+    private DBHandler bdh;
 
     // boutons
     private Button btnRetour;
@@ -82,11 +83,14 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         btnNextMot = (Button) findViewById(R.id.btnNextMot);
         btnRetour.setOnClickListener(this);
         btnNextMot.setOnClickListener(this);
+        bdh = new DBHandler(this);
         loadVirtualKeyboard();
 
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
         // TODO fetch mot du jour
-        mdj = "AVION"; // temp
+        String idMot = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0];
+        mdj = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[1]; // temp
+        String dateMonJeu = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[2];
 
         showVirtualKeyboard(true);
         showPostGameNav(false);
@@ -322,12 +326,14 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 // out of tries
                 score = 6;
                 Toast.makeText(this, "Vous avez lamentablement échoué...", Toast.LENGTH_LONG).show();
+                bdh.insertPartie(bdMimotza.fetchUserId(),0,50,"2m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             else {
                 // si on gagne
                 win = true;
                 score = code;
                 Toast.makeText(this, "Vous avez gagné!", Toast.LENGTH_LONG).show();
+                bdh.insertPartie(bdMimotza.fetchUserId(),1,100,"10m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             allowedInput = false;
 

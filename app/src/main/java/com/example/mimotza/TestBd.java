@@ -40,7 +40,7 @@ public class TestBd extends AppCompatActivity {
 
         DBTable temp = new DBTable("utilisateur");
         temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
-
+        temp.addColumn("statut",DBType.INTEGER);
         temp.addColumn("username",DBType.TEXT);
         temp.addColumn("email",DBType.TEXT);
         temp.addColumn("mdp",DBType.TEXT);
@@ -71,7 +71,8 @@ public class TestBd extends AppCompatActivity {
         bd.addTable(temp);
         bd.buildContent();
 
-        //bdh.insertUser(1000,"test","st1","test2");
-        //bdh.insertPartie(1,0,1,"5h",100);
+
+        bdh.syncMotJeu();
+       // bdh.getPartiesJoueur(1000);
     }
 }

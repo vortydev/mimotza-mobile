@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Mimotza"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".addSuggestion"
+            android:exported="false" />
+        <activity
+            android:name=".findProfile"
+            android:exported="false" />
+        <activity
             android:name=".Connexion"
             android:label="@string/connexion"
             android:exported="false" />

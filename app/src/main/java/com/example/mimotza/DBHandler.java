@@ -59,33 +59,54 @@ public class DBHandler {
 
     //permet l'ajout d'un joueur
     public void insertUser(Integer pidOrigin, String pusername, String pnom, String pprenom) {
-        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username) VALUES (" + pidOrigin.toString() + ",'" + pprenom + "','" + pnom + "','" + pusername + "')");
+        db.execSQL("INSERT INTO utilisateur (idOrigin,prenom,nom,username,statut) VALUES (" + pidOrigin.toString() + ",'" + pprenom + "','" + pnom + "','" + pusername + "',2)");
 
     }
 
     //
-    public void insertmotJoue(Integer pidOrigin, Integer idMot) {
-        db.execSQL("INSERT INTO utilisateur (idUser,mot) VALUES (" + pidOrigin.toString() + "," + idMot.toString() + ")");
+    public void insertmotJoue(Integer idMot, String mot, String date) {
+        db.execSQL("INSERT INTO motJouer (idMot,mot,date) VALUES (" + idMot.toString() + ",'" + mot + "','"+date+"')");
 
     }
-    /*
-    public String[] getPartiesJoueur(int idUser){
-       // Cursor PartiesJoueur = db.execSQL("SELECT () VALUES ("+pidOrigin.toString()+","+idMot.toString()+")");
+
+    //retourne un mot a jouer si le jouer n'a pas joue a un mot du passe
+    public String[] getPartiesJoueur(Integer idUser){
+        Cursor partiesJoueur = db.rawQuery("SELECT date FROM partie WHERE idUser=" +idUser.toString()+ " ORDER BY date DESC LIMIT 1" ,null);
+        Cursor motJouer = db.rawQuery("select * FROM motJouer order by date DESC LIMIT 5 ",null);
+
+        partiesJoueur.moveToFirst();
+        motJouer.moveToFirst();
+        String[] temp = new String[3];
+
+
+        while(!motJouer.isAfterLast()){
+            if(partiesJoueur.getCount() == 0 || !(partiesJoueur.getString(0).equals(motJouer.getString(2)))){
+                Integer id = motJouer.getInt(0);
+                temp[0] = String.valueOf(id);
+                temp[1] = motJouer.getString(1);
+                temp[2] = motJouer.getString(2);
+                motJouer.moveToLast();
+            }
+            motJouer.moveToNext();
+        }
+
+
+        return temp;
+
     }
 
- */
+
 
     public String getLastDateMotJeu(){
-        Cursor Date = db.rawQuery("SELECT date FROM motJouer where rowid =(SELECT  last_insert_rowid() FROM  motJouer)",null);
+
+        Cursor Date = db.rawQuery("SELECT date FROM motJouer ORDER BY date DESC",null);
         Date.moveToFirst();
         return Date.getString(0);
 
     }
 
-    private void syncMotJeu(){
-
+    public void syncMotJeu(){
         RequestQueue queue = Volley.newRequestQueue(context);
-
 
         //String url = "http://127.0.0.1:8000/userProfile";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
         //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
@@ -99,9 +120,14 @@ public class DBHandler {
                             Toast.makeText(context, response, Toast.LENGTH_LONG);
                             infoJson = new JSONArray(response);
 
-                            for (int i = 0; i < infoJson.length(); i++) {
+                            for (int i = infoJson.length()-1; i >=0; i--) {
                                 String date = infoJson.getJSONObject(i).getString("date");
 
+                                if (date.compareTo(getLastDateMotJeu()) > 0){
+                                    System.out.println("date" + date);
+                                    System.out.println("date last" + getLastDateMotJeu());
+                                    insertmotJoue(infoJson.getJSONObject(i).getInt("idmot"),infoJson.getJSONObject(i).getString("mot"),date);
+                                }
                             }
 
 
@@ -118,13 +144,10 @@ public class DBHandler {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-
                 return params;
             }
         };
         queue.add(stringRequest);
-
-
 
     }
 }
