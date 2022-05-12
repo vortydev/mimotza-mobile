@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // BD
         btnBD = (Button) findViewById(R.id.btnBD);
         btnBD.setOnClickListener(this);
+        btnBD.setVisibility(View.INVISIBLE);
 
         profilJoueur = (Button) findViewById(R.id.btnProfil);
         profilJoueur.setOnClickListener(this);
@@ -81,5 +82,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // rien :)
                 break;
         }
+    }
+
+    private void initBD() {
+        DBWrapper bd = new DBWrapper(this,"mimotza");
+
+        DBTable temp = new DBTable("utilisateur");
+        temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
+
+        temp.addColumn("username",DBType.TEXT);
+        temp.addColumn("email",DBType.TEXT);
+        temp.addColumn("mdp",DBType.TEXT);
+        temp.addColumn("nom",DBType.TEXT);
+        temp.addColumn("prenom",DBType.TEXT);
+        temp.addColumn("avatar",DBType.TEXT);
+        temp.addColumn("dateCreation",DBType.TEXT);
+        temp.addColumn("statut",DBType.INTEGER);
+        bd.addTable(temp);
+        temp = new DBTable("partie");
+        temp.addColumn("idUser",DBType.INTEGER);
+        temp.addColumn("win",DBType.INTEGER);
+        temp.addColumn("score",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("temps",DBType.TEXT);
+
+        bd.addTable(temp);
+        temp = new DBTable("motJoueur");
+        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("joue",DBType.INTEGER);
+        temp.addColumn("win",DBType.INTEGER);
+        bd.addTable(temp);
+
+        temp = new DBTable("motJouer");
+        temp.addColumn("idOrigin",DBType.INTEGER);
+
+        temp.addColumn("mot",DBType.INTEGER);
+        bd.addTable(temp);
+
+        temp = new DBTable("motJouer");
+        temp.addColumn("idOrigin",DBType.INTEGER);
+
+        temp.addColumn("mot",DBType.INTEGER);
+        bd.addTable(temp);
+        bd.buildContent();
     }
 }
