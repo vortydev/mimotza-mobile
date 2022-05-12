@@ -14,6 +14,7 @@
  Date: 05/05/2022 Nom: Étienne Ménard Description: Implémentation du clavier virtuel.
  Date: 08/05/2022 Nom: Étienne Ménard Description: Modification de l'algorithme pour valider des lettres récurrentes.
  Date: 09/05/2022 Nom: Étienne Ménard Description: Implémentation de la fonction pour reset la grille.
+ Date: 11/05/2022 Nom: Étienne Ménard Description: Finalisation du code du jeu. UwU
  =========================================================
  ****************************************/
 package com.example.mimotza;
@@ -505,14 +506,6 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             };
 
             queue.add(stringRequest);
-
-
-
-
-
-
-
-
         }
     }
 

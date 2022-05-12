@@ -104,7 +104,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                             e.printStackTrace();
                         }
 
-                        startActivity(new Intent(Connexion.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        startActivity(new Intent(Connexion.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }
                 }, new Response.ErrorListener() {
             @Override
