@@ -112,7 +112,7 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
                                         intent.putExtra("IDMessage", jsonObject.getInt("IDMessage"));
                                         intent.putExtra("Message", jsonObject.getString("Message"));
                                         intent.putExtra("Auteur", jsonObject.getString("Auteur"));
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     } catch (Exception e) {
                                         System.out.println(e);
@@ -184,7 +184,7 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(ThreadActivity.this, Jeu.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuSugg:
-                //start intent suggestion
+                startActivity(new Intent(ThreadActivity.this, addSuggestion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuForum:
                 startActivity(new Intent(ThreadActivity.this, ForumActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));

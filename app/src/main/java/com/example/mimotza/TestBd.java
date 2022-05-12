@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : testBd
+ Auteur : Alebrto Oviedo
+ Fonctionnalité : creer la bd
+ Date : 2022-05-11
+ Vérification :
+ Date Nom Approuvé
+ 2022-05-11 Alberto
+ =========================================================
+ Historique de modifications :
+ Date Nom Description
+ 2022-05-05 : creation de l'objet
+ 2022-05-11 : commentaire et enttetes
+ =========================================================
+ ****************************************/
+
+
 package com.example.mimotza;
 
 import android.os.Bundle;
@@ -25,15 +42,15 @@ import com.example.mimotza.databinding.ActivityTestBdBinding;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * TestBD.
+ * @author Alberto Oviedo
+ */
 public class TestBd extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-
-
     private DBWrapper bd;
     private DBHandler bdh;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +60,7 @@ public class TestBd extends AppCompatActivity {
 
         DBTable temp = new DBTable("utilisateur");
         temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
-
+        temp.addColumn("statut",DBType.INTEGER);
         temp.addColumn("username",DBType.TEXT);
         temp.addColumn("email",DBType.TEXT);
         temp.addColumn("mdp",DBType.TEXT);
@@ -68,56 +85,14 @@ public class TestBd extends AppCompatActivity {
         bd.addTable(temp);
 
         temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
-        bd.addTable(temp);
-
-        temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("mot",DBType.TEXT);
+        temp.addColumn("date",DBType.TEXT);
         bd.addTable(temp);
         bd.buildContent();
-        sendToDataBase();
 
-    }
-    private void sendToDataBase( ){
-        RequestQueue queue = Volley.newRequestQueue(this);
 
-        String url = "http://127.0.0.1:8000/ajoutSuggestion";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
-        //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Toast.makeText(TestBd.this, response,Toast.LENGTH_LONG).show();
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //view.setText(error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("idUser", "1");
-                params.put("langue", "Français");
-                params.put("mot", "PORTE");
-                return params;
-            }
-        };
-        queue.add(stringRequest);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_test_bd);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+        bdh.syncMotJeu();
+       // bdh.getPartiesJoueur(1000);
     }
 }

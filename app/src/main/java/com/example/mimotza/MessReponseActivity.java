@@ -8,6 +8,7 @@
  =========================================================
  Historique de modifications :
  Date: 10/05/2022 Nom: François-Nicolas Gitzhofer Description: Création de l'activité pour répondre à un message
+ Date: 11/05/2022 Nom: François-Nicolas Gitzhofer Description: Ajout de fetchUserId à la place de 16 pour l'id de l'utilisateur qui répond au message
  =========================================================
  ****************************************/
 
@@ -82,7 +83,7 @@ public class MessReponseActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Intent intent = new Intent(MessReponseActivity.this, ThreadActivity.class);
                         intent.putExtra("ID", threadId);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         Toast.makeText(MessReponseActivity.this, "Message ajouté avec succès", Toast.LENGTH_SHORT).show();
                     }
@@ -147,7 +148,7 @@ public class MessReponseActivity extends AppCompatActivity {
                 startActivity(new Intent(MessReponseActivity.this, Jeu.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuSugg:
-                //start intent suggestion
+                startActivity(new Intent(MessReponseActivity.this, addSuggestion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuForum:
                 startActivity(new Intent(MessReponseActivity.this, ForumActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));

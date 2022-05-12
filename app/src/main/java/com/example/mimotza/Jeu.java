@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,6 +69,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     // bd
     private DBWrapper bdMimotza;
     private String mdj;
+    private DBHandler bdh;
 
     // boutons
     private Button btnRetour;
@@ -82,15 +84,20 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         btnNextMot = (Button) findViewById(R.id.btnNextMot);
         btnRetour.setOnClickListener(this);
         btnNextMot.setOnClickListener(this);
+        bdh = new DBHandler(this);
         loadVirtualKeyboard();
 
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
-        // TODO fetch mot du jour
-        mdj = "AVION"; // temp
+
+        // fetch mot du jour
+        String idMot = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0];
+        mdj = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[1]; // temp
+        String dateMotJeu = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[2];
+
+        // TODO disable the game if the user already won
 
         showVirtualKeyboard(true);
         showPostGameNav(false);
-        // TODO disable the game if the user already won
 
         grid = new GameGrid(this, fetchCells(), mdj);   // creates grid object
         allowedInput = true;                                   // activate inputs
@@ -320,8 +327,10 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             // end of game
             if (code > 6) {
                 // out of tries
+                win = false;
                 score = 6;
                 Toast.makeText(this, "Vous avez lamentablement échoué...", Toast.LENGTH_LONG).show();
+//                bdh.insertPartie(bdMimotza.fetchUserId(),0,50,"2m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             else {
                 // si on gagne
@@ -330,6 +339,9 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(this, "Vous avez gagné!", Toast.LENGTH_LONG).show();
             }
             allowedInput = false;
+
+
+            bdh.insertPartie(bdMimotza.fetchUserId(), (win ? 1 : 0), code, new SimpleDateFormat("HH:mm:ss").format(getRowTime()), Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]), '"' + new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) + '"');
 
             // TODO uncomment
 //            sendToDataBase();
@@ -436,7 +448,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_options, menu);
         return true;
@@ -449,7 +461,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 // rien lol
                 return true;
             case R.id.menuSugg:
-                //start intent suggestion
+                startActivity(new Intent(Jeu.this, addSuggestion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuForum:
                 startActivity(new Intent(Jeu.this, ForumActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
@@ -466,6 +478,10 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * Déconnecte le joueur de son compte
+     * @author Isabelle Rioux
+     */
     private void disconnect(){
         //vas chercher dans la bd le joueur qui se déconnecte puis envoie une requete au serveur pour dire que le joueur est inactif
         DBWrapper bd = new DBWrapper(this, "mimotza");

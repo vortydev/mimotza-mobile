@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnCon;
     private Button btnBD;
     private Button profilJoueur;
+    private Button btns;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBD.setVisibility(View.INVISIBLE);
         initBD();
 
-        profilJoueur = (Button) findViewById(R.id.btnProfil);
+        btns = (Button) findViewById(R.id.btnSuggestion);
+        btns.setOnClickListener(this);
+
+        profilJoueur = (Button) findViewById(R.id.btnProfiljoueur);
         profilJoueur.setOnClickListener(this);
     }
 
@@ -74,10 +78,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBD.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentBD);
                 break;
-            case R.id.btnProfil:
-                Intent IntentP = new Intent(MainActivity.this, ProfilJoueur.class);
+            case R.id.btnProfiljoueur:
+                Intent IntentP = new Intent(MainActivity.this, findProfile.class);
                 IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(IntentP);
+                break;
+            case R.id.btnSuggestion:
+                Intent s = new Intent(MainActivity.this, addSuggestion.class);
+                s.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(s);
                 break;
 
             default:
@@ -89,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initBD() {
         DBWrapper bd = new DBWrapper(this,"mimotza");
 
+//        bd.dropTable("utilisateur");
         DBTable temp = new DBTable("utilisateur");
         temp.addColumn("idOrigin",DBType.INTEGER);// id provenant de la bd dans le serveur
-
         temp.addColumn("username",DBType.TEXT);
         temp.addColumn("email",DBType.TEXT);
         temp.addColumn("mdp",DBType.TEXT);
@@ -101,31 +110,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         temp.addColumn("dateCreation",DBType.TEXT);
         temp.addColumn("statut",DBType.INTEGER);
         bd.addTable(temp);
+
+//        bd.dropTable("partie");
         temp = new DBTable("partie");
         temp.addColumn("idUser",DBType.INTEGER);
         temp.addColumn("win",DBType.INTEGER);
         temp.addColumn("score",DBType.INTEGER);
         temp.addColumn("idMot",DBType.INTEGER);
         temp.addColumn("temps",DBType.TEXT);
-
-        bd.addTable(temp);
-        temp = new DBTable("motJoueur");
-        temp.addColumn("mot",DBType.INTEGER);
-        temp.addColumn("joue",DBType.INTEGER);
-        temp.addColumn("win",DBType.INTEGER);
+        temp.addColumn("date", DBType.TEXT);
         bd.addTable(temp);
 
+//        bd.dropTable("motJouer");
         temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("mot",DBType.TEXT);
+        temp.addColumn("date",DBType.TEXT);
         bd.addTable(temp);
 
-//        temp = new DBTable("motJouer");
-//        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
-        bd.addTable(temp);
         bd.buildContent();
+
+        DBHandler bdh = new DBHandler(this);
+        bdh.syncMotJeu();
+
     }
 }

@@ -39,7 +39,7 @@
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/btnProfil"
+            android:id="@+id/btnProfiljoueur"
             style="@style/MMZ.Button.Bleu"
             android:text="@string/profil" />
 
@@ -47,6 +47,11 @@
             android:id="@+id/btnForum"
             style="@style/MMZ.Button.Bleu"
             android:text="@string/forum_label" />
+
+        <Button
+            android:id="@+id/btnSuggestion"
+            style="@style/MMZ.Button.Bleu"
+            android:text="@string/suggestion" />
 
         <Button
             android:id="@+id/btnMainConn"
