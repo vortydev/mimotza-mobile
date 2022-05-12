@@ -43,6 +43,15 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
+        // if actif dans bd dois rediriger vers jeu
+        DBWrapper bd = new DBWrapper(this, "mimotza");
+
+        if (bd.checkUserConnected()){
+            Intent intentJeu = new Intent(Connexion.this, Jeu.class);
+            intentJeu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intentJeu);
+        }
+
         Button conn = (Button) findViewById(R.id.btnConnConn);
         Button back = (Button) findViewById(R.id.btnConnInsc);
 
@@ -95,7 +104,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                             e.printStackTrace();
                         }
 
-                        startActivity(new Intent(Connexion.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        startActivity(new Intent(Connexion.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }
                 }, new Response.ErrorListener() {
             @Override

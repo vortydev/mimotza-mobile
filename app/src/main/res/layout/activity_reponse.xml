@@ -6,56 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".MessReponseActivity">
 
-    <TextView
-        android:id="@+id/auteur"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/authorBox"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="AUTEUR"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/message"/>
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MESSAGE"
-        app:layout_constraintTop_toBottomOf="@id/auteur"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/reponse"/>
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/MMZ.Text.Big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MESSAGE"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/auteur"
+            style="@style/MMZ.Text.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="AUTEUR" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/reponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        style="@style/MMZ.Text.EditText"
+        android:layout_width="300dp"
+        android:layout_marginTop="180dp"
+        android:hint="@string/reponse"
         android:inputType="text"
-        android:hint="REPONSE"
-        app:layout_constraintTop_toBottomOf="@id/message"
+        app:layout_constraintBottom_toTopOf="@id/submit"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/submit" />
+        app:layout_constraintTop_toBottomOf="@id/authorBox" />
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="wrap_content"
+        style="@style/MMZ.Button.Bleu"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
-        app:layout_constraintTop_toBottomOf="@id/reponse"
+        android:layout_marginTop="10dp"
+        android:text="@string/soumettre"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnConnInsc"/>
+        app:layout_constraintTop_toBottomOf="@id/reponse" />
 
     <Button
-        android:id="@+id/btnConnInsc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BACK"
-        app:layout_constraintTop_toBottomOf="@id/submit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:id="@+id/btnRepReturn"
+        style="@style/MMZ.Button.Retour"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

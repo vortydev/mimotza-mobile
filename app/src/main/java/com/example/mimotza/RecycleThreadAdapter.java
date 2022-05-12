@@ -62,7 +62,7 @@ public class RecycleThreadAdapter extends RecyclerView.Adapter<RecycleThreadAdap
                 }
             });
             holder.messThread.setText(this.threadList.get(position).getString("Message"));
-            holder.nbReponsesThread.setText(this.threadList.get(position).getString("NbReponses"));
+            holder.nbReponsesThread.setText(this.context.getResources().getString(R.string.nbComments, this.threadList.get(position).getString("NbReponses")));
             //System.out.println("Position " + position + " fait avec succès.");
         }
         catch (Exception e) {

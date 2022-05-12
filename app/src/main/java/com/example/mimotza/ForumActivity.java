@@ -120,7 +120,8 @@ public class ForumActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnForumReturn:
-                finish();
+                startActivity(new Intent(ForumActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+//                finish();
                 break;
         }
     }

@@ -19,6 +19,7 @@
             android:exported="false" />
         <activity
             android:name=".ProfilJoueur"
+            android:label="@string/profil"
             android:exported="false" />
         <activity
             android:name=".Jeu"
@@ -31,6 +32,7 @@
             android:theme="@style/Theme.Mimotza.NoActionBar" />
         <activity
             android:name=".Inscription"
+            android:label="@string/inscription"
             android:exported="false" />
         <activity
             android:name=".LogInSignIn"
