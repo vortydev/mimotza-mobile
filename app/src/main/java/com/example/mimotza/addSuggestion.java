@@ -1,3 +1,19 @@
+/****************************************
+ Fichier : addSuggestion
+ Auteur : Alebrto Oviedo
+ Fonctionnalité : Code de l'activite ajouter suggestion
+
+ Date : 2022-05-11
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date Nom Description
+ 2022-05-11 : ajout de la classe
+ 2022-05-11 : commentaire et enttetes
+ =========================================================
+ ****************************************/
+
 package com.example.mimotza;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,21 +41,33 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+/**
+ * AddSuggestion.
+ * @author Alberto Oviedo
+ */
 
 public class addSuggestion extends AppCompatActivity implements View.OnClickListener {
     private EditText txt;
     private Button btnFindProfile;
+
+    /**
+     * Constructeur de l'objet addSuggestion.
+     * @author Alberto Oviedo
+     * .
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_activity);
-
         txt = (EditText)findViewById(R.id.editTextProfile) ;
-
-
-
         btnFindProfile = (Button) findViewById(R.id.FindProfile);
         btnFindProfile.setOnClickListener(this);
     }
+
+    /**
+     * onClick: assigne une action au click d;un button.
+     * @author Alberto Oviedo
+
+     */
 
     @Override
     public void onClick(View v) {
@@ -57,9 +85,15 @@ public class addSuggestion extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /**
+     * Envoi requete API qui ajoute la suggestion dans la bd.
+     * @author Alberto Oviedo
+     * .
+     */
+
     private void sendSuggestion(){
         Intent info = getIntent();
-   
+
         RequestQueue queue = Volley.newRequestQueue(this);
 
 
