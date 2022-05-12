@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intentInsc = new Intent(MainActivity.this, Connexion.class);
             intentInsc.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intentInsc);
+        }else{
+            Intent intentJouer = new Intent(MainActivity.this, Jeu.class);
+            intentJouer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intentJouer);
         }
 
         // jeu
