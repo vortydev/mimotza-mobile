@@ -108,9 +108,9 @@ public class DBHandler {
     }
 
     /**
-     *Fonction qui verifie quelle partie le joueur a fait pour retouner les mot que ce joueur peur encore jouer
-     *author Alberto Oviedo
-     *@param idUser id de l'utilisateur.
+     * Fonction qui verifie quelle partie le joueur a fait pour retouner les mot que ce joueur peur encore jouer
+     * @author Alberto Oviedo
+     * @param idUser id de l'utilisateur.
      */
     public String[] getPartiesJoueur(Integer idUser){
         Cursor partiesJoueur = db.rawQuery("SELECT date FROM partie WHERE idUser=" +idUser.toString()+ " ORDER BY date DESC LIMIT 1" ,null);
@@ -119,7 +119,6 @@ public class DBHandler {
         partiesJoueur.moveToFirst();
         motJouer.moveToFirst();
         String[] temp = new String[3];
-
 
         while(!motJouer.isAfterLast()){
             if(partiesJoueur.getCount() == 0 || !(partiesJoueur.getString(0).equals(motJouer.getString(2)))){
@@ -131,17 +130,12 @@ public class DBHandler {
             }
             motJouer.moveToNext();
         }
-
-
         return temp;
-
     }
-
 
     /**
      *fonction qui trouve la date du mot a joueur ajouté dans la bd dans le but d'ajouter ceux qui ne sont pas sir la bd
      *author Alberto Oviedo
-
      */
     public String getLastDateMotJeu(){
 

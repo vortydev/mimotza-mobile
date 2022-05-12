@@ -88,14 +88,16 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         loadVirtualKeyboard();
 
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
-        // TODO fetch mot du jour
+
+        // fetch mot du jour
         String idMot = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0];
         mdj = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[1]; // temp
-        String dateMonJeu = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[2];
+        String dateMotJeu = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[2];
+
+        // TODO disable the game if the user already won
 
         showVirtualKeyboard(true);
         showPostGameNav(false);
-        // TODO disable the game if the user already won
 
         grid = new GameGrid(this, fetchCells(), mdj);   // creates grid object
         allowedInput = true;                                   // activate inputs
