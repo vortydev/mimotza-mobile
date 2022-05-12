@@ -27,19 +27,22 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     // bd
     private DBWrapper bdMimotza;
     private String mdj;
+    private DBHandler bdh;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
-
+        bdh = new DBHandler(this);
         loadVirtualKeyboard();
 
         bdMimotza = new DBWrapper(this, "mimotza");    // connect to database
 
         // TODO fetch mot du jour
-        mdj = "VAGUE"; // temp
+        String idMot = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0];
+        mdj = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[1]; // temp
+        String dateMonJeu = bdh.getPartiesJoueur(bdMimotza.fetchUserId())[2];
 
         grid = new GameGrid(this, fetchCells(), mdj, bdMimotza);   // creates grid object
         allowedInput = true;                                   // activate inputs
@@ -149,12 +152,14 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 // out of tries
                 score = 6;
                 Toast.makeText(this, "Vous avez lamentablement échoué...", Toast.LENGTH_LONG).show();
+                bdh.insertPartie(bdMimotza.fetchUserId(),0,50,"2m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             else {
                 // si on gagne
                 win = true;
                 score = code;
                 Toast.makeText(this, "Vous avez gagné!", Toast.LENGTH_LONG).show();
+                bdh.insertPartie(bdMimotza.fetchUserId(),1,100,"10m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             allowedInput = false;
             virtualKeyboard.setVisibility(View.INVISIBLE);

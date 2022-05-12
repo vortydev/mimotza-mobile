@@ -7,6 +7,18 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/btnSuggestion"
+        style="@style/MMZ.Button.Gris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="suggestion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnForum" />
+
+    <Button
         android:id="@+id/btnProfiljoueur"
         style="@style/MMZ.Button.Gris"
         android:layout_width="203dp"

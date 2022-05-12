@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnInsc;
     private Button btnBD;
     private Button profilJoueur;
+    private Button btns;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // BD
         btnBD = (Button) findViewById(R.id.btnBD);
         btnBD.setOnClickListener(this);
+
+        btns = (Button) findViewById(R.id.btnSuggestion);
+        btns.setOnClickListener(this);
 
         profilJoueur = (Button) findViewById(R.id.btnProfiljoueur);
         profilJoueur.setOnClickListener(this);
@@ -63,11 +67,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBD);
                 break;
             case R.id.btnProfiljoueur:
-
-                Intent IntentP = new Intent(MainActivity.this, ProfilJoueur.class);
-                IntentP.putExtra("user", "vorty");
+                Intent IntentP = new Intent(MainActivity.this, findProfile.class);
                 IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(IntentP);
+                break;
+            case R.id.btnSuggestion:
+                Intent s = new Intent(MainActivity.this, addSuggestion.class);
+                s.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(s);
                 break;
 
             default:

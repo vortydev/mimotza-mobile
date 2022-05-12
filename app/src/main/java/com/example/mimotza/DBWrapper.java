@@ -1,6 +1,7 @@
 package com.example.mimotza;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -99,5 +100,23 @@ public class DBWrapper {
         for (int i = 0 ; i < tables.size(); i++) {
             createTable(tables.get(i));
         }
+    }
+
+    public Integer fetchUserId(){
+        Integer pidOrigin = -1;
+        try{
+            Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE statut = 2",null);
+            if(c.getCount() <= 0){
+                c.close();
+            }else {
+                int index = c.getColumnIndex("idOrigin");
+                pidOrigin = c.getInt(index);
+                c.close();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return pidOrigin;
     }
 }
