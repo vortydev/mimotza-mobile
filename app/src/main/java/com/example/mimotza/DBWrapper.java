@@ -197,8 +197,10 @@ public class DBWrapper {
             if(c.getCount() <= 0){
                 c.close();
             }else {
-                int index = c.getColumnIndex("idOrigin");
-                pidOrigin = c.getInt(index);
+                if (c.moveToFirst()){
+                    int index = c.getColumnIndex("idOrigin");
+                    pidOrigin = c.getInt(index);
+                }
                 c.close();
             }
         }
