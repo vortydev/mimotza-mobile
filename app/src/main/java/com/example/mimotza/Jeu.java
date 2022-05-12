@@ -470,6 +470,10 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * Déconnecte le joueur de son compte
+     * @author Isabelle Rioux
+     */
     private void disconnect(){
         //vas chercher dans la bd le joueur qui se déconnecte puis envoie une requete au serveur pour dire que le joueur est inactif
         DBWrapper bd = new DBWrapper(this, "mimotza");

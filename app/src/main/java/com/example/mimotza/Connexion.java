@@ -36,6 +36,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activité de connexion du joueur
+ * @author Isabelle Rioux
+ */
 public class Connexion extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -83,6 +87,11 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    /**
+     * Vérifie si les identifiants de connexion sont valides
+     * @author Isabelle Rioux
+     * @param b Bundle d'information nécessaire à la connexion
+     */
     private void checkInDataBase(Bundle b){
         final TextView view = (TextView) findViewById(R.id.resultRequest);
 
@@ -110,16 +119,12 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onErrorResponse(VolleyError error) {
                 if(error.networkResponse.statusCode == 416){
-//                    view.setText("Cet utilisateur n'existe pas.");
                     Toast.makeText(Connexion.this, "Cet utilisateur n'existe pas.", Toast.LENGTH_LONG).show();
                 }else if (error.networkResponse.statusCode == 403) {
-//                    view.setText("Cet utilisateur est banni.");
                     Toast.makeText(Connexion.this, "Cet utilisateur est banni.", Toast.LENGTH_LONG).show();
                 }else if (error.networkResponse.statusCode == 401) {
-//                    view.setText("Le mot de passe est érroné.");
                     Toast.makeText(Connexion.this, "Le mot de passe est érroné.", Toast.LENGTH_LONG).show();
                 }else {
-//                    view.setText("Une erreur est survenue.");
                     Toast.makeText(Connexion.this, "Une erreur est survenue.", Toast.LENGTH_LONG).show();
                 }
             }
