@@ -194,11 +194,13 @@ public class DBWrapper {
         Integer pidOrigin = -1;
         try{
             Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE statut = 2",null);
-            if(c.getCount() <= 0){
+            if (c.getCount() <= 0){
                 c.close();
             }else {
-                int index = c.getColumnIndex("idOrigin");
-                pidOrigin = c.getInt(index);
+                if (c.moveToFirst()) {
+                    int index = c.getColumnIndex("idOrigin");
+                    pidOrigin = c.getInt(index);
+                }
                 c.close();
             }
         }

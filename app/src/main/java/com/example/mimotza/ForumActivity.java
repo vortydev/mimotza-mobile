@@ -142,7 +142,7 @@ public class ForumActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(ForumActivity.this, Jeu.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuSugg:
-                //start intent suggestion
+                startActivity(new Intent(ForumActivity.this, addSuggestion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuForum:
                 return true;

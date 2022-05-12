@@ -110,7 +110,7 @@ public class DBHandler {
 
         //String url = "http://127.0.0.1:8000/userProfile";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
         //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
-        String url = "http://10.0.0.246:8000/syncMotJeu";     //home
+        String url = "http://10.0.2.2:8000/syncMotJeu";     //home
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override

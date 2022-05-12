@@ -123,7 +123,7 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(ProfilJoueur.this, Jeu.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuSugg:
-                //start intent suggestion
+                startActivity(new Intent(ProfilJoueur.this, addSuggestion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuForum:
                 startActivity(new Intent(ProfilJoueur.this, ForumActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));

@@ -326,16 +326,17 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 // out of tries
                 score = 6;
                 Toast.makeText(this, "Vous avez lamentablement échoué...", Toast.LENGTH_LONG).show();
-                bdh.insertPartie(bdMimotza.fetchUserId(),0,50,"2m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
+//                bdh.insertPartie(bdMimotza.fetchUserId(),0,50,"2m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             else {
                 // si on gagne
                 win = true;
                 score = code;
                 Toast.makeText(this, "Vous avez gagné!", Toast.LENGTH_LONG).show();
-                bdh.insertPartie(bdMimotza.fetchUserId(),1,100,"10m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
             }
             allowedInput = false;
+
+            bdh.insertPartie(bdMimotza.fetchUserId(),(win ? 1 : 0),code,new SimpleDateFormat("HH:mm:ss").format(getRowTime()), Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
 
             // TODO uncomment
 //            sendToDataBase();
@@ -442,7 +443,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_options, menu);
         return true;
@@ -455,7 +456,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 // rien lol
                 return true;
             case R.id.menuSugg:
-//                startActivity(new Intent(Jeu.this, Suggeston.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(Jeu.this, addSuggestion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 return true;
             case R.id.menuForum:
                 startActivity(new Intent(Jeu.this, ForumActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));

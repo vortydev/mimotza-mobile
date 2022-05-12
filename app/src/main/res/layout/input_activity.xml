@@ -8,23 +8,19 @@
 
     <Button
         android:id="@+id/FindProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Trouver"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/MMZ.Button.Bleu"
+        android:layout_marginTop="10dp"
+        android:text="@string/go"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672" />
+        app:layout_constraintTop_toBottomOf="@id/editTextProfile" />
 
     <EditText
         android:id="@+id/editTextProfile"
-        android:layout_width="257dp"
-        android:layout_height="56dp"
-        android:ems="10"
+        style="@style/MMZ.Text.EditText"
+        android:layout_width="350dp"
+        android:hint="@string/input"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

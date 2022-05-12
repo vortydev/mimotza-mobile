@@ -80,12 +80,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnProfiljoueur:
                 Intent IntentP = new Intent(MainActivity.this, findProfile.class);
-                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(IntentP);
                 break;
             case R.id.btnSuggestion:
                 Intent s = new Intent(MainActivity.this, addSuggestion.class);
-                s.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                s.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(s);
                 break;
 
@@ -118,18 +118,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         temp.addColumn("score",DBType.INTEGER);
         temp.addColumn("idMot",DBType.INTEGER);
         temp.addColumn("temps",DBType.TEXT);
+        temp.addColumn("date", DBType.TEXT);
         bd.addTable(temp);
 
 //        bd.dropTable("motJouer");
         temp = new DBTable("motJouer");
-        temp.addColumn("mot",DBType.INTEGER);
-        temp.addColumn("joue",DBType.INTEGER);
-        temp.addColumn("win",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("mot",DBType.TEXT);
+        temp.addColumn("date",DBType.TEXT);
         bd.addTable(temp);
 
         bd.buildContent();
 
         DBHandler bdh = new DBHandler(this);
         bdh.syncMotJeu();
+
     }
 }
