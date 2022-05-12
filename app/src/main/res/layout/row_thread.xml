@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rowThread"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/verticalRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/auteur"
+            style="@style/MMZ.Text.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/auteur"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/titre"
+            style="@style/MMZ.Text.Clickable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/cell_valid"
+            android:text="NOM DU THREAD"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/MMZ.Text.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="MESSAGE THREAD"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/nbReponses"
+            style="@style/MMZ.Text.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nb de commentaires"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+</TableRow>

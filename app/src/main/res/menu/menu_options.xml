@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/****************************************
+ Fichier : activity_connexion.xml
+ Auteur : Isabelle Rioux
+ Fonctionnalité : Menu
+ Date : 11/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 11/05/2022 Nom: Isabelle Rioux Description: Création du menu
+ =========================================================
+ ****************************************/
+ -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuJouer"
+        android:title="@string/jouer" />
+    <item
+        android:id="@+id/menuSugg"
+        android:title="@string/suggestion"/>
+    <item
+        android:id="@+id/menuProfil"
+        android:title="@string/profil"/>
+    <item
+        android:id="@+id/menuForum"
+        android:title="@string/forum_label"/>
+    <item
+        android:id="@+id/menuDeco"
+        android:title="@string/deco"/>
+
+
+</menu>

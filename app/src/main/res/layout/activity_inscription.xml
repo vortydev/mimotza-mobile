@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/****************************************
+ Fichier : activity_inscription.xml
+ Auteur : Isabelle Rioux
+ Fonctionnalité : MMZ-M-002 Créer utilisateur (Affichage)
+ Date : 02/05/2022
+ Vérification :
+ Date Nom Approuvé
+ =========================================================
+ Historique de modifications :
+ Date: 02/05/2022 Nom: Isabelle Rioux Description: Création de l'activité pour le formulaire
+ Date: 03/05/2022 Nom: Isabelle Rioux Description: Ajout des champs du formulaire
+ =========================================================
+ ****************************************/
+ -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Inscription">
+
+    <LinearLayout
+        android:id="@+id/inscBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/prenom"
+            style="@style/MMZ.Text.EditText"
+            android:hint="@string/prenom"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/nom"
+            style="@style/MMZ.Text.EditText"
+            android:hint="@string/nom"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/username"
+            style="@style/MMZ.Text.EditText"
+            android:hint="@string/username"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/email"
+            style="@style/MMZ.Text.EditText"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/password"
+            style="@style/MMZ.Text.EditText"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/password2"
+            style="@style/MMZ.Text.EditText"
+            android:hint="@string/password2"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnInscInsc"
+            style="@style/MMZ.Button.Bleu"
+            android:layout_marginTop="10dp"
+            android:text="@string/insc" />
+
+        <TextView
+            android:id="@+id/resultRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lavande" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnInscReturn"
+        style="@style/MMZ.Button.Retour"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
