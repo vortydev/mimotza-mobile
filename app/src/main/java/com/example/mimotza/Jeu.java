@@ -39,6 +39,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -460,9 +463,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
                 return true;
             case R.id.menuDeco:
                 //deconnecter joueur avant de start intent
-                //Intent intentInsc = new Intent(Jeu.this, Connexion.class);
-                //intentInsc.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //startActivity(intentInsc);
+                disconnect();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -472,9 +473,45 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
     private void disconnect(){
         //vas chercher dans la bd le joueur qui se déconnecte puis envoie une requete au serveur pour dire que le joueur est inactif
         DBWrapper bd = new DBWrapper(this, "mimotza");
-        int idOrigin = bd.disconnectUser();
+        Integer idOrigin = bd.disconnectUser();
 
         if (idOrigin > 0){
+            RequestQueue queue = Volley.newRequestQueue(this);
+            //String url = "http://127.0.0.1:8000/logoutAPI";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
+            String url = "http://10.0.2.2:8000/logoutAPI";     //emulateur
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            startActivity(new Intent(Jeu.this, Connexion.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if(error.networkResponse.statusCode == 416){
+                        Toast.makeText(Jeu.this,"Cet utilisateur n'existe pas.",Toast.LENGTH_LONG);
+                    }else {
+                        Toast.makeText(Jeu.this,"Une erreur est survenue.",Toast.LENGTH_LONG);
+                    }
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() { //changer params
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("id", idOrigin.toString());
+                    return params;
+                }
+            };
+
+            queue.add(stringRequest);
+
+
+
+
+
+
+
 
         }
     }

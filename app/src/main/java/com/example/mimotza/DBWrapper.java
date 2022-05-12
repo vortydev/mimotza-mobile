@@ -133,8 +133,8 @@ public class DBWrapper {
         }
     }
 
-    public int disconnectUser(){
-        int pidOrigin = -1;
+    public Integer disconnectUser(){
+        Integer pidOrigin = -1;
         try{
             Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE statut = 2",null);
             if(c.getCount() <= 0){
