@@ -29,11 +29,8 @@ import java.util.Map;
 public class TestBd extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-
-
     private DBWrapper bd;
     private DBHandler bdh;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,56 +65,13 @@ public class TestBd extends AppCompatActivity {
         bd.addTable(temp);
 
         temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
-        bd.addTable(temp);
-
-        temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
-
-        temp.addColumn("mot",DBType.INTEGER);
+        temp.addColumn("idMot",DBType.INTEGER);
+        temp.addColumn("mot",DBType.TEXT);
+        temp.addColumn("date",DBType.TEXT);
         bd.addTable(temp);
         bd.buildContent();
-        sendToDataBase();
 
-    }
-    private void sendToDataBase( ){
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        String url = "http://127.0.0.1:8000/ajoutSuggestion";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
-        //String url = "http://10.0.2.2:8000/ajoutSuggestion";     //emulateur
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Toast.makeText(TestBd.this, response,Toast.LENGTH_LONG).show();
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //view.setText(error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("idUser", "1");
-                params.put("langue", "Français");
-                params.put("mot", "PORTE");
-                return params;
-            }
-        };
-        queue.add(stringRequest);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_test_bd);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+        //bdh.insertUser(1000,"test","st1","test2");
+        //bdh.insertPartie(1,0,1,"5h",100);
     }
 }

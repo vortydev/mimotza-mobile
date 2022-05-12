@@ -10,6 +10,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.content.Context;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -18,6 +21,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +37,10 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_joueur);
 
-        getInfo();
+        DBHandler bd = new DBHandler(this);
+        
+        ImageView img;
+       // syncMotJeu();
 
         Button btnBack = (Button) findViewById(R.id.btnProfilReturn);
         btnBack.setOnClickListener(this);
@@ -37,7 +48,6 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.btnProfilReturn:
                 startActivity(new Intent(ProfilJoueur.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -46,17 +56,31 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void getInfo(){
+    private void syncMotJeu(){
+        Intent info = getIntent();
+        Toast.makeText(ProfilJoueur.this, info.getStringExtra("user"),Toast.LENGTH_LONG).show();
         RequestQueue queue = Volley.newRequestQueue(this);
+        
+        TextView nbParties = findViewById(R.id.stat1);
+        TextView partiesGagnes = findViewById(R.id.stat2);
+        TextView temps = findViewById(R.id.stat3);
+        TextView date = findViewById(R.id.stat4);
+        ImageView img = findViewById(R.id.imageProfile);
 
-//        String url = "http://127.0.0.1:8000/userProfile";  //cell isa instructions : https://dev.to/tusharsadhwani/connecting-android-apps-to-localhost-simplified-57lm
         String url = "http://10.0.2.2:8000/userProfile";     //emulateur
+        TextView titleProfile = findViewById(R.id.usernameProfil);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-//                        Toast.makeText(ProfilJoueur.this, response,Toast.LENGTH_LONG).show();
+                        JSONObject infoJson = null;
+                        try {
+                            infoJson = new JSONObject(response);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -68,7 +92,7 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("username", "admin");
+                params.put("username", info.getStringExtra("user"));
                 return params;
             }
         };

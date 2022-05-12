@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBD);
                 break;
             case R.id.btnProfil:
+
                 Intent IntentP = new Intent(MainActivity.this, ProfilJoueur.class);
+                IntentP.putExtra("user", "vorty");
                 IntentP.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(IntentP);
                 break;
