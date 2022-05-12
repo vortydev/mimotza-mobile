@@ -47,9 +47,9 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
         DBWrapper bd = new DBWrapper(this, "mimotza");
 
         if (bd.checkUserConnected()){
-            Intent intentJeu = new Intent(Connexion.this, MainActivity.class);
-            intentJeu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intentJeu);
+            Intent intentMain = new Intent(Connexion.this, MainActivity.class);
+            intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intentMain);
         }
 
         Button conn = (Button) findViewById(R.id.btnConnConn);
