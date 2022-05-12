@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //if no user actif go to connexion bitch
+        //if no user actif go to connexion
         DBWrapper bd = new DBWrapper(this, "mimotza");
 
         if (!bd.checkUserConnected()){
