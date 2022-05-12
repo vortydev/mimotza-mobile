@@ -13,10 +13,10 @@
         android:text="@string/go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextProfile" />
+        app:layout_constraintTop_toBottomOf="@id/suggField" />
 
     <EditText
-        android:id="@+id/editTextProfile"
+        android:id="@+id/suggField"
         style="@style/MMZ.Text.EditText"
         android:layout_width="350dp"
         android:hint="@string/input"
@@ -25,5 +25,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnInputReturn"
+        style="@style/MMZ.Button.Retour"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

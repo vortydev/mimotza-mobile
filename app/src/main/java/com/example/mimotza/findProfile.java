@@ -47,7 +47,7 @@ public class findProfile extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_activity);
 
-        txt = (EditText)findViewById(R.id.editTextProfile) ;
+        txt = (EditText)findViewById(R.id.suggField) ;
 
 
 
@@ -64,6 +64,9 @@ public class findProfile extends AppCompatActivity implements View.OnClickListen
                 Toast.makeText(findProfile.this,  txt.getText().toString(), Toast.LENGTH_LONG).show();
                 intent.putExtra("user",txt.getText().toString());
                 startActivity(intent);
+                break;
+            case R.id.btnInputReturn:
+                startActivity(new Intent(findProfile.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 break;
             default:
                 // rien :)

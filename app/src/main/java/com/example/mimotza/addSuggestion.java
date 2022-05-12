@@ -58,7 +58,7 @@ public class addSuggestion extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_activity);
-        txt = (EditText)findViewById(R.id.editTextProfile) ;
+        txt = (EditText)findViewById(R.id.suggField) ;
         btnFindProfile = (Button) findViewById(R.id.FindProfile);
         btnFindProfile.setOnClickListener(this);
     }
@@ -78,6 +78,9 @@ public class addSuggestion extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(addSuggestion.this,  "La suggestion a été fait", Toast.LENGTH_LONG).show();
                 sendSuggestion();
                 startActivity(intent);
+                break;
+            case R.id.btnInputReturn:
+                startActivity(new Intent(addSuggestion.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 break;
             default:
                 // rien :)
@@ -118,7 +121,7 @@ public class addSuggestion extends AppCompatActivity implements View.OnClickList
 
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("langue", "Français");
-                params.put("mot", txt.getText().toString());
+                params.put("mot", ((TextView) findViewById(R.id.suggField)).getText().toString());
                 params.put("idUser", String.valueOf(1));
                 return params;
             }
