@@ -115,6 +115,14 @@ public class DBWrapper {
                 " values("+idUser.toString()+","+win.toString()+","+score.toString()+","+temps+","+dateEmission+","+idMot.toString()+")");
     }
 
+    /**
+     * ajoute un utilisateur à la base de donnée locale
+     * @author Alberto et Isabelle Rioux
+     * @param pidOrigin id dans la base de donnée serveur
+     * @param pusername username à mettre dans la base de donnée locale
+     * @param pnom nom à mettre dans la base de donnée locale
+     * @param pprenom prenom à mettre dans la base de donnée locale
+     */
     public void insertUser(Integer pidOrigin,String pusername,String pnom,String pprenom){
         try{
             Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE idOrigin = "+pidOrigin.toString(),null);
@@ -133,6 +141,11 @@ public class DBWrapper {
         }
     }
 
+    /**
+     * met un utilisateur qui se déconnecte inactif
+     * @author Isabelle Rioux
+     * @return id de l'user pour la base de donnée serveur
+     */
     public Integer disconnectUser(){
         Integer pidOrigin = -1;
         try{
@@ -154,6 +167,11 @@ public class DBWrapper {
         return pidOrigin;
     }
 
+    /**
+     * vérifie si un utilisateur actif est dans la bd
+     * @author Isabelle Rioux
+     * @return si l'utilisateur est connecté
+     */
     public boolean checkUserConnected(){
         try{
             Cursor c = db.rawQuery("SELECT * FROM utilisateur WHERE statut = 2",null);
@@ -167,6 +185,11 @@ public class DBWrapper {
         return true;
     }
 
+    /**
+     * envoie l'id d'un utilisateur, soir pour l'envoi de données à la base de donnée serveur
+     * @author Isabelle Rioux
+     * @return l'id d'un utilisateur connecté
+     */
     public Integer fetchUserId(){
         Integer pidOrigin = -1;
         try{

@@ -36,6 +36,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Activité d'inscription du joueur
+ * @author Isabelle Rioux
+ */
 public class Inscription extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -90,6 +94,13 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * Valide un champs du formulaire
+     * @author Étienne Ménard
+     * @param field champs du formulaire
+     * @param toast message a afficher
+     * @return s'il est valide ou non
+     */
     private boolean validateField(EditText field, String toast) {
         if (TextUtils.isEmpty(field.getText().toString())) {
             Toast.makeText(Inscription.this, toast,Toast.LENGTH_LONG).show();
@@ -100,6 +111,14 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * Valide un champs du formulaire
+     * @author Étienne Ménard
+     * @param field champs du formulaire
+     * @param toast message a afficher
+     * @param regex pattern regex à matcher
+     * @return s'il est valide ou non
+     */
     private boolean validateField(EditText field, String toast, String regex) {
         if (Pattern.matches(regex, field.getText().toString())) {
             return true;
@@ -110,6 +129,14 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * Valide un champs du formulaire
+     * @author Étienne Ménard
+     * @param field champs du formulaire
+     * @param toast message a afficher
+     * @param field2 champs du formulaire comparé
+     * @return s'il est valide ou non
+     */
     private boolean validateField(EditText field, String toast, EditText field2) {
         if (field.getText().toString().equals(field2.getText().toString())){
             return true;
@@ -119,6 +146,11 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * Ajoute un utilisateur à la base de donnée serveur
+     * @author Isabelle Rioux
+     * @param b Bundle d'information pour l'inscription
+     */
     private void sendToDataBase(Bundle b){
         final TextView view = (TextView) findViewById(R.id.resultRequest);
 
