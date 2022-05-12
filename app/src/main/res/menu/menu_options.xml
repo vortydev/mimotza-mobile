@@ -29,6 +29,4 @@
     <item
         android:id="@+id/menuDeco"
         android:title="@string/deco"/>
-
-
 </menu>
