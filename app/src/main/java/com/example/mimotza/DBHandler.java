@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,8 +76,7 @@ public class DBHandler {
      *@param temps Le temps de dure de la partie
      *@param idMot le id du mot joue dans la aprtie
      */
-    public void insertPartie(Integer idUser, Integer win, Integer score, String temps, Integer idMot) {
-        String today = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+    public void insertPartie(Integer idUser, Integer win, Integer score, String temps, Integer idMot, String today) {
         db.execSQL("INSERT INTO partie(idUser,win,score,temps,idMot,date) " +
                 " values(" + idUser.toString() + "," + win.toString() + "," + score.toString() + ",'" + temps + "'," + idMot.toString() + "," + today + ")");
     }

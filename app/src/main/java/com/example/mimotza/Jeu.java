@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -324,6 +325,7 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             // end of game
             if (code > 6) {
                 // out of tries
+                win = false;
                 score = 6;
                 Toast.makeText(this, "Vous avez lamentablement échoué...", Toast.LENGTH_LONG).show();
 //                bdh.insertPartie(bdMimotza.fetchUserId(),0,50,"2m",Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
@@ -336,7 +338,8 @@ public class Jeu extends AppCompatActivity implements View.OnClickListener {
             }
             allowedInput = false;
 
-            bdh.insertPartie(bdMimotza.fetchUserId(),(win ? 1 : 0),code,new SimpleDateFormat("HH:mm:ss").format(getRowTime()), Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]));
+
+            bdh.insertPartie(bdMimotza.fetchUserId(), (win ? 1 : 0), code, new SimpleDateFormat("HH:mm:ss").format(getRowTime()), Integer.valueOf(bdh.getPartiesJoueur(bdMimotza.fetchUserId())[0]), '"' + new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()) + '"');
 
             // TODO uncomment
 //            sendToDataBase();
