@@ -35,8 +35,8 @@ public class ProfilJoueur extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.btnProfilReturn:
-//                startActivity(new Intent(ProfilJoueur.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
+                startActivity(new Intent(ProfilJoueur.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+//                finish();
                 break;
         }
     }

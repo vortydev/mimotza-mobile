@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // inscription
         btnCon = (Button) findViewById(R.id.btnMainConn);
         btnCon.setOnClickListener(this);
+        btnCon.setVisibility(View.INVISIBLE);
 
         // forum
         btnForum = (Button) findViewById(R.id.btnForum);
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBD = (Button) findViewById(R.id.btnBD);
         btnBD.setOnClickListener(this);
         btnBD.setVisibility(View.INVISIBLE);
+        initBD();
 
         profilJoueur = (Button) findViewById(R.id.btnProfil);
         profilJoueur.setOnClickListener(this);
@@ -119,8 +121,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         temp.addColumn("mot",DBType.INTEGER);
         bd.addTable(temp);
 
-        temp = new DBTable("motJouer");
-        temp.addColumn("idOrigin",DBType.INTEGER);
+//        temp = new DBTable("motJouer");
+//        temp.addColumn("idOrigin",DBType.INTEGER);
 
         temp.addColumn("mot",DBType.INTEGER);
         bd.addTable(temp);
