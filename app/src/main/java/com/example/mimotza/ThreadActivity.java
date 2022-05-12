@@ -112,7 +112,7 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
                                         intent.putExtra("IDMessage", jsonObject.getInt("IDMessage"));
                                         intent.putExtra("Message", jsonObject.getString("Message"));
                                         intent.putExtra("Auteur", jsonObject.getString("Auteur"));
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     } catch (Exception e) {
                                         System.out.println(e);

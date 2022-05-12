@@ -74,7 +74,7 @@ public class RecycleResponseAdapter extends RecyclerView.Adapter<RecycleResponse
                         intent.putExtra("IDMessage", responseList.get(position).getInt("ID"));
                         intent.putExtra("Message", responseList.get(position).getString("Message"));
                         intent.putExtra("Auteur", responseList.get(position).getString("Auteur"));
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         context.startActivity(intent);
                     }
                     catch(Exception e) {
