@@ -8,6 +8,7 @@
  =========================================================
  Historique de modifications :
  Date: 10/05/2022 Nom: François-Nicolas Gitzhofer Description: Création de l'activité pour répondre à un message
+ Date: 11/05/2022 Nom: François-Nicolas Gitzhofer Description: Ajout de fetchUserId à la place de 16 pour l'id de l'utilisateur qui répond au message
  =========================================================
  ****************************************/
 
